@@ -1,7 +1,6 @@
 .prevNext {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 1em;
   margin: var(--space-lg) 0;
   font-size: 0.85em;
@@ -16,4 +15,8 @@
 .link {
   display: flex;
   align-items: center;
+}
+
+.linkNext {
+  flex-direction: row-reverse;
 }

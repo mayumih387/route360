@@ -164,7 +164,8 @@
 
 .tags {
   display: flex;
-  gap: 0.75em;
+  gap: 0.125em 0.75em;
+  flex-wrap: wrap;
 }
 
 .tag {

@@ -30,9 +30,8 @@ const PrevNext = ({ next = "", previous = "", currentLang = "en" }) => {
         <li>
           <Link
             to={`/${currentLang}/post/${previous.fields.slug}/`}
-            className={`${classes.link}`}
+            className={`${classes.link} ${classes.linkNext}`}
           >
-            <span>{previous.frontmatter.title}</span>
             <svg
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +42,7 @@ const PrevNext = ({ next = "", previous = "", currentLang = "en" }) => {
                 fill="var(--primary-font-color)"
               />
             </svg>
+            <span>{previous.frontmatter.title}</span>
           </Link>
         </li>
       )}

@@ -12,6 +12,7 @@
 
 .postsContainer h2 {
   color: var(--primary-warning);
+  line-height: 1.375;
 }
 
 .meta {
