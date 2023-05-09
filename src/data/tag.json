@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Gatsby.js",
+    "slug": "gatsbyjs"
+  },
+  {
+    "title": "Next.js",
+    "slug": "nextjs"
+  },
+  {
+    "title": "Astro",
+    "slug": "astro"
+  },
+  {
+    "title": "React",
+    "slug": "react"
+  },
+  {
+    "title": "Markdown",
+    "slug": "markdown"
+  },
+  {
+    "title": "Jamstack",
+    "slug": "jamstack"
+  },
+  {
+    "title": "Internationalization (i18n)",
+    "slug": "internationalization"
+  },
+  {
+    "title": "CMS",
+    "slug": "cms"
+  },
+  {
+    "title": "SEO",
+    "slug": "seo"
+  },
+  {
+    "title": "DeepL",
+    "slug": "deepl"
+  },
+  {
+    "title": "Supabase",
+    "slug": "supabase"
+  },
+  {
+    "title": "Umami",
+    "slug": "umami"
+  },
+  {
+    "title": "Analytics",
+    "slug": "analytics"
+  },
+  {
+    "title": "Meilisearch",
+    "slug": "meilisearch"
+  },
+  {
+    "title": "Algolia",
+    "slug": "algolia"
+  },
+  {
+    "title": "FrontMatter CMS",
+    "slug": "frontmattercms"
+  }
+]

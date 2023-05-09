@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway"), url("/assets/Raleway.woff2") format("woff2");
+  /* font-weight: 900; */
+  font-style: normal;
+  font-display: swap;
+}
+
+.headerContainer {
+  composes: container from "global.css";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 0;
+}
+
+.logo {
+  font-family: Raleway, sans-serif;
+  font-weight: 900;
+  font-size: 1.5em;
+  letter-spacing: 0.15em;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+.themeBtn {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-width: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.themeBtn svg {
+  width: 2.25em;
+}
+
+.langBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background: transparent;
+  border-width: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--primary-font-color);
+}
+
+.langBtn svg {
+  width: 1.25em;
+}
+
+.langName {
+  font-size: 0.85em;
+}
+
+.langSelecter {
+  position: absolute;
+  top: 2em;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  max-width: 200%;
+  padding: 0.5em 1em;
+  background: var(--primary-font-color);
+  border-radius: 5px;
+  color: var(--primary-bg-color);
+  text-align: center;
+}
+
+.langSelecter li {
+  line-height: 1.5;
+}
+
+.langSelecter a {
+  display: block;
+  width: 100%;
+}
+
+.yellow,
+.normal:hover {
+  color: var(--secondary-warning);
+}
+
+@media (min-width: 768px) {
+  .langSelecter {
+    gap: 0.25em;
+    padding: 0.5em 1em;
+  }
+}

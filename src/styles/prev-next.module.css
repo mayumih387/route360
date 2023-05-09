@@ -1,0 +1,19 @@
+.prevNext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  margin: var(--space-lg) 0;
+  font-size: 0.85em;
+}
+
+@media (max-width: 767px) {
+  .prevNext {
+    flex-direction: column;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,24 @@
+.author {
+  display: grid;
+  grid-template-columns: 80px auto;
+  gap: 1em;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.author p {
+  font-size: clamp(14px, 4.8vw, 16px);
+}
+
+.author p + p {
+  margin-top: calc(var(--space-xs) / 2);
+}
+
+.author a {
+  color: var(--primary-warning);
+  text-decoration: underline;
+}

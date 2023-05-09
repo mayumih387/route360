@@ -1,26 +1,29 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "route360",
+  "private": false,
+  "description": "Route360 blog",
+  "version": "1.0.0",
+  "author": "Mayumi Hara",
   "dependencies": {
     "gatsby": "^5.9.0",
+    "gatsby-plugin-catch-links": "^5.9.0",
+    "gatsby-plugin-feed": "^5.9.0",
     "gatsby-plugin-image": "^3.9.0",
     "gatsby-plugin-manifest": "^5.9.0",
     "gatsby-plugin-sharp": "^5.9.0",
+    "gatsby-plugin-sitemap": "^6.9.0",
+    "gatsby-remark-autolink-headers": "^6.9.0",
+    "gatsby-remark-images": "^7.9.0",
+    "gatsby-remark-prismjs": "^7.9.0",
     "gatsby-source-filesystem": "^5.9.0",
+    "gatsby-transformer-json": "^5.9.0",
+    "gatsby-transformer-remark": "^6.9.0",
     "gatsby-transformer-sharp": "^5.9.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "devDependencies": {
-    "prettier": "^2.8.7"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
+  "devDependencies": {},
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -29,12 +32,5 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

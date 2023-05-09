@@ -1,0 +1,6 @@
+/about/ /en/about/ 301
+/privacy-policy/ /en/privacy-policy/ 301
+/contact/ /en/contact/ 301
+/post/* /en/post/:splat 301
+
+/ /en 301

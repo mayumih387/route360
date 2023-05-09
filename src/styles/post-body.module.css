@@ -1,0 +1,246 @@
+.stack > * + * {
+  margin-top: var(--stack-space, 1.5em);
+}
+
+.stack h2,
+.stack h3 {
+  --stack-space: 2em;
+}
+
+.stack h4 {
+  margin-top: 2em;
+}
+
+.stack ul {
+  padding: revert;
+  list-style: revert;
+}
+
+.stack a {
+  color: var(--primary-success);
+  text-decoration: underline;
+}
+
+.stack a:hover {
+  text-decoration: none;
+}
+
+.stack blockquote {
+  margin-right: initial;
+  margin-bottom: initial;
+  margin-left: initial;
+  padding: var(--space-xs) var(--space-sm);
+  border-left: 4px solid var(--primary-font-color);
+  color: var(--secondary-font-color);
+  font-style: italic;
+}
+
+.stack cite {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: small;
+}
+
+.stack cite::before {
+  content: "-";
+  margin-right: 0.5em;
+}
+
+.stack p > code,
+.stack li > code {
+  color: var(--primary-font-color);
+  background: var(--secondary-bg-color);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: smaller;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  margin: 0 4px;
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+.stack pre[class*="language-"],
+.stack :not(pre) > code[class*="language-"] {
+  font-size: smaller;
+}
+
+.stack [class*="filename"] {
+  width: fit-content;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  background-color: var(--secondary-bg-color);
+  padding: 0.75rem 1.25rem;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--secondary-font-color);
+}
+
+.stack [class*="filename"] + pre {
+  margin-top: 0;
+}
+
+.stack figure {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.stack iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.stack h2 {
+  position: relative;
+  padding-top: var(--stack-space, 2em);
+}
+
+.stack h2::before {
+  content: "";
+  width: 100px;
+  height: 5px;
+  background: var(--primary-warning);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.stack hr {
+  content: "";
+  display: block;
+  width: 50%;
+  min-width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  border-bottom: 1px dashed var(--secondary-font-color);
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.stack figcaption {
+  color: var(--secondary-font-color);
+  font-size: small;
+}
+
+.header {
+  display: grid;
+  gap: 0.75em;
+  padding: 0 0 var(--space-sm);
+}
+
+.header h1 {
+  line-height: 1.375;
+}
+
+:global(.filename + .gatsby-highlight),
+:global(.gatsby-highlight > pre) {
+  margin-top: 0;
+}
+
+.meta {
+  display: flex;
+  gap: 0 0.5em;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--secondary-font-color);
+  font-size: smaller;
+}
+
+.tags {
+  display: flex;
+  gap: 0.75em;
+}
+
+.tag {
+  color: var(--primary-warning);
+  font-size: 0.875em;
+  text-decoration: underline;
+}
+
+.tag:hover {
+  text-decoration: none;
+}
+
+.toc {
+  width: fit-content;
+  margin-bottom: var(--space-sm);
+  border: 1px solid var(--secondary-font-color);
+}
+
+.tocHeader {
+  display: flex;
+  gap: calc(var(--space-xs) / 2);
+  align-items: center;
+  padding: calc(var(--space-xs) * 2 / 3);
+  cursor: pointer;
+}
+
+.tocBtn {
+  width: 1em;
+  transition: transform 0.4s;
+}
+
+details[open] .tocBtn {
+  transform: rotate(180deg);
+}
+
+.tocList {
+  font-size: smaller;
+  padding: calc(var(--space-xs) * 2 / 3);
+}
+
+.tocList ul {
+  padding-left: 2em;
+}
+
+.tocList li {
+  counter-increment: list;
+  position: relative;
+}
+
+.tocList li::before {
+  content: counter(list, decimal-leading-zero);
+  position: absolute;
+  right: calc(100% + 0.5em);
+  top: 0.3em;
+  padding-right: 7px;
+  border-right: 1px solid var(--colorDark);
+  line-height: 1.2;
+}
+
+.tocList li ul {
+  padding-left: 10px;
+  list-style: square;
+}
+
+.tocList li li {
+  counter-increment: none;
+}
+
+.tocList li li::before {
+  content: none;
+}
+
+.tocList a {
+  text-decoration: underline;
+}
+
+.tocList a:hover {
+  color: var(--primary-success);
+}
