@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Raleway";
-  src: local("Raleway"), url("/assets/Raleway.woff2") format("woff2");
-  /* font-weight: 900; */
+  src: url("/assets/Raleway.woff2") format("woff2");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -16,7 +16,6 @@
 
 .logo {
   font-family: Raleway, sans-serif;
-  font-weight: 900;
   font-size: 1.5em;
   letter-spacing: 0.15em;
 }
