@@ -29,8 +29,7 @@ const Author = ({ currentLang = "en" }) => {
       <div>
         <p>Mayumi Hara</p>
         <p>
-          {desc[currentLang]}
-          {""}
+          {desc[currentLang]}{" "}
           <Link to={`/${currentLang}/about/`}>{more[currentLang]}</Link>
         </p>
       </div>
