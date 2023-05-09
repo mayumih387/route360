@@ -13,6 +13,7 @@
     "gatsby-plugin-sharp": "^5.9.0",
     "gatsby-plugin-sitemap": "^6.9.0",
     "gatsby-remark-autolink-headers": "^6.9.0",
+    "gatsby-remark-gifs": "^1.2.0",
     "gatsby-remark-images": "^7.9.0",
     "gatsby-remark-prismjs": "^7.9.0",
     "gatsby-source-filesystem": "^5.9.0",

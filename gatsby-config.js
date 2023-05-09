@@ -70,6 +70,7 @@ module.exports = {
               icon: false,
             },
           },
+          `gatsby-remark-gifs`,
         ],
       },
     },
