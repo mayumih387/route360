@@ -413,9 +413,9 @@ This is just an idea if you're not happy with Disqus or other commenting systems
 
 Since these codes contain only basic functions, there is still a lot to do before launch;
 
-- [Getting the client IP](/posts/get-ip-react/)
+- [Getting the client IP](/en/post/get-ip-react/)
 - Captcha challenge
-- [e-mail validation](/posts/email-validation/)
+- [e-mail validation](/en/post/email-validation/)
 - Notification of new comments
 - Add like button to every comment
 - Add a reply system

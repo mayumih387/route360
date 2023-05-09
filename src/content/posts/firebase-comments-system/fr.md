@@ -413,9 +413,9 @@ Ce n'est qu'une idée si vous n'êtes pas satisfait de Disqus ou d'autres systè
 
 Comme ces codes ne contiennent que des fonctions de base, il y a encore beaucoup à faire avant le lancement ;
 
-- [Obtenir l'IP du client](/posts/get-ip-react/)
+- [Obtenir l'IP du client](/fr/post/get-ip-react/)
 - Défi Captcha
-- [Validation de l'e-mail](/posts/email-validation/)
+- [Validation de l'e-mail](/fr/post/email-validation/)
 - Notification des nouveaux commentaires
 - Ajouter un bouton "J'aime" à chaque commentaire
 - Ajouter un système de réponse
