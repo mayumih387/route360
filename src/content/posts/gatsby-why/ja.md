@@ -6,7 +6,7 @@ tags:
   - astro
 date: 2023-01-15T00:00:00.000Z
 lastmod: 2023-03-02T07:11:51.515Z
-draft: true
+draft: false
 ---
 
 私が最初に試した静的サイトジェネレーターは、Gatsby.jsでした。
