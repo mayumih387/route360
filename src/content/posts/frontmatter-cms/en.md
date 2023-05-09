@@ -88,7 +88,7 @@ And also your own json files for categories or global menus can be linked in `fr
 
 After the initial settings of Front Matter CMS, we see the following data elements in the left sidebar when we edit a Markdown file.
 
-![Front Matter CMS {635x667}](../../../images/frontmattercms03.png)
+![Front Matter CMS](../../../images/frontmattercms03.png)
 
 This is the Markdown frontmatter metadata we are used to.
 
@@ -96,7 +96,7 @@ We can edit this frontmatter in the file itself or in the sidebar.
 
 It's possible to select categories from a dropdown menu if you add some settings to `frontmatter.json`.
 
-![Front Matter CMS {555x667}](../../../images/frontmattercms05.png)
+![Front Matter CMS](../../../images/frontmattercms05.png)
 
 You can also add a setting to show a checkbox to toggle the auto-update of the last update date.
 
@@ -104,13 +104,13 @@ You can also add a setting to show a checkbox to toggle the auto-update of the l
 
 The list of content on the Front Matter CMS dashboard can be sorted and filtered.
 
-![Front Matter CMS {925x501}](../../../images/frontmattercms06.png)
+![Front Matter CMS](../../../images/frontmattercms06.png)
 
 ### Management of taxonomies and menus
 
 WordPress-like taxonomy/menu management is also possible. They can be freely rearranged.
 
-![Front Matter CMS {925x501}](../../../images/frontmattercms01.en.png)
+![Front Matter CMS](../../../images/frontmattercms01.en.png)
 
 To control those data, we use the Data function; add the `frontMatter.data.files` setting to `frontmatter.json`.
 
@@ -118,17 +118,17 @@ To control those data, we use the Data function; add the `frontMatter.data.files
 
 We can still add metadata to images.
 
-![Front Matter CMS {715x505}](../../../images/frontmattercms02.png)
+![Front Matter CMS](../../../images/frontmattercms02.png)
 
 These metadata are stored in `.frontmatter/database/mediaDb.json`, and the alt data would be automatically retrieved when we add an image via the editor icon.
 
-![Front Matter CMS {707x463}](../../../images/frontmattercms01.gif)
+![Front Matter CMS](../../../images/frontmattercms01.gif)
 
 ### Registering snippets
 
 Although Markdown is far from the WordPress Gutenberg, you can store your own snippets such as alerts or cards.
 
-![Front Matter CMS {925x501}](../../../images/frontmattercms07.en.png)
+![Front Matter CMS](../../../images/frontmattercms07.en.png)
 
 ### Integration with Static Site Generator
 
@@ -146,7 +146,7 @@ During initialization, Front Matter CMS automatically detects the Static Site Ge
 
 After that, you can start/stop the local server using the buttons on the left sidebar without typing `gatsby develop` or `yarn dev`.
 
-![Front Matter CMS {551x265}](../../../images/frontmattercms08.png)
+![Front Matter CMS](../../../images/frontmattercms08.png)
 
 ## What can't we do with Front Matter CMS?
 
@@ -160,7 +160,7 @@ As I mentioned earlier, because Front Matter CMS is only for Markdown content. W
 
 However, there are support buttons for Markdown input, making it easier to mark up images, lists, or block quotes.
 
-![Front Matter CMS {1369x169}](../../../images/frontmattercms09.png)
+![Front Matter CMS](../../../images/frontmattercms09.png)
 
 ## Conclusion
 

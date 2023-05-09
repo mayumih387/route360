@@ -218,7 +218,7 @@ Si vous n'avez pas autorisé votre dépôt Umami, appuyez sur "Adjust GitHub App
 
 Sélectionnez le référentiel à connecter, puis appuyez sur Install.
 
-![Autoriser un repo sur GitHub {480x852}](../../../images/vercel-umami03.png "Autoriser un repo sur GitHub &copy;Vercel")
+![Autoriser un repo sur GitHub](../../../images/vercel-umami03.png "Autoriser un repo sur GitHub &copy;Vercel")
 
 Bien qu'il soit également possible d'autoriser tous vos dépôts, pour des raisons de sécurité, il est plus sûr de choisir ceux qui seront connectés à Vercel. Ici, je choisis "Only Select Repositories" puis je sélectionne mon dépôt Umami.
 
@@ -249,7 +249,7 @@ Password: umami
 
 Après avoir été connecté, allez immédiatement à la page Compte puis mettez à jour le nom d'utilisateur et le mot de passe.
 
-![Modifier les informations du compte sur Umami Analytics {480x269}](../../../images/umami02.fr.png "Mise à jour du nom d'utilisateur et du mot de passe &copy;Umami")
+![Modifier les informations du compte sur Umami Analytics](../../../images/umami02.fr.png "Mise à jour du nom d'utilisateur et du mot de passe &copy;Umami")
 
 Vous pouvez choisir le français parmi 43 langues, ce qui est formidable !
 
@@ -296,11 +296,11 @@ Umami Analytics est constamment mis à jour.
 
 Lorsque le dépôt officiel d'Umami publie une nouvelle version, vous voyez un annonce en haut de votre site web Umami.
 
-![Avis de mise à jour sur Umami Analytics {800x94}](../../../images/umami03.fr.png "Avis de mise à jour sur Umami &copy;Umami")
+![Avis de mise à jour sur Umami Analytics](../../../images/umami03.fr.png "Avis de mise à jour sur Umami &copy;Umami")
 
 La façon de prendre la mise à jour, allez à votre dépôt Umami sur GitHub, puis appuyez sur **Sync fork -> Update branch**. Votre dépôt sera alors synchronisé avec Umami officiel.
 
-![Mise à jour Umami {800x316}](../../../images/umami04.en.png "Mise à jour Umami sur GitHub &copy;GitHub")
+![Mise à jour Umami](../../../images/umami04.en.png "Mise à jour Umami sur GitHub &copy;GitHub")
 
 Une fois que vous avez trouvé l'avis de mise à jour, je vous recommande de mettre à jour votre dépôt Umami dès que possible. S'il y a un écart entre votre Umami et la version officielle, la mise à jour peut échouer.
 

@@ -216,7 +216,7 @@ GitHubに接続後に表示される「Adjust GitHub App Permissions →」を�
 
 GitHub側で、Vercelに接続したいリポジトリを選択して、インストール。
 
-![GitHubで権限を追加 {480x852}](../../../images/vercel-umami03.png "GitHubで権限を追加 &copy;Vercel")
+![GitHubで権限を追加](../../../images/vercel-umami03.png "GitHubで権限を追加 &copy;Vercel")
 
 全てのリポジトリの接続を許可してもいいですが、使いたいリポジトリのみを許可した方が安全です。ここでは「Only Select Repositories」をクリックし、冒頭でフォークして作成した自分のUmamiのリポジトリを選択しています。
 
@@ -247,7 +247,7 @@ Password: umami
 
 この情報でログイン後、アカウントページに行きユーザー名とパスワードを変更しておきましょう。
 
-![Umamiアナリティクスのアカウント変更 {480x277}](../../../images/umami02.ja.png "Umamiのアカウント情報を変更 &copy;Umami")
+![Umamiアナリティクスのアカウント変更](../../../images/umami02.ja.png "Umamiのアカウント情報を変更 &copy;Umami")
 
 尚、Umami自体は日本語表示も可能です。すごいですね。
 
@@ -294,11 +294,11 @@ Umamiは常にアップデートが加えられています。
 
 フォーク元のUmamiでバージョンアップがあると、Umamiの本番画面に「新しいバージョンが利用可能です！」の通知が出ます。
 
-![Umamiアナリティクスの更新通知 {800x94}](../../../images/umami03.ja.png "Umamiの更新通知 &copy;Umami")
+![Umamiアナリティクスの更新通知](../../../images/umami03.ja.png "Umamiの更新通知 &copy;Umami")
 
 更新の方法は、GitHub上の自分のUmamiレポジトリへ行き、**「Sync fork」→「Update branch」**をクリックすればOKです。これで本家Umamiの内容を自分のUmamiに同期できます。
 
-![Umamiを更新 {800x316}](../../../images/umami04.en.png "GitHubでアップデート &copy;GitHub")
+![Umamiを更新](../../../images/umami04.en.png "GitHubでアップデート &copy;GitHub")
 
 更新を放置しすぎると、更新内容とのギャップが大きくなり同期に失敗する場合があるので、更新通知が出ていたらなるべく早めに更新しておきましょう。
 

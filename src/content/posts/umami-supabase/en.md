@@ -218,7 +218,7 @@ If you haven't authorized your Umami repository, press "Adjust GitHub App Permis
 
 Select the repository to connect, then press Install.
 
-![Authorize a repo on GitHub {480x852}](../../../images/vercel-umami03.png "Authorize a repo on GitHub &copy;Vercel")
+![Authorize a repo on GitHub](../../../images/vercel-umami03.png "Authorize a repo on GitHub &copy;Vercel")
 
 Though it's also possible to authorize all your repositories, for security reasons, it'd be safer to choose the ones to connect to Vercel. Here, I choose "Only Select Repositories" and then select my Umami repository.
 
@@ -249,7 +249,7 @@ Password: umami
 
 After logging in, go to the Account page, then update your Username and Password.
 
-![Edit account info on Umami Analytics {480x283}](../../../images/umami02.en.png "Update username and password &copy;Umami")
+![Edit account info on Umami Analytics](../../../images/umami02.en.png "Update username and password &copy;Umami")
 
 You can choose a language from 43 languages, which is great!
 
@@ -296,11 +296,11 @@ Umami Analytics is updated constantly.
 
 When the official Umami repository releases a new version, a notice would be displayed on the top of your Umami website.
 
-![Update notice on Umami Analytics {800x94}](../../../images/umami03.en.png "Update notice on Umami &copy;Umami")
+![Update notice on Umami Analytics](../../../images/umami03.en.png "Update notice on Umami &copy;Umami")
 
 The way to catch the update, go to your Umami repository on GitHub, then press **Sync fork -> Update branch**. Your repository will be then synchronized with the official Umami.
 
-![Update Umami {800x316}](../../../images/umami04.en.png "Update Umami on GitHub &copy;GitHub")
+![Update Umami](../../../images/umami04.en.png "Update Umami on GitHub &copy;GitHub")
 
 Once you find the update announcement, I recommend updating your Umami repository as soon as possible. If there is some gap between your Umami and official Umami versions, the update can fail sometimes.
 

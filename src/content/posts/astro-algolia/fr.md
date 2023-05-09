@@ -106,7 +106,7 @@ Sélectionnez l'index créé ("dev_posts") et choisissez
 
 au bas de la LCA.
 
-![Création de clés API sur Algolia {487x989}](../../../images/algolia13.png '&copy; Algolia')
+![Création de clés API sur Algolia](../../../images/algolia13.png '&copy; Algolia')
 
 Après avoir appuyé sur "Create", notez votre API.
 

@@ -140,7 +140,7 @@ Because Algolia's docs contain all their libraries in one place, and different l
 
 When you implant Algolia according to this entry, check if the library name on the right bottom is **React InstantSearch Hooks v6**.
 
-![Algolia Docs {300x388}](../../../images/algolia04.png "&copy;Algolia")
+![Algolia Docs](../../../images/algolia04.png "&copy;Algolia")
 
 ## Create and store records for search
 
@@ -228,7 +228,7 @@ success index to Algolia - 10.728s - Done!
 
 You can see that the records are indexed on your Algolia dashboard.
 
-![Algolia Index page {600x586}](../../../images/algolia05.png "&copy;Algolia")
+![Algolia Index page](../../../images/algolia05.png "&copy;Algolia")
 
 You can also index images by including `image:url` in the query.
 

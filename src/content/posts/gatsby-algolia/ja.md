@@ -203,7 +203,7 @@ success index to Algolia - 10.728s - Done!
 
 Algoliaのダッシュボードを見ると、インデックスにデータが保存されているのが確認出来ます。
 
-![Algoliaのインデックス済みアイテム {600x586}](../../../images/algolia05.png "&copy;Algolia")
+![Algoliaのインデックス済みアイテム](../../../images/algolia05.png "&copy;Algolia")
 
 クエリに`image:url`含めて送れば、画像を登録することも可能です。
 
@@ -229,7 +229,7 @@ Algoliaはこれまで複数の同様のライブラリをリリースしてお�
 
 当エントリーを参考にしてAlgoliaを導入する場合は、ドキュメント検索時に画面右下のライブラリ名が「**React InstantSearch Hooks v6**」になっているかを確認して下さい。
 
-![Algoliaのドキュメント {300x388}](../../../images/algolia04.png "&copy;Algolia")
+![Algoliaのドキュメント](../../../images/algolia04.png "&copy;Algolia")
 
 ### 検索結果を表示させる
 

@@ -56,7 +56,7 @@ draft: true
 
 htmlファイルをブラウザで開き、F12を押して出力を確認。iframe部分をコピー。
 
-![インスタグラムの画面 {960x540}](../../../images/instagram02.png "&copy;instagram/gatsbyjs")
+![インスタグラムの画面](../../../images/instagram02.png "&copy;instagram/gatsbyjs")
 
 コピーした内容を、Markdownファイルにペーストすれば完成です。↓こんな感じで埋め込めます。
 
@@ -133,7 +133,7 @@ exports.onRenderBody = ({
 
 埋め込みたい投稿のIDは、当該の投稿のURLから確認出来ます。
 
-![インスタグラムの画面 {960x540}](../../../images/instagram01.png "&copy;instagram/gatsbyjs")
+![インスタグラムの画面](../../../images/instagram01.png "&copy;instagram/gatsbyjs")
 
 ## 余談（Twitterの場合）
 

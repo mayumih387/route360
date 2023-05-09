@@ -140,7 +140,7 @@ Algolia a publié plusieurs bibliothèques, et [react-instantsearch-hooks-web](h
 
 Lorsque vous implantez Algolia selon cette entrée, vérifiez si le nom de la bibliothèque en bas à droite est **React InstantSearch Hooks v6**.
 
-![Algolia Docs {300x388}](../../../images/algolia04.png "&copy;Algolia")
+![Algolia Docs](../../../images/algolia04.png "&copy;Algolia")
 
 ## Créer et stocker des enregistrements "records" pour la recherche
 
@@ -228,7 +228,7 @@ success index to Algolia - 10.728s - Done!
 
 Vous pouvez voir que les enregistrements "records" sont indexés sur votre tableau de bord Algolia.
 
-![Page d'index d'Algolia {600x586}](../../../images/algolia05.png "&copy;Algolia")
+![Page d'index d'Algolia](../../../images/algolia05.png "&copy;Algolia")
 
 Vous pouvez également indexer les images en incluant `image:url` dans la requête.
 

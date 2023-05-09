@@ -106,7 +106,7 @@ Algoliaは、クラウド上でレコードを手動追加したり、JSONファ
 
 を選択。
 
-![Algoliaのキー作成画面 {487x989}](../../../images/algolia13.png '&copy; Algolia')
+![Algoliaのキー作成画面](../../../images/algolia13.png '&copy; Algolia')
 
 「Create」で作成したら、API keyを控えておきます。
 

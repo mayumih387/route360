@@ -106,7 +106,7 @@ Select the created index ("dev_posts") and choose
 
 at the bottom of the ACL.
 
-![Creating API keys on Algolia {487x989}](../../../images/algolia13.png '&copy; Algolia')
+![Creating API keys on Algolia](../../../images/algolia13.png '&copy; Algolia')
 
 After you press "Create", make a note of your API.
 

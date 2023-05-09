@@ -58,7 +58,7 @@ Ouvrir le fichier HTML dans un navigateur, et vérifier le code avec F12.
 
 Ensuite, copier `iframe` du post Instagram.
 
-![Résultat de la sortie Instagram {960x540}](../../../images/instagram02.png "&copy;instagram/gatsbyjs")
+![Résultat de la sortie Instagram](../../../images/instagram02.png "&copy;instagram/gatsbyjs")
 
 Une fois que vous l'avez copié, il suffit de le coller dans votre fichier Markdown. C'est tout.
 
@@ -137,7 +137,7 @@ Pour le faire soi-même, copier le code ci-dessous et remplacer `[postID]` par l
 
 L'ID du post Instagram peut être trouvé par son URL.
 
-![Instagram post ID {960x540}](../../../images/instagram01.png "&copy;instagram/gatsbyjs")
+![Instagram post ID](../../../images/instagram01.png "&copy;instagram/gatsbyjs")
 
 ## Ajout - en cas de Twitter
 
