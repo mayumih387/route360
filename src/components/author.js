@@ -12,8 +12,8 @@ const Author = ({ currentLang = "en" }) => {
   }
 
   const more = {
-    en: "Read more",
-    fr: "Lire la suite",
+    en: "About me",
+    fr: "À propos de moi",
     ja: "詳しく読む",
   }
 

@@ -44,6 +44,7 @@ const Header = ({
             type="button"
             onClick={ctx.toggleDark}
             className={classes.themeBtn}
+            aria-labell="Theme Switcher"
           >
             {ctx.isDarkMode ? (
               <svg
