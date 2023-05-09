@@ -80,8 +80,8 @@ module.exports = {
       options: {
         name: `Route360`,
         short_name: `Route360`,
-        start_url: `/`,
-        background_color: `#663399`,
+        start_url: `/en/`,
+        background_color: `#1c1c1e`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
