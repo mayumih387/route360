@@ -36,7 +36,7 @@ Please do not hesitate to contact us at any time if you have questions about thi
 
 There is a possibility that your browsing patterns will be statistically analyzed when your visit this website. Such analyses are performed primarily with what we refer to as analysis programs.
 
-This website uses [Umami Analytics](https://umami.is/) to track the usage of a website without collecting any personal data or personally identifiable information (PII). Cookies are not set and all data is in aggregate only.
+This website uses [Cloudflare Web Analytics](https://www.cloudflare.com/en-US/web-analytics/) to track the usage of a website without collecting any personal data or personally identifiable information (PII). Cookies are not set and all data is in aggregate only.
 
 ## 2. Hosting and Content Delivery Networks (CDN)
 
@@ -50,8 +50,9 @@ Our host will only process your data to the extent necessary to fulfil its perfo
 
 We are using the following host:
 
-Vercel Inc.  
-340 S Lemon Ave Suite 4133 Walnut, CA 91789  
+Cloudflare, Inc.
+405 Comal St
+Austin, TX 78702
 USA
 
 ## 3. General information and mandatory information

@@ -36,7 +36,7 @@ N'hésitez pas à nous contacter à tout moment si vous avez des questions à ce
 
 Il est possible que vos habitudes de navigation fassent l'objet d'une analyse statistique lorsque vous visitez ce site web. Ces analyses sont effectuées principalement à l'aide de ce que nous appelons des programmes d'analyse.
 
-Ce site Web utilise [Umami Analytics](https://umami.is/) pour suivre l'utilisation d'un site Web sans collecter de données personnelles ou d'informations personnellement identifiables (PII). Il n'y a pas de cookies et toutes les données ne sont que des agrégats.
+Ce site Web utilise [Cloudflare Web Analytics](https://www.cloudflare.com/fr-fr/web-analytics/) pour suivre l'utilisation d'un site Web sans collecter de données personnelles ou d'informations personnellement identifiables (PII). Il n'y a pas de cookies et toutes les données ne sont que des agrégats.
 
 ## 2. Hébergement et réseaux de diffusion de contenu (CDN)
 
@@ -50,8 +50,9 @@ Notre hôte ne traitera vos données que dans la mesure où cela est nécessaire
 
 Nous utilisons l'hôte suivant :
 
-Vercel Inc.  
-340 S Lemon Ave Suite 4133 Walnut, CA 91789  
+Cloudflare, Inc.
+405 Comal St
+Austin, TX 78702
 Les États-Unis
 
 ## 3. Informations générales et informations obligatoires
