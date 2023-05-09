@@ -57,4 +57,4 @@ Customizing Gutenberg Editor, or sending a newsletter at the same time as postin
 
 - Gatsby.js + Markdown
 
-I first developed this website with Next.js in September 2022, then rebuilt it with Gatsby.js in May 2023. Hosted by [Vercel](https://vercel.com/).
+I first developed this website with Next.js in September 2022, then rebuilt it with Gatsby.js in May 2023. Hosted by [Cloudflare Pages](https://www.cloudflare.com/products/pages/).

@@ -57,4 +57,4 @@ Personnalisation de l'éditeur Gutenberg ou d'envoi de lettre d'information en m
 
 - Gatsby.js + Markdown
 
-J'ai d'abord créé ce site web avec Next.js en septembre 2022, puis je l'ai reconstruit avec Gatsby.js en mai 2023. L'hébergement est [Vercel](https://vercel.com/).
+J'ai d'abord créé ce site web avec Next.js en septembre 2022, puis je l'ai reconstruit avec Gatsby.js en mai 2023. L'hébergement est [Cloudflare Pages](https://www.cloudflare.com/fr-fr/products/pages/).

@@ -54,4 +54,4 @@ Gutenbergの編集機能カスタマイズや、投稿と同時にメルマガ�
 
 - Gatsby.js + Markdown
 
-2022年9月の開設当初はNext.jsで作成していましたが、2023年5月に Gatsby.jsで作り直しました。ホスティングは[Vercel](https://vercel.com/)です。
+2022年9月の開設当初はNext.jsで作成していましたが、2023年5月に Gatsby.jsで作り直しました。ホスティングは[Cloudflare Pages](https://www.cloudflare.com/ja-jp/products/pages/)です。
