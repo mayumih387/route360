@@ -94,12 +94,12 @@ h4 {
   font-size: var(--heading4);
 }
 
-span > img {
-  transition: 0.2s;
+img {
+  max-width: 100%;
 }
 
-main {
-  padding: 4rem 0;
+span > img {
+  transition: 0.2s;
 }
 
 del {
