@@ -78,6 +78,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

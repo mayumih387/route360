@@ -245,3 +245,7 @@ details[open] .tocBtn {
 .tocList a:hover {
   color: var(--primary-success);
 }
+
+:global(.twitter-tweet) {
+  margin-top: var(--stack-space, 1.5em) !important;
+}

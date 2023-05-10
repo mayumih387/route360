@@ -72,3 +72,5 @@ yarn-error.log
 .prettierrc
 .prettierignore
 .vscode
+.frontmatter
+frontmatter.json
