@@ -10,7 +10,7 @@ draft: false
 
 On October 11, 2022, Vercel launched a new library of OG image generators.
 
-<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 550px; height: 641px; display: block; flex-grow: 1;" title="Twitter Tweet" src="https://platform.twitter.com/embed/Tweet.html?dnt=false&amp;embedId=twitter-widget-0&amp;features=e30%3D&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=1579561293069316096&amp;lang=en&amp;origin=file%3A%2F%2F%2FC%3A%2FUsers%2Fharab%2FOneDrive%2F%25E3%2583%2589%25E3%2582%25AD%25E3%2583%25A5%25E3%2583%25A1%25E3%2583%25B3%25E3%2583%2588%2FExcelPython%2Ftest.html&amp;theme=light&amp;widgetsVersion=1c23387b1f70c%3A1664388199485&amp;width=550px" data-tweet-id="1579561293069316096"></iframe>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Vercel OG Image Generation – a new library for generating dynamic social card images.<a href="https://t.co/mwzw9NKEzA">https://t.co/mwzw9NKEzA</a></p>&mdash; Vercel (@vercel) <a href="https://twitter.com/vercel/status/1579561293069316096?ref_src=twsrc%5Etfw">October 10, 2022</a></blockquote>
 
 Their former generator, `vercel/og-image` is still available. But it requires a repository and a deployment apart from the project, which is a bit cumbersome until it works appropriately.
 
@@ -133,8 +133,11 @@ http://localhost:3000/api/og/?title={title_here}
 
 Just point to the URL as the `content` of the meta property.
 
-```js
-<meta property="og:image" content={`https://example.com/api/og/?title=${title}`} />
+```text
+<meta
+  property="og:image"
+  content={`https://example.com/api/og/?title=${title}`}
+/>
 ```
 
 You can change the style on editing the CSS in `og.tsx`, or Tailwind CSS can be used. **You don't have to install Tailwind CSS** just for it, which is cool!

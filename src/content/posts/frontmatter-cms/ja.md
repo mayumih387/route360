@@ -139,11 +139,12 @@ Front Matter CMSは、多くの静的サイトジェネレーターに対応し�
 ```json
 {
   "frontMatter.taxonomy.contentTypes": [
-  {
-    "frontMatter.framework.id": "gatsby",
-    "frontMatter.preview.host": "http://localhost:8000",
-  }
-]}
+    {
+      "frontMatter.framework.id": "gatsby",
+      "frontMatter.preview.host": "http://localhost:8000"
+    }
+  ]
+}
 ```
 
 その後は、コマンドで`gatsby develop`や`yarn dev`などと入力することなく、左のメニューからワンクリックでサーバーを起動させることが可能になります。
