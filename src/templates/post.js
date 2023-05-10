@@ -6,11 +6,11 @@ import PostBody from "../components/post-body"
 import PrevNext from "../components/prev-next"
 import Author from "../components/author"
 import Seo from "../components/seo"
-import { homeText } from "../../data/constants"
+import { homeText } from "../../data/i18n"
 
 const SinglePost = ({ data, pageContext }) => {
   const availLangs = data.allMarkdownRemark.nodes.map(
-    (node) => node.fields.language
+    node => node.fields.language
   )
 
   const currentLang = pageContext.language
@@ -37,7 +37,7 @@ const SinglePost = ({ data, pageContext }) => {
 
 export const Head = ({ data, pageContext, location }) => {
   const availLangs = data.allMarkdownRemark.nodes.map(
-    (node) => node.fields.language
+    node => node.fields.language
   )
 
   const currentLang = pageContext.language
@@ -69,9 +69,9 @@ export const Head = ({ data, pageContext, location }) => {
       },
       thumbnailUrl: `${data.site.siteMetadata.siteUrl}${data.file.childImageSharp.original.src}`,
       keywords:
-        data.markdownRemark.frontmatter.tags?.map((tag) => tag.title) || "",
+        data.markdownRemark.frontmatter.tags?.map(tag => tag.title) || "",
       articleSection: data.markdownRemark.frontmatter.tags?.map(
-        (tag) => tag.title || ""
+        tag => tag.title || ""
       ),
       inLanguage: currentLang,
     },

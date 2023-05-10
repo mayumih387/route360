@@ -35,7 +35,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data`,
+        path: `${__dirname}/data`,
       },
     },
     `gatsby-transformer-json`,
@@ -55,9 +55,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 820,
-              wrapperStyle: (fluidResult) =>
-                `max-height: 615px; aspect-ratio: ${fluidResult.aspectRatio}`,
-              srcSetBreakpoints: [414, 768],
+              srcSetBreakpoints: [400, 610],
               showCaptions: ["title"],
               markdownCaptions: true,
               linkImagesToOriginal: false,
@@ -108,7 +106,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
+              return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
@@ -148,7 +146,7 @@ module.exports = {
           },
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
+              return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
@@ -188,7 +186,7 @@ module.exports = {
           },
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
+              return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,

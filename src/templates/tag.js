@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import Author from "../components/author"
 import Pagination from "../components/pagination"
 import Seo from "../components/seo"
-import { homeText, pageIndexText, archiveTitleText } from "../../data/constants"
+import { homeText, pageIndexText, archiveTitleText } from "../../data/i18n"
 
 import * as classes from "../styles/index.module.css"
 
@@ -20,7 +20,7 @@ const TagPage = ({ data, pageContext }) => {
       <Author currentLang={currentLang} />
       <div className={classes.postsContainer}>
         <h1># {data.tagJson.title}</h1>
-        {data.allMarkdownRemark.nodes.map((node) => (
+        {data.allMarkdownRemark.nodes.map(node => (
           <article key={node.id}>
             <Link to={`/${pageContext.language}/post/${node.fields.slug}`}>
               <div className={classes.postHeader}>

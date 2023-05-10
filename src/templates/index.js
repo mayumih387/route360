@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import Author from "../components/author"
 import Pagination from "../components/pagination"
 import Seo from "../components/seo"
-import { siteDesc, homeText, pageIndexText } from "../../data/constants"
+import { siteDesc, homeText, pageIndexText } from "../../data/i18n"
 
 import * as classes from "../styles/index.module.css"
 
@@ -16,7 +16,7 @@ const IndexPage = ({ data, pageContext }) => {
     <Layout currentLang={currentLang}>
       <Author currentLang={currentLang} />
       <div className={classes.postsContainer}>
-        {data.allMarkdownRemark.nodes.map((node) => (
+        {data.allMarkdownRemark.nodes.map(node => (
           <article key={node.id}>
             <Link to={`/${currentLang}/post/${node.fields.slug}`}>
               <div className={classes.postHeader}>

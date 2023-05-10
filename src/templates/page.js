@@ -4,11 +4,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import PostBody from "../components/post-body"
 import Seo from "../components/seo"
-import { homeText } from "../../data/constants"
+import { homeText } from "../../data/i18n"
 
 const PagePost = ({ data, pageContext }) => {
   const availLangs = data.allMarkdownRemark.nodes.map(
-    (node) => node.fields.language
+    node => node.fields.language
   )
 
   const currentLang = pageContext.language
@@ -26,7 +26,7 @@ const PagePost = ({ data, pageContext }) => {
 
 export const Head = ({ data, pageContext, location }) => {
   const availLangs = data.allMarkdownRemark.nodes.map(
-    (node) => node.fields.language
+    node => node.fields.language
   )
 
   const currentLang = pageContext.language

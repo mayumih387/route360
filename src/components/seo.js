@@ -1,9 +1,9 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { siteDesc, siteLocale } from "../../data/constants"
+import { siteDesc, siteLocale } from "../../data/i18n"
 
-const Seo = (props) => {
+const Seo = props => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -101,7 +101,7 @@ const Seo = (props) => {
 
   const alternateUrls = {}
   availLangs.map(
-    (lang) => (alternateUrls[lang] = url.replace(/\/([a-z]{2})\//, `/${lang}/`))
+    lang => (alternateUrls[lang] = url.replace(/\/([a-z]{2})\//, `/${lang}/`))
   )
 
   return (
@@ -110,7 +110,7 @@ const Seo = (props) => {
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
 
-      {Object.keys(alternateUrls).map((lang) => (
+      {Object.keys(alternateUrls).map(lang => (
         <link
           rel="alternate"
           hrefLang={lang}
@@ -134,7 +134,7 @@ const Seo = (props) => {
       <meta property="og:image:width" content={imgw} />
       <meta property="og:image:height" content={imgh} />
 
-      {availLangs.map((lang) => (
+      {availLangs.map(lang => (
         <meta
           property="og:locale:alternate"
           content={siteLocale[lang]}
