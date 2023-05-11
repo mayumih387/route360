@@ -1081,4 +1081,49 @@
       hreflang="en"
       href="https://route360.dev/en/post/frontmatter-cms/"/>
   </url>
+  <url>
+    <loc>https://route360.dev/en/post/i18n-next-to-gatsby/</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://route360.dev/fr/post/i18n-next-to-gatsby/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="ja"
+      href="https://route360.dev/ja/post/i18n-next-to-gatsby/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en"
+      href="https://route360.dev/en/post/i18n-next-to-gatsby/"/>
+  </url>
+  <url>
+    <loc>https://route360.dev/fr/post/i18n-next-to-gatsby/</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://route360.dev/fr/post/i18n-next-to-gatsby/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="ja"
+      href="https://route360.dev/ja/post/i18n-next-to-gatsby/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en"
+      href="https://route360.dev/en/post/i18n-next-to-gatsby/"/>
+  </url>
+  <url>
+    <loc>https://route360.dev/ja/post/i18n-next-to-gatsby/</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://route360.dev/fr/post/i18n-next-to-gatsby/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="ja"
+      href="https://route360.dev/ja/post/i18n-next-to-gatsby/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en"
+      href="https://route360.dev/en/post/i18n-next-to-gatsby/"/>
+  </url>
 </urlset>
