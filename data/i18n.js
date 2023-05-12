@@ -22,8 +22,20 @@ export const pageIndexText = (currentPage, pages) => ({
   ja: `${currentPage}ページ目 (${pages}ページ中)`,
 })
 
-export const archiveTitleText = (title) => ({
+export const archiveTitleText = title => ({
   en: `# ${title} archive`,
   fr: `# ${title} archive`,
   ja: `# ${title} アーカイブ`,
 })
+
+export const backToHome = {
+  en: "Back to Home",
+  fr: "Retour à la page d'accueil",
+  ja: "ホームに戻る",
+}
+
+export const languageMap = {
+  ja: "ja",
+  fr: "fr",
+  en: "en",
+}

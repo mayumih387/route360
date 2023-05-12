@@ -2,25 +2,13 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import { backToHome, languageMap } from "../../data/i18n"
 
 import * as classes from "../styles/index.module.css"
 
 const NotFoundPage = ({ location }) => {
   const browserLang = location.pathname.slice(1, 3)
-
-  const languageMap = {
-    ja: "ja",
-    fr: "fr",
-    default: "en",
-  }
-
-  let currentLang = languageMap[browserLang] || languageMap.default
-
-  const backToHome = {
-    en: "Back to Home",
-    fr: "Retour à la page d'accueil",
-    ja: "ホームに戻る",
-  }
+  let currentLang = languageMap[browserLang] || languageMap["en"]
 
   return (
     <Layout currentLang={currentLang}>
