@@ -50,7 +50,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
       allPostsFR: allMarkdownRemark(
-        filter: { fields: { language: { eq: "fr" }, type: { eq: "posts" } } }
+        filter: {
+          frontmatter: { draft: { ne: true } }
+          fields: { language: { eq: "fr" }, type: { eq: "posts" } }
+        }
         sort: { frontmatter: { date: DESC } }
       ) {
         totalCount
@@ -84,7 +87,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
       allPostsJA: allMarkdownRemark(
-        filter: { fields: { language: { eq: "ja" }, type: { eq: "posts" } } }
+        filter: {
+          frontmatter: { draft: { ne: true } }
+          fields: { language: { eq: "ja" }, type: { eq: "posts" } }
+        }
         sort: { frontmatter: { date: DESC } }
       ) {
         totalCount
@@ -170,7 +176,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     ja: blogresult.data.allPostsJA,
   }
 
-  Object.keys(allPosts).forEach((key) => {
+  Object.keys(allPosts).forEach(key => {
     allPosts[key].edges.forEach(({ node, next, previous }) => {
       createPage({
         path: `/${key}/post/${node.fields.slug}/`,
@@ -193,7 +199,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     ja: blogresult.data.allPagesJA.edges,
   }
 
-  Object.keys(allPages).forEach((key) => {
+  Object.keys(allPages).forEach(key => {
     allPages[key].forEach(({ node }) => {
       createPage({
         path: `/${key}/${node.fields.slug}/`,
@@ -216,8 +222,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const tagPages = []
 
-  Object.keys(allPostsGroup).forEach((key) => {
-    allPostsGroup[key].forEach((node) => {
+  Object.keys(allPostsGroup).forEach(key => {
+    allPostsGroup[key].forEach(node => {
       const tagPage = {
         language: key,
         slug: node.fieldValue,
@@ -250,7 +256,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   // Index Pages
-  Object.keys(allPosts).forEach((key) => {
+  Object.keys(allPosts).forEach(key => {
     const totalPages = Math.ceil(allPosts[key].totalCount / postsPerPage)
     for (let i = 0; i < totalPages; i++) {
       createPage({

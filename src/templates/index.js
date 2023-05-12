@@ -128,7 +128,10 @@ export const Head = ({ data, pageContext, location }) => {
 export const query = graphql`
   query ($language: String!, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { fields: { language: { eq: $language }, type: { eq: "posts" } } }
+      filter: {
+        frontmatter: { draft: { ne: true } }
+        fields: { language: { eq: $language }, type: { eq: "posts" } }
+      }
       sort: { frontmatter: { date: DESC } }
       skip: $skip
       limit: $limit

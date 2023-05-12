@@ -110,20 +110,26 @@ const Seo = props => {
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
 
-      {Object.keys(alternateUrls).map(lang => (
-        <link
-          rel="alternate"
-          hrefLang={lang}
-          href={alternateUrls[lang]}
-          key={lang}
-        />
-      ))}
+      {alternateUrls.length > 0 &&
+        Object.keys(alternateUrls).map(lang => (
+          <link
+            rel="alternate"
+            hrefLang={lang}
+            href={alternateUrls[lang]}
+            key={lang}
+          />
+        ))}
 
-      {"en" in alternateUrls ? (
-        <link rel="alternate" hrefLang="x-default" href={alternateUrls["en"]} />
-      ) : (
-        <link rel="alternate" hrefLang="x-default" href={url} />
-      )}
+      {alternateUrls.length > 0 &&
+        ("en" in alternateUrls ? (
+          <link
+            rel="alternate"
+            hrefLang="x-default"
+            href={alternateUrls["en"]}
+          />
+        ) : (
+          <link rel="alternate" hrefLang="x-default" href={url} />
+        ))}
 
       <meta property="og:site_name" content={data.site.siteMetadata.title} />
       <meta property="og:title" content={title} />
@@ -134,13 +140,14 @@ const Seo = props => {
       <meta property="og:image:width" content={imgw} />
       <meta property="og:image:height" content={imgh} />
 
-      {availLangs.map(lang => (
-        <meta
-          property="og:locale:alternate"
-          content={siteLocale[lang]}
-          key={lang}
-        />
-      ))}
+      {alternateUrls.length > 0 &&
+        availLangs.map(lang => (
+          <meta
+            property="og:locale:alternate"
+            content={siteLocale[lang]}
+            key={lang}
+          />
+        ))}
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />

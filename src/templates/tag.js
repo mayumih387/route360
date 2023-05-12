@@ -151,8 +151,11 @@ export const query = graphql`
   query ($language: String!, $skip: Int!, $limit: Int!, $slug: String!) {
     allMarkdownRemark(
       filter: {
+        frontmatter: {
+          draft: { ne: true }
+          tags: { elemMatch: { slug: { eq: $slug } } }
+        }
         fields: { language: { eq: $language }, type: { eq: "posts" } }
-        frontmatter: { tags: { elemMatch: { slug: { eq: $slug } } } }
       }
       sort: { frontmatter: { date: DESC } }
       skip: $skip
