@@ -24,7 +24,7 @@ const Header = ({
   const [showLangSelector, setShowLangSelector] = useState(false)
 
   const clickHandler = () => {
-    setShowLangSelector((prevState) => !prevState)
+    setShowLangSelector(prevState => !prevState)
   }
 
   const langName = {
@@ -44,7 +44,7 @@ const Header = ({
             type="button"
             onClick={ctx.toggleDark}
             className={classes.themeBtn}
-            aria-labell="Theme Switcher"
+            aria-label="Theme Switcher"
           >
             {ctx.isDarkMode ? (
               <svg
@@ -97,7 +97,7 @@ const Header = ({
             <span className={classes.langName}>{langName[currentLang]}</span>
             {showLangSelector && (
               <ul className={classes.langSelecter}>
-                {availLangs.map((lang) => (
+                {availLangs.map(lang => (
                   <li key={lang}>
                     <Link
                       to={`/${lang}/${pagePath}`}
