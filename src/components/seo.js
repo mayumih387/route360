@@ -110,7 +110,7 @@ const Seo = props => {
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
 
-      {alternateUrls.length > 0 &&
+      {Object.keys(alternateUrls).length > 0 &&
         Object.keys(alternateUrls).map(lang => (
           <link
             rel="alternate"
@@ -120,7 +120,7 @@ const Seo = props => {
           />
         ))}
 
-      {alternateUrls.length > 0 &&
+      {Object.keys(alternateUrls).length > 0 &&
         ("en" in alternateUrls ? (
           <link
             rel="alternate"
