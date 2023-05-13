@@ -13,7 +13,12 @@ const IndexPage = ({ data, pageContext }) => {
   const currentLang = pageContext.language
 
   return (
-    <Layout currentLang={currentLang}>
+    <Layout
+      currentLang={currentLang}
+      pagePath={
+        pageContext.currentPage > 1 ? `page/${pageContext.currentPage}/` : ``
+      }
+    >
       <Author currentLang={currentLang} />
       <div className={classes.postsContainer}>
         {data.allMarkdownRemark.nodes.map(node => (
