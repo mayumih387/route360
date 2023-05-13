@@ -49,7 +49,7 @@ const PostBody = ({ markdownRemark, currentLang = "en" }) => {
         <h1>{markdownRemark.frontmatter.title}</h1>
         {markdownRemark.frontmatter?.tags && (
           <ul className={classes.tags}>
-            {markdownRemark.frontmatter.tags.map((tag) => (
+            {markdownRemark.frontmatter.tags.map(tag => (
               <li key={tag.id} className={classes.tag}>
                 #{" "}
                 <Link to={`/${currentLang}/tag/${tag.slug}`}>{tag.title}</Link>
