@@ -28,7 +28,7 @@ Algoliaは、ドキュメント数10,000・月10,000サーチまでが無料と�
 - algoliasearch v4.14.3
 - dotenv v16.0.3
 
-尚、今回の例で利用するAlgoliaのライブラリは、Javascriptだけで動く「InstantSearch.js v4」です。
+尚、今回の例で利用するAlgoliaのライブラリは、JavaScriptだけで動く「InstantSearch.js v4」です。
 
 <span class="label warning">リンク</span> [What is InstantSearch.js? | Algolia](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/js/)
 
@@ -44,11 +44,11 @@ Algoliaは、ドキュメント数10,000・月10,000サーチまでが無料と�
 │  │  └ ...
 │  └ posts/
 │    ├ first-post.md
-│    ├ second-post.md 
+│    ├ second-post.md
 │    └ ...
 ```
 
-更に、MarkdownのデータのYAML frontmatterは以下ようにしています。
+さらに、MarkdownのデータのYAML frontmatterは以下ようにしています。
 
 <div class="filename">src/posts/first-post.md</div>
 
@@ -67,7 +67,7 @@ dignissimos aperiam dolorem qui eum facilis quibusdam animi sint suscipit qui si
 
 [トップページ](https://www.algolia.com/)の「START FREE」から登録を進めましょう。
 
-![Algoliaの登録ページ](../../../images/algolia01.en.png '&copy; Algolia')
+![Algoliaの登録ページ](../../../images/algolia01.en.png "© Algolia")
 
 確認メールで認証リンクを押せば登録完了です。
 
@@ -77,27 +77,27 @@ dignissimos aperiam dolorem qui eum facilis quibusdam animi sint suscipit qui si
 
 アプリケーション内に「インデックス（箱）」を作り、その中に検索データとなる「レコード（リスト）」を入れる仕組みです。
 
-インデックス名は今回、「dev_posts」としました。テスト用、本番用として、インデックス名の頭に「dev_」「prod_」等で分けることが推奨されています。
+インデックス名は今回、「dev*posts」としました。テスト用、本番用として、インデックス名の頭に「dev*」「prod\_」等で分けることが推奨されています。
 
-![Algoliaのアプリ作成画面](../../../images/algolia06.png '&copy; Algolia')
+![Algoliaのアプリ作成画面](../../../images/algolia06.png "© Algolia")
 
 インデックス作成が完了したら、セッティング画面へ行き、アプリケーション名を変更しておきましょう。
 
-![Algoliaのアプリ作成画面](../../../images/algolia07.png '&copy; Algolia')
+![Algoliaのアプリ作成画面](../../../images/algolia07.png "© Algolia")
 
-![Algoliaのユーザー設定画面](../../../images/algolia08.png '&copy; Algolia')
+![Algoliaのユーザー設定画面](../../../images/algolia08.png "© Algolia")
 
-![Algoliaのアプリ名変更画面](../../../images/algolia09.png '&copy; Algolia')
+![Algoliaのアプリ名変更画面](../../../images/algolia09.png "© Algolia")
 
 ### レコード編集用のAPI keyの作成
 
-Algoliaは、クラウド上でレコードを手動追加したり、JSONファイルなどをアップロードすることでレコードを追加出来ますが、今回はリモートでレコードを追加します。
+Algoliaは、クラウド上でレコードを手動追加したり、JSONファイルなどをアップロードすることでレコードを追加できますが、今回はリモートでレコードを追加します。
 
 そのため、**リモートで編集可能なAPI KEYが必要**となります。マスターキーでも操作可能ですが、セキュリティのため書き換え専用のAPIキーを作ります。
 
 先ほどの「API KEYS」の画面から、「All API keys」タブを開き、「New API key」ボタンをクリック。
 
-![Algoliaのキー作成画面](../../../images/algolia12.png '&copy; Algolia')
+![Algoliaのキー作成画面](../../../images/algolia12.png "© Algolia")
 
 先ほど作成したインデックス（今回の例では「dev_posts」）を指定し、一番下の「ACL」で、
 
@@ -106,7 +106,7 @@ Algoliaは、クラウド上でレコードを手動追加したり、JSONファ
 
 を選択。
 
-![Algoliaのキー作成画面](../../../images/algolia13.png '&copy; Algolia')
+![Algoliaのキー作成画面](../../../images/algolia13.png "© Algolia")
 
 「Create」で作成したら、API keyを控えておきます。
 
@@ -124,7 +124,7 @@ npm install algoliasearch
 yarn add algoliasearch
 ```
 
-更に、環境変数をjsファイル内で扱うため、[dotenv](https://www.npmjs.com/package/dotenv)をインストールします。
+さらに、環境変数をjsファイル内で扱うため、[dotenv](https://www.npmjs.com/package/dotenv)をインストールします。
 
 ```bash
 # npmの場合
@@ -138,7 +138,7 @@ yarn add dotenv
 
 次に、検索データを構築・送信するため、ファイルを作成します。
 
-- libフォルダ内に、`algoliasearch.js`（ファイル名、ファイルの場所は任意）
+- libフォルダー内に、`algoliasearch.js`（ファイル名、ファイルの場所は任意）
 - ルート直下に`.env`
 
 ```text
@@ -147,7 +147,7 @@ yarn add dotenv
 ├  │  └ ...
 ├  ├ posts/
 ├  │  ├ first-post.md
-├  │  ├ second-post.md 
+├  │  ├ second-post.md
 ├  │  └ ...
 ├  └ lib/
 ├    └ algoliasearch.js <--これと
@@ -168,29 +168,24 @@ ALGOLIA_WRITE_API_KEY=xxxxxxxxxxxx
 
 `ALGOLIA_WRITE_API_KEY`は、先ほど作成したAPI keyです。その他のデータは、ホームボタン（Overview）→「API keys」で確認可能。
 
-![Algoliaホーム画面](../../../images/algolia10.png '&copy; Algolia')
+![Algoliaホーム画面](../../../images/algolia10.png "© Algolia")
 
-![AlgoliaのAPI KEYS画面](../../../images/algolia11.png '&copy; Algolia')
+![AlgoliaのAPI KEYS画面](../../../images/algolia11.png "© Algolia")
 
 ### algolia.jsの作成
 
-次に、Algoliaに作った「インデックス」に入れるデータ「レコード」を送るためのJavascriptファイルを作成します。
+次に、Algoliaに作った「インデックス」に入れるデータ「レコード」を送るためのJavaScriptファイルを作成します。
 
 #### 基本形
 
 Alogoliaにデータを送信するためのコードの基本形は、こんな感じです。
 
 ```js
-import algoliasearch from 'algoliasearch'
-const client = algoliasearch(
-  'アプリID',
-  '編集用APIキー'
-)
+import algoliasearch from "algoliasearch"
+const client = algoliasearch("アプリID", "編集用APIキー")
 
-client
-  .initIndex('インデックス名')
-  .saveObjects('JSONデータ')
-  // .then((res) => console.log(res))
+client.initIndex("インデックス名").saveObjects("JSONデータ")
+// .then((res) => console.log(res))
 ```
 
 [Meilisearchの時](/ja/post/astro-meilisearch/)とほぼ同じです。「JSONデータ」の部分に、必要なデータを投稿から集めてAlgoliaに送信します。
@@ -202,7 +197,7 @@ client
 <div class="filename">src/lib/algolia.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
 // 続く
@@ -217,7 +212,7 @@ dotenv.config()
 ```js
 // 続き
 
-import algoliasearch from 'algoliasearch'
+import algoliasearch from "algoliasearch"
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_WRITE_API_KEY
@@ -227,33 +222,33 @@ const client = algoliasearch(
 
 // 2. JSONデータを作ってから送信
 client
-  .initIndex('dev_posts')
-  .saveObjects('JSONデータ')
-  .then((res) => console.log(res)) //送信結果表示用
+  .initIndex("dev_posts")
+  .saveObjects("JSONデータ")
+  .then(res => console.log(res)) //送信結果表示用
 ```
 
 #### 検索用データセットの作成
 
 次に、検索用のデータセット（records）を作ります。
 
-今回はMarkdownによる投稿を例としています。外部CMSを使っている場合は`fetch()`等でデータを取得するなど、適宜アレンジして下さい。
+今回はMarkdownによる投稿を例としています。外部CMSを使っている場合は`fetch()`等でデータを取得するなど、適宜アレンジしてください。
 
-Markdownのタグを除去するため、[remove-markdown](https://www.npmjs.com/package/remove-markdown)を利用しています。必要な場合はインストールして下さい。
+Markdownのタグを除去するため、[remove-markdown](https://www.npmjs.com/package/remove-markdown)を利用しています。必要な場合はインストールしてください。
 
 <div class="filename">src/lib/algolia.js</div>
 
 ```js
 // 続き
 // 1. ここでJSONデータを作る
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       objectID: frontmatter.slug,
@@ -287,9 +282,9 @@ const data = filenames.map((filename) => {
 
 // 2. JSONデータを作ってから送信
 client
-  .initIndex('dev_posts')
+  .initIndex("dev_posts")
   .saveObjects(JSON.parse(JSON.stringify(data)))
-  .then((res) => console.log(res))
+  .then(res => console.log(res))
 ```
 
 #### algolia.jsコードまとめ
@@ -297,25 +292,25 @@ client
 <div class="filename">src/lib/algolia.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
-import algoliasearch from 'algoliasearch'
+import algoliasearch from "algoliasearch"
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_WRITE_API_KEY
 )
 
 // 1. ここでJSONデータを作る
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       id: frontmatter.slug,
@@ -329,16 +324,16 @@ const data = filenames.map((filename) => {
 
 // 2. JSONデータを作ってから送信
 client
-  .initIndex('dev_posts')
+  .initIndex("dev_posts")
   .saveObjects(JSON.parse(JSON.stringify(data)))
-  .then((res) => console.log(res))
+  .then(res => console.log(res))
 ```
 
 以上で`algolia.js`は完成です。
 
 ## 検索用データ（records）を送信
 
-`algolia.js`ファイルが出来たら、Nodeを使って実行します。
+`algolia.js`ファイルができたら、Nodeを使って実行します。
 
 Astroプロジェクトのルートで、以下を実行。※`algolia.js`を違う場所に置いたり他のファイル名にした場合は、その場所とファイル名を指定。
 
@@ -361,11 +356,11 @@ node src/lib/algolia.js
 
 Algoliaのダッシュボードに移動して、インデックスを確認してみましょう。登録されていますね🙂
 
-![Algoliaのインデックス確認ページ](../../../images/algolia14.png '&copy; Algolia')
+![Algoliaのインデックス確認ページ](../../../images/algolia14.png "© Algolia")
 
 ## 検索結果を表示するコンポーネントの作成
 
-`src`フォルダ直下の`components`ディレクトリ（なければ作成）下に、検索ボックス+検索結果を表示するコンポーネントを作成。ここではファイル名を「Search.astro」としました。
+`src`フォルダー直下の`components`ディレクトリ（なければ作成）下に、検索ボックス+検索結果を表示するコンポーネントを作成。ここではファイル名を「Search.astro」としました。
 
 ```text
 ├ src/
@@ -375,7 +370,7 @@ Algoliaのダッシュボードに移動して、インデックスを確認し�
 │  │  └ ...
 │  ├ posts/
 │  │  ├ first-post.md
-│  │  ├ second-post.md 
+│  │  ├ second-post.md
 │  │  └ ...
 │  └ lib/
 │    └ algolia.js
@@ -450,7 +445,7 @@ Algoliaのダッシュボードに移動して、インデックスを確認し�
 スタイルの適用方法としては、いくつか選択肢があります。
 
 - クラス名を確認して自分で作る
-- reset.cssまたはsatellite.cssを読み込む（npm または CDN）
+- reset.cssまたはsatellite.cssを読み込む（npmまたはCDN）
 
 ### クラス名を確認して自分で作る
 
@@ -525,11 +520,10 @@ import 'instantsearch.css/themes/satellite.css'
 
 「Index Languages」と「Query Languages」に「Japanese」を追加して、保存します。
 
-![Algoliaの日本語設定](../../../images/algolia17.ja.png "&copy; Algolia")
+![Algoliaの日本語設定](../../../images/algolia17.ja.png "© Algolia")
 
 ## 補足
 
 AlgoliaはReactやVueのライブラリも提供しているため、Astroにそれらをインストールすれば、もっと作業が楽になるかもしれません。
 
-MeilisearchがAlgoliaとの互換性を考えて作られているため、ひとまずAlgoliaで作っておいて、後で無料プランのレコード数の多いMeilisearchへの移行もスムーズです。
-
+MeilisearchがAlgoliaとの互換性を考えて作られているため、ひとまずAlgoliaで作っておいて、あとで無料プランのレコード数の多いMeilisearchへの移行もスムーズです。

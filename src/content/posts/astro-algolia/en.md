@@ -28,7 +28,7 @@ Working environment:
 - algoliasearch v4.14.3
 - dotenv v16.0.3
 
-This time we'll use one of the Algolia libraries "**InstantSearch.js v4**", which works with Javascript.
+This time we'll use one of the Algolia libraries "**InstantSearch.js v4**", which works with JavaScript.
 
 <span class="label warning">Link</span> [What is InstantSearch.js? | Algolia](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/js/)
 
@@ -44,7 +44,7 @@ In this example, the Astro project structure is as follows;
 │  │  └ ...
 │  └ posts/
 │    ├ first-post.md
-│    ├ second-post.md 
+│    ├ second-post.md
 │    └ ...
 ```
 
@@ -67,7 +67,7 @@ Algolia offers only cloud dashboard while Meilisearch offers on-premises version
 
 Let's start from "START FREE" on the [top page](https://www.algolia.com/)
 
-![Algolia registration page](../../../images/algolia01.en.png '&copy; Algolia')
+![Algolia registration page](../../../images/algolia01.en.png "© Algolia")
 
 Confirm e-mail from Algolia.
 
@@ -77,17 +77,17 @@ The first time you log in, you will be taken to your first application settings.
 
 You'll create an "index" in this application, then add a list of "records" for the search data.
 
-I have named the index "dev_posts" here. Algolia recommends adding the prefix "dev_" or "prod_" to the index name so that we can switch the index.
+I have named the index "dev*posts" here. Algolia recommends adding the prefix "dev*" or "prod\_" to the index name so that we can switch the index.
 
-![Creating an application on Algolia](../../../images/algolia06.png '&copy; Algolia')
+![Creating an application on Algolia](../../../images/algolia06.png "© Algolia")
 
 After you save your new application, go to Settings and rename the application.
 
-![Creating an application on Algolia](../../../images/algolia07.png '&copy; Algolia')
+![Creating an application on Algolia](../../../images/algolia07.png "© Algolia")
 
-![Editing user information on Algolia](../../../images/algolia08.png '&copy; Algolia')
+![Editing user information on Algolia](../../../images/algolia08.png "© Algolia")
 
-![Editing app name on Algolia](../../../images/algolia09.png '&copy; Algolia')
+![Editing app name on Algolia](../../../images/algolia09.png "© Algolia")
 
 ### Create an API key for records
 
@@ -97,7 +97,7 @@ While Algolia allows you to add records manually or by uploading a JSON/CSV file
 
 Open "All API keys" on the "API KEYS" page, and click "New API key".
 
-![Creating API keys on Algolia](../../../images/algolia12.png '&copy; Algolia')
+![Creating API keys on Algolia](../../../images/algolia12.png "© Algolia")
 
 Select the created index ("dev_posts") and choose
 
@@ -106,7 +106,7 @@ Select the created index ("dev_posts") and choose
 
 at the bottom of the ACL.
 
-![Creating API keys on Algolia](../../../images/algolia13.png '&copy; Algolia')
+![Creating API keys on Algolia](../../../images/algolia13.png "© Algolia")
 
 After you press "Create", make a note of your API.
 
@@ -147,7 +147,7 @@ Next, create a .js file to build and send records to Algolia.
 ├  │  └ ...
 ├  ├ posts/
 ├  │  ├ first-post.md
-├  │  ├ second-post.md 
+├  │  ├ second-post.md
 ├  │  └ ...
 ├  └ lib/
 ├    └ algoliasearch.js <--this and
@@ -168,9 +168,9 @@ ALGOLIA_WRITE_API_KEY=xxxxxxxxxxxx
 
 `ALGOLIA_WRITE_API_KEY` is the one you've created. You can see APP_ID and SEARCH_ONLY_API_KEY on API keys after pressing the Overview button.
 
-![Algolia dev home](../../../images/algolia10.png '&copy; Algolia')
+![Algolia dev home](../../../images/algolia10.png "© Algolia")
 
-![Algolia API KEYS](../../../images/algolia11.png '&copy; Algolia')
+![Algolia API KEYS](../../../images/algolia11.png "© Algolia")
 
 ### Create algolia.js
 
@@ -181,16 +181,11 @@ Next, create a javascript file to send "records" to the index you've created on 
 The base code to send a dataset to Algolia would be as follows;
 
 ```js
-import algoliasearch from 'algoliasearch'
-const client = algoliasearch(
-  'APP_ID',
-  'WRITE_API_KEY'
-)
+import algoliasearch from "algoliasearch"
+const client = algoliasearch("APP_ID", "WRITE_API_KEY")
 
-client
-  .initIndex('Index name')
-  .saveObjects('JSON data')
-  // .then((res) => console.log(res))
+client.initIndex("Index name").saveObjects("JSON data")
+// .then((res) => console.log(res))
 ```
 
 It is almost the same as [Meilisearch with Algolia](/en/post/astro-meilisearch/). We build the appropriate data from the markdown posts and send it to Algolia.
@@ -202,7 +197,7 @@ At the top of `algolia.js`, enable dotenv.
 <div class="filename">src/lib/algolia.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
 // à suivre
@@ -217,7 +212,7 @@ Then, add the base code.
 ```js
 // continued
 
-import algoliasearch from 'algoliasearch'
+import algoliasearch from "algoliasearch"
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_WRITE_API_KEY
@@ -227,9 +222,9 @@ const client = algoliasearch(
 
 // 2. Send the records in JSON format
 client
-  .initIndex('dev_posts')
-  .saveObjects('JSON data')
-  .then((res) => console.log(res)) //show the result
+  .initIndex("dev_posts")
+  .saveObjects("JSON data")
+  .then(res => console.log(res)) //show the result
 ```
 
 #### Build a dataset for the search
@@ -245,15 +240,15 @@ To remove markdown tags, I use [remove-markdown](https://www.npmjs.com/package/r
 ```js
 // continued
 // 1. Build a dataset
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       objectID: frontmatter.slug,
@@ -287,9 +282,9 @@ Format the records `data` in JSON format and put it in `saveObjects()`.
 
 // 2. Send the dataset in JSON format
 client
-  .initIndex('dev_posts')
+  .initIndex("dev_posts")
   .saveObjects(JSON.parse(JSON.stringify(data)))
-  .then((res) => console.log(res))
+  .then(res => console.log(res))
 ```
 
 #### The whole code of algolia.js
@@ -297,25 +292,25 @@ client
 <div class="filename">src/lib/algolia.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
-import algoliasearch from 'algoliasearch'
+import algoliasearch from "algoliasearch"
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_WRITE_API_KEY
 )
 
 // 1. Build a dataset
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       id: frontmatter.slug,
@@ -329,9 +324,9 @@ const data = filenames.map((filename) => {
 
 // 2. Send the dataset in JSON format
 client
-  .initIndex('dev_posts')
+  .initIndex("dev_posts")
   .saveObjects(JSON.parse(JSON.stringify(data)))
-  .then((res) => console.log(res))
+  .then(res => console.log(res))
 ```
 
 Now, `algolia.js` is done!
@@ -340,7 +335,7 @@ Now, `algolia.js` is done!
 
 Once `algolia.js` is ready, run it with Node.
 
-At the root of the Astro project, run the following code. *If you put the file in a different directory, execute that file.
+At the root of the Astro project, run the following code. \*If you put the file in a different directory, execute that file.
 
 <div class="filename">bash</div>
 
@@ -361,7 +356,7 @@ Once the records are sent without error, you'll see the result thrown by `consol
 
 Then, go to the Algolia dashboard and see the index. Yes, the dataset (of records) has been indexed.🙂
 
-![Index on Algolia](../../../images/algolia14.png '&copy; Algolia')
+![Index on Algolia](../../../images/algolia14.png "© Algolia")
 
 ## Create a component for the search box and search result
 
@@ -377,7 +372,7 @@ Create a component file named `Search.astro` (the name is up to you) under the `
 │  │  └ ...
 │  ├ posts/
 │  │  ├ first-post.md
-│  │  ├ second-post.md 
+│  │  ├ second-post.md
 │  │  └ ...
 │  └ lib/
 │    └ algolia.js
@@ -527,7 +522,7 @@ Open the "Configuration" tab of Index at the left menu, then go to "Language".
 
 Add your language (here, I added "Japanese") to "Index Languages" and "Query Languages" then save.
 
-![Algolia language settings](../../../images/algolia17.ja.png "&copy; Algolia")
+![Algolia language settings](../../../images/algolia17.ja.png "© Algolia")
 
 ## Conclusion
 

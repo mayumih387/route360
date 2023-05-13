@@ -57,11 +57,11 @@ v.1.0以上になれば、日本語検索の精度も良くなってきそうで
 │  │  └ ...
 │  └ posts/
 │    ├ first-post.md
-│    ├ second-post.md 
+│    ├ second-post.md
 │    └ ...
 ```
 
-更に、MarkdownのデータのYAML frontmatterは以下ようにしています。
+さらに、MarkdownのデータのYAML frontmatterは以下ようにしています。
 
 <div class="filename">src/posts/first-post.md</div>
 
@@ -76,13 +76,13 @@ dignissimos aperiam dolorem qui eum facilis quibusdam animi sint suscipit qui si
 
 ## Meilisearchに登録
 
-Meilisearchはセルフホストも可能ですが、今回はクラウド版を利用します。セルフホスト構築が出来る環境にある方は、もちろんそうして頂いてかまいません。
+Meilisearchはセルフホストも可能ですが、今回はクラウド版を利用します。セルフホスト構築ができる環境にある方は、もちろんそうして頂いてかまいません。
 
 クラウド版では、ドキュメント数100,000・月10,000サーチまでが無料です。個人や小規模のサイトには十分ですね。
 
 [登録ページ](https://cloud.meilisearch.com/register)から登録を進めましょう。
 
-![Meilisearchの登録ページ](../../../images/meilisearch01.png '&copy; Meilisearch')
+![Meilisearchの登録ページ](../../../images/meilisearch01.png "© Meilisearch")
 
 確認メールで認証リンクを押せば登録完了です。
 
@@ -90,19 +90,19 @@ Meilisearchはセルフホストも可能ですが、今回はクラウド版を
 
 Meilisearchログイン後の上部メニューから「New Project」をクリックして、プロジェクトを作成します。
 
-![Meilisearchのダッシュボード](../../../images/meilisearch02.png '&copy; Meilisearch')
+![Meilisearchのダッシュボード](../../../images/meilisearch02.png "© Meilisearch")
 
 地域（Select a region）は、最も近い場所を選びます。日本からなら「シンガポール」です。プランは「Build $0 / month」。尚、シンガポールを選んでも、検索体験は非常に高速です。
 
-![Meilisearchのプロジェクト作成画面](../../../images/meilisearch03.png '&copy; Meilisearch')
+![Meilisearchのプロジェクト作成画面](../../../images/meilisearch03.png "© Meilisearch")
 
 「Create」を押せば、プロジェクト作成完了です。
 
 ### 検索データの作成はリモートのみ
 
-Algoliaを使ったことがある方は、Meilisearchでは検索データの手入力やファイルのアップロードが出来ない点に少し戸惑うかもしれません。
+Algoliaを使ったことがある方は、Meilisearchでは検索データの手入力やファイルのアップロードができない点に少し戸惑うかもしれません。
 
-MeilisearchはNodeを使ってjsファイルを実行することで、検索データを追加したり削除したりします。残念ながら手入力・ファイルアップロードは出来ません。データの追加方法は、後ほど解説します。
+MeilisearchはNodeを使ってjsファイルを実行することで、検索データを追加したり削除したりします。残念ながら手入力・ファイルアップロードはできません。データの追加方法は、後ほど解説します。
 
 ## Astroにmeilisearchとdotenvをインストール
 
@@ -116,7 +116,7 @@ npm install meilisearch
 yarn add meilisearch
 ```
 
-更に、環境変数をjsファイル内で扱うため、[dotenv](https://www.npmjs.com/package/dotenv)をインストールします。
+さらに、環境変数をjsファイル内で扱うため、[dotenv](https://www.npmjs.com/package/dotenv)をインストールします。
 
 ```bash
 # npmの場合
@@ -130,7 +130,7 @@ yarn add dotenv
 
 次に、検索データを構築・送信するため、ファイルを作成します。
 
-- libフォルダ内に、`meilisearch.js`（ファイル名、ファイルの場所は任意）
+- libフォルダー内に、`meilisearch.js`（ファイル名、ファイルの場所は任意）
 - ルート直下に`.env`
 
 ```text
@@ -139,7 +139,7 @@ yarn add dotenv
 ├  │  └ ...
 ├  ├ posts/
 ├  │  ├ first-post.md
-├  │  ├ second-post.md 
+├  │  ├ second-post.md
 ├  │  └ ...
 ├  └ lib/
 ├    └ meilisearch.js <--これと
@@ -160,7 +160,7 @@ MEILISEARCH_MASTER_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 これらのデータは、Meilisearchのプロジェクト一覧から当該プロジェクトの「Build」をクリックすると確認できます。
 
-![Meilisearchのプロジェクト設定画面](../../../images/meilisearch04.png '&copy; Meilisearch')
+![Meilisearchのプロジェクト設定画面](../../../images/meilisearch04.png "© Meilisearch")
 
 ### meilisearch.jsの作成
 
@@ -171,16 +171,14 @@ MEILISEARCH_MASTER_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 Meilisearchにデータを送信するためのコードの基本形は、こんな感じです。
 
 ```js
-import { MeiliSearch } from 'meilisearch'
+import { MeiliSearch } from "meilisearch"
 const client = new MeiliSearch({
-  host: 'ホストのアドレス',
-  apiKey: 'APIキー',
+  host: "ホストのアドレス",
+  apiKey: "APIキー",
 })
 
-client
-  .index('インデックス名')
-  .addDocuments('JSONデータ')
-  // .then((res) => console.log(res))
+client.index("インデックス名").addDocuments("JSONデータ")
+// .then((res) => console.log(res))
 ```
 
 「JSONデータ」の部分に、必要なデータを投稿から集めて送ればいい訳です。
@@ -192,7 +190,7 @@ client
 <div class="filename">src/lib/meilisearch.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
 // 続く
@@ -207,7 +205,7 @@ dotenv.config()
 ```js
 // 続き
 
-import { MeiliSearch } from 'meilisearch'
+import { MeiliSearch } from "meilisearch"
 const client = new MeiliSearch({
   host: process.env.PUBLIC_MEILISEARCH_HOST,
   apiKey: process.env.MEILISEARCH_MASTER_KEY,
@@ -217,33 +215,33 @@ const client = new MeiliSearch({
 
 // 2. JSONデータを作ってから送信
 client
-  .index('posts')
-  .addDocuments('JSONデータ')
-  .then((res) => console.log(res)) //送信結果表示用
+  .index("posts")
+  .addDocuments("JSONデータ")
+  .then(res => console.log(res)) //送信結果表示用
 ```
 
 #### 検索用データセットの作成
 
 次に、検索用のデータセット（documents）を作ります。
 
-今回はMarkdownによる投稿を例としています。外部CMSを使っている場合は`fetch()`等でデータを取得するなど、適宜アレンジして下さい。
+今回はMarkdownによる投稿を例としています。外部CMSを使っている場合は`fetch()`等でデータを取得するなど、適宜アレンジしてください。
 
-Markdownのタグを除去するため、[remove-markdown](https://www.npmjs.com/package/remove-markdown)を利用しています。必要な場合はインストールして下さい。
+Markdownのタグを除去するため、[remove-markdown](https://www.npmjs.com/package/remove-markdown)を利用しています。必要な場合はインストールしてください。
 
 <div class="filename">src/lib/meilisearch.js</div>
 
 ```js
 // 続き
 // 1. ここでJSONデータを作る
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       id: frontmatter.slug,
@@ -276,9 +274,9 @@ const data = filenames.map((filename) => {
 
 // 2. JSONデータを作ってから送信
 client
-  .index('posts')
+  .index("posts")
   .addDocuments(JSON.parse(JSON.stringify(data))) //<--これ
-  .then((res) => console.log(res)) //送信結果表示用
+  .then(res => console.log(res)) //送信結果表示用
 ```
 
 #### meilisearch.jsコードまとめ
@@ -286,25 +284,25 @@ client
 <div class="filename">src/lib/meilisearch.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
-import { MeiliSearch } from 'meilisearch'
+import { MeiliSearch } from "meilisearch"
 const client = new MeiliSearch({
   host: process.env.MEILISEARCH_HOST,
   apiKey: process.env.MEILISEARCH_MASTER_KEY,
 })
 
 // 1. ここでJSONデータを作る
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       id: frontmatter.slug,
@@ -318,16 +316,16 @@ const data = filenames.map((filename) => {
 
 // 2. JSONデータを作ってから送信
 client
-  .index('posts')
+  .index("posts")
   .addDocuments(JSON.parse(JSON.stringify(data)))
-  .then((res) => console.log(res))
+  .then(res => console.log(res))
 ```
 
 以上で`meilisearch.js`は完成です。
 
 ## 検索用データ（documents）を送信
 
-`meilisearch.js`ファイルが出来たら、Nodeを使って実行します。
+`meilisearch.js`ファイルができたら、Nodeを使って実行します。
 
 Astroプロジェクトのルートで、以下を実行。※`meilisearch.js`を違う場所に置いたり他のファイル名にした場合は、その場所とファイル名を指定。
 
@@ -353,11 +351,11 @@ EnqueuedTask {
 
 Meilisearchのホストに移動して、インデックスを確認してみましょう。登録されていますね🙂
 
-![Meilisearchのインデックス確認ページ](../../../images/meilisearch05.png '&copy; Meilisearch')
+![Meilisearchのインデックス確認ページ](../../../images/meilisearch05.png "© Meilisearch")
 
 ## 検索結果を表示するコンポーネントの作成
 
-`src`フォルダ直下の`components`ディレクトリ（なければ作成）下に、検索ボックス+検索結果を表示するコンポーネントを作成。ここではファイル名を「Search.astro」としました。
+`src`フォルダー直下の`components`ディレクトリ（なければ作成）下に、検索ボックス+検索結果を表示するコンポーネントを作成。ここではファイル名を「Search.astro」としました。
 
 ```text
 ├ src/
@@ -367,7 +365,7 @@ Meilisearchのホストに移動して、インデックスを確認してみま
 │  │  └ ...
 │  ├ posts/
 │  │  ├ first-post.md
-│  │  ├ second-post.md 
+│  │  ├ second-post.md
 │  │  └ ...
 │  └ lib/
 │    └ meilisearch.js
@@ -388,7 +386,9 @@ Meilisearchのホストに移動して、インデックスを確認してみま
   is:inline
   src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch/dist/instant-meilisearch.umd.min.js"
 ></script>
-<script is:inline src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"
 ></script>
 <script is:inline>
   const search = instantsearch({
@@ -421,7 +421,7 @@ Meilisearchのホストに移動して、インデックスを確認してみま
 </script>
 ```
 
-（2023-1-23更新）Astroで外部のCDNスクリプトを利用する場合、`is:inline`を使ってコンポーネント内でスクリプトを走らせることになります。そうするとHTML内にスクリプトが挿入されることになり、ページの表示速度が損なわれますのでご注意下さい。
+（2023-1-23更新）Astroで外部のCDNスクリプトを利用する場合、`is:inline`を使ってコンポーネント内でスクリプトを走らせることになります。そうするとHTML内にスクリプトが挿入されることになり、ページの表示速度が損なわれますのでご注意ください。
 
 このコンポーネントを他のコンポーネントやテンプレート内で読み込めばOKです。
 

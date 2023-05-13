@@ -4,9 +4,9 @@ date: 2023-10-01
 lastmod: 2023-05-09
 ---
 
-こんにちは、ウェブ開発・フロントエンド開発しているMayumiです。サイトをご覧下さりありがとうございます。お気軽にお仕事依頼・コメント・お問い合わせ下さい。
+こんにちは、ウェブ開発・フロントエンド開発しているMayumiです。サイトをご覧下さりありがとうございます。お気軽にお仕事依頼・コメント・お問い合わせください。
 
-趣味は旅行・語学。かなり年期の入ったバックパッカーです。これまで20ヶ国以上の国を訪れましたが、結局一番好きな国は日本です（食べ物が美味しすぎる）。
+趣味は旅行・語学。かなり年期の入ったバックパッカーです。これまで20か国以上の国を訪れましたが、結局一番好きな国は日本です（食べ物が美味しすぎる）。
 
 ## 開発経験
 
@@ -32,9 +32,9 @@ lastmod: 2023-05-09
 - https://ccfrancais.net/
 - Gatsby.js + WordPress
 
-知人が運営するブログ。WordPressをヘッドレスCMSとして利用。編集画面はWordPressなので、ライティングの自由度が比較的高いです（全ての Gutenberg/テーマの機能が使えるわけではありません）。
+知人が運営するブログ。WordPressをヘッドレスCMSとして利用。編集画面はWordPressなので、ライティングの自由度が比較的高いです（すべてのGutenberg/テーマの機能が使えるわけではありません）。
 
-テーマは WordPress テーマの[Arkhe](https://arkhe-theme.com/)・Swellを、ほぼそのままGatsby.jsに移植しています。※WordPress側でアップデートしても、Gatsby側は当然アップデートされません。
+テーマはWordPressテーマの[Arkhe](https://arkhe-theme.com/)・Swellを、ほぼそのままGatsby.jsに移植しています。※WordPress側でアップデートしても、Gatsby側は当然アップデートされません。
 
 ---
 
@@ -48,10 +48,10 @@ WordPress + 多言語プラグインWPMLから、Astroを使いこちらも多�
 - https://nihongonpo.org/
 - WordPress
 
-Gutenbergの編集機能カスタマイズや、投稿と同時にメルマガ送信が出来るようにする等のカスタマイズを行っています。※WordPressの案件は現在行っておりません。
+Gutenbergの編集機能カスタマイズや、投稿と同時にメルマガ送信ができるようにする等のカスタマイズを行っています。※WordPressの案件は現在行っておりません。
 
 ## このサイト
 
 - Gatsby.js + Markdown
 
-2022年9月の開設当初はNext.jsで作成していましたが、2023年5月に Gatsby.jsで作り直しました。ホスティングは[Cloudflare Pages](https://www.cloudflare.com/ja-jp/products/pages/)です。
+2022年9月の開設当初はNext.jsで作成していましたが、2023年5月にGatsby.jsで作り直しました。ホスティングは[Cloudflare Pages](https://www.cloudflare.com/ja-jp/products/pages/)です。

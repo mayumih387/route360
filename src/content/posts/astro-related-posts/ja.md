@@ -26,13 +26,13 @@ src/
   │  └ [slug].astro
   ├ posts/
   │  ├ first-post.md
-  │  ├ second-post.md 
+  │  ├ second-post.md
   │  └ ...
   └ lib/
     └ getRelatedPosts.js
 ```
 
-`src`フォルダ直下の`[slug].astro`をブログ記事用テンプレートとし、URLパスとしては`https://example.com/[slug]/`という形になります。
+`src`フォルダー直下の`[slug].astro`をブログ記事用テンプレートとし、URLパスとしては`https://example.com/[slug]/`という形になります。
 
 ### Markdown記事のYAML frontmatter
 
@@ -42,7 +42,7 @@ src/
 ---
 title: 最初の投稿です
 slug: first-post
-categories: ['book', 'english']
+categories: ["book", "english"]
 ---
 ```
 
@@ -65,7 +65,7 @@ src/
 ```js
 export function getRelatedPosts(allPosts, currentSlug, currentCats) {
   const relatedPosts = allPosts.filter(
-    (post) =>
+    post =>
       post.frontmatter.slug !== currentSlug &&
       post.frontmatter.categories.includes(currentCats[0])
   )
@@ -74,11 +74,11 @@ export function getRelatedPosts(allPosts, currentSlug, currentCats) {
 }
 ```
 
-1. 全ての投稿（allPosts・配列）・現在の投稿（currentSlug）・現在の投稿のカテゴリー（currentCats・配列）を引数とする
-2. 全ての投稿（allPosts・配列）から、現在の投稿（currentSlug）以外かつ、現在の投稿の最初に設定されているカテゴリーを含む投稿を絞り込む
+1. すべての投稿（allPosts・配列）・現在の投稿（currentSlug）・現在の投稿のカテゴリー（currentCats・配列）を引数とする
+2. すべての投稿（allPosts・配列）から、現在の投稿（currentSlug）以外かつ、現在の投稿の最初に設定されているカテゴリーを含む投稿を絞り込む
 3. 絞り込んだ投稿（relatedPosts・配列）の最初の4つを取得
 
-やろうと思えば、「同じタグを含むもの」「同じタグが多く含まれるもの順」なども出来るとは思いますが、今回はそこまでは頑張りません😅
+やろうと思えば、「同じタグを含むもの」「同じタグが多く含まれるもの順」などもできるとは思いますが、今回はそこまでは頑張りません😅
 
 ### ランダムで取得する
 
@@ -102,7 +102,7 @@ export function getRelatedPosts(allPosts, currentSlug, currentCats) {
   }
 
   const relatedPosts = allPosts.filter(
-    (post) =>
+    post =>
       post.frontmatter.slug !== currentSlug &&
       post.frontmatter.categories.includes(currentCats[0])
   )
@@ -123,7 +123,7 @@ export function getRelatedPosts(allPosts, currentSlug, currentCats) {
 import { getRelatedPosts } from "../lib/getRelatedPosts"
 
 export async function getStaticPaths() {
-  // 全ての記事を取得
+  // すべての記事を取得
   const allPosts = await Astro.glob("../posts/*.md")
   // 記事数を取得
   const numberOfPosts = allPosts.length
@@ -156,6 +156,6 @@ const { relatedPosts } = Astro.props
 )}
 ```
 
-実際の場面では、全ての記事から下書き投稿を除外したり、関連記事部分はコンポーネント化したりすると思います。そこはよしなにやって下さい。
+実際の場面では、すべての記事から下書き投稿を除外したり、関連記事部分はコンポーネント化したりすると思います。そこはよしなにやってください。
 
 以上です。

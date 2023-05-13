@@ -33,8 +33,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['en', 'fr', 'ja'],
-    defaultLocale: 'en',
+    locales: ["en", "fr", "ja"],
+    defaultLocale: "en",
   },
   trailingSlash: true,
 }
@@ -60,14 +60,14 @@ UIフレームワークは使っていません。cssモジュールです。
 
 https://vercel.com/
 
-ホスティングには使い慣れた[Cloudflare Pages](https://pages.cloudflare.com/)を利用したかったのですが、多言語設定（i18n）を入れているため`next export`がサポートから外れてしまい、色々試したもののどうにもデプロイが出来なかったため、半ば仕方なしにVercelを使っています。
+ホスティングには使い慣れた[Cloudflare Pages](https://pages.cloudflare.com/)を利用したかったのですが、多言語設定（i18n）を入れているため`next export`がサポートから外れてしまい、色々試したもののどうにもデプロイができなかったため、半ば仕方なしにVercelを使っています。
 
 ## その他
 
-* コメントシステム - [giscus](https://giscus.app/)
-* Webフォント - [Fontawesome](https://fontawesome.com/)
-* シンタックスハイライト - [Prism.js](https://prismjs.com/)
-* 翻訳 - 自力😅（DeepLの多大なご協力あり）
+- コメントシステム - [giscus](https://giscus.app/)
+- Webフォント - [Fontawesome](https://fontawesome.com/)
+- シンタックスハイライト - [Prism.js](https://prismjs.com/)
+- 翻訳 - 自力😅（DeepLの多大なご協力あり）
 
 ## まとめ
 

@@ -30,7 +30,7 @@ CMSのAPI等でデータを引っ張ってくる場合でも、渡すデータ�
 
 今回は、以下の構造でAstroブログを作ることとします。
 
-`src`フォルダ直下の`[slug].astro`をブログ記事用テンプレートとして利用。URLパスは`https://example.com/[slug]/`という形になります。
+`src`フォルダー直下の`[slug].astro`をブログ記事用テンプレートとして利用。URLパスは`https://example.com/[slug]/`という形になります。
 
 ```text
 src/
@@ -40,7 +40,7 @@ src/
   │  └ [slug].astro
   ├ posts/
   │  ├ first-post.md
-  │  ├ second-post.md 
+  │  ├ second-post.md
   │  └ ...
   └ utils/
     └ sortByDate.js
@@ -76,7 +76,7 @@ export const sortByDate = (a, b) => {
 }
 ```
 
-今回はMarkdown記事のため、`new Date()`の日時の引数に`frontmatter.date`を代入していますが、API等の場合はそれに応じたデータを渡すようにして下さい。
+今回はMarkdown記事のため、`new Date()`の日時の引数に`frontmatter.date`を代入していますが、API等の場合はそれに応じたデータを渡すようにしてください。
 
 ## 記事用テンプレート内で記事毎に前後の記事を生成
 
@@ -84,7 +84,7 @@ export const sortByDate = (a, b) => {
 
 今回はMarkdownブログの例なので、前後の記事のプロパティとしてfrontmatter（該当する記事がない場合は、空のfrontmatter）をテンプレートに渡しています。
 
-API等の場合は`slug`等、Markdownのfrontmatterに応じたデータを渡すようにして下さい。
+API等の場合は`slug`等、Markdownのfrontmatterに応じたデータを渡すようにしてください。
 
 <div class="filename">/src/pages/[slug].astro</div>
 
@@ -94,7 +94,7 @@ import { sortByDate } from "./utils/sortByDate.js"
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob("../posts/*.md")
-  const numberOfPosts = allPosts.length // 全ての記事の合計数
+  const numberOfPosts = allPosts.length // すべての記事の合計数
 
   return allPosts.sort(sortByDate).map((post, i) => ({ // 並び替えてから展開
     params: {
@@ -139,7 +139,7 @@ const { prevPost, nextPost } = Astro.props
 
 実際の場合では、前後の記事用のコンポーネントを作って表示させることが殆どです。
 
-コンポーネントとして、`prevNext.astro`を`component`フォルダ内に作ります。
+コンポーネントとして、`prevNext.astro`を`component`フォルダー内に作ります。
 
 <div class="filename">/src/components/prevNext.astro</div>
 

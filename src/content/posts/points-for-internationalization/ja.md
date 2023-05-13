@@ -26,7 +26,7 @@ draft: false
 
 ## next.jsの設定ファイルに、言語を追加しておく
 
-全ての作業の前に、まずは`next.config.js`を開いて、利用する言語ロケールを設定します。
+すべての作業の前に、まずは`next.config.js`を開いて、利用する言語ロケールを設定します。
 
 このブログでは【英語・フランス語・日本語】なので、設定は以下の通りです（デフォルト言語は英語）。
 
@@ -38,8 +38,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['en', 'fr', 'ja'],
-    defaultLocale: 'en',
+    locales: ["en", "fr", "ja"],
+    defaultLocale: "en",
   },
 }
 
@@ -51,26 +51,26 @@ module.exports = nextConfig
 - デフォルト言語のURL：`example.com`
 - それ以外の場合：`example.com/fr`や`example.com/ja`
 
-サブドメイン式や、デフォルト言語をなしにする設定方法もあります。公式情報をチェックしてみて下さい。
+サブドメイン式や、デフォルト言語をなしにする設定方法もあります。公式情報をチェックしてみてください。
 
 <span class="label warning">参考</span> [Internationalized Routing | Next.js](https://nextjs.org/docs/advanced-features/i18n-routing)
 
-❗この設定は、出力のための`next export`がサポートされません。Cloudflare Pagesなど`next export`がデプロイに必要な場合もありますので、ホスティングサービスの選定時にご注意下さい。
+❗この設定は、出力のための`next export`がサポートされません。Cloudflare Pagesなど`next export`がデプロイに必要な場合もありますので、ホスティングサービスの選定時にご注意ください。
 
-### useRouter()で現在の表示言語が取得出来る
+### useRouter()で現在の表示言語が取得できる
 
-`next.config.js`に追加したi18nの設定により、Next.jsの`useRouter()`で、フロント側で現在表示されている言語やデフォルトの言語等を取得することが出来るようになります。
+`next.config.js`に追加したi18nの設定により、Next.jsの`useRouter()`で、フロント側で現在表示されている言語やデフォルトの言語等を取得することができるようになります。
 
 ```js
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 export default function SomeComponent() {
   const { locale, defaultLocale, locales } = useRouter()
   return (
     <>
-      <p>現在の言語は{ locale }です</p>
-      <p>デフォルトの言語は{ defaultLocale }です</p>
-      <p>設定されている言語は{locales.map((locale) => `${locale}、`)}です</p>
+      <p>現在の言語は{locale}です</p>
+      <p>デフォルトの言語は{defaultLocale}です</p>
+      <p>設定されている言語は{locales.map(locale => `${locale}、`)}です</p>
     </>
   )
 }
@@ -84,7 +84,7 @@ export default function SomeComponent() {
 設定されている言語はen、fr、ja、です
 ```
 
-これにより、コンポーネントやテンプレート内での内容の分岐が楽に出来るようになります。
+これにより、コンポーネントやテンプレート内での内容の分岐が楽にできるようになります。
 
 ## Markdown投稿データの格納場所を考える
 
@@ -104,6 +104,7 @@ projectRoot
 | | ├ fr.md
 | | └ ja.md
 ```
+
 - ディレクトリ（フォルダ）名 → スラッグとして利用
 - ファイル名 → 言語名のみ
 
@@ -113,24 +114,24 @@ projectRoot
 
 ファイルの場所やファイル名は、「投稿ページでのページ生成で、パスになる要素（スラッグなど）をどこから引っ張ってくるか」に関わってきます。
 
-このエントリーの説明では、当サイトの「ディレクトリ名をスラッグに使う」方法になりますので、状況によって適宜変更してみて下さい。
+このエントリーの説明では、当サイトの「ディレクトリ名をスラッグに使う」方法になりますので、状況によって適宜変更してみてください。
 
 ## 投稿ページ
 
 一つ目の難関は、投稿ページです。
 
-ページ生成（パス生成）までは問題なく出来ても、「日本語では記事があるけれど英語ではまだ作っていない」という場合の取り扱いについて考える必要があります。
+ページ生成（パス生成）までは問題なくできても、「日本語では記事があるけれど英語ではまだ作っていない」という場合の取り扱いについて考える必要があります。
 
 ### ある記事の翻訳版がない場合
 
-このサイト（route360.dev）では、全てのスラッグについて各言語のページを作り、翻訳版がない場合は以下のようにしています。
+このサイト（route360.dev）では、すべてのスラッグについて各言語のページを作り、翻訳版がない場合は以下のようにしています。
 
 - 「この記事はまだ○○語に翻訳されていません」と表示
 - メタタグに`noindex`を追加する（[後述](#翻訳ファイルがないページ用にnoindex)）
 
 作業的には、
 
-1. パスの生成時、全ての言語について同じスラッグのページを一旦生成
+1. パスの生成時、すべての言語について同じスラッグのページをいったん生成
 2. ページコンテンツの生成時に、翻訳があるかないかで内容を振り分け
 
 としています。
@@ -139,7 +140,7 @@ projectRoot
 
 まずは、ページのパス（URL）を`getStaticPaths`で生成します。
 
-今回は`/pages/`フォルダ内に`/post/`ディレクトリを作成し、その中に投稿ページのテンプレート`[slug].js`（※）を作りました。
+今回は`/pages/`フォルダー内に`/post/`ディレクトリを作成し、その中に投稿ページのテンプレート`[slug].js`（※）を作りました。
 
 ※スラッグをパス（URL）のベースにする投稿テンプレート名で、生成されるパス（URL）は、`example.com/post/first-post/`のような形になる。
 
@@ -156,18 +157,19 @@ projectRoot
 | | ├ fr.md
 | | └ ja.md
 ```
+
 ファイル操作に関連するモジュールである`fs`と`path`をインポートしておきます（Node.jsに初めから入っているのでインストール不要）。
 
 <div class="filename">/pages/post/[slug].js</div>
 
 ```js
-import fs from 'fs'
-import path from 'path'
+import fs from "fs"
+import path from "path"
 ```
 
 ここから`getStaticPaths`を使ってパスを生成します。
 
-一つの投稿につき全ての言語ロケールのURLを生成するため、`/pages/posts/`フォルダ内の全てのディレクトリ名（=スラッグとして利用）を展開しながら、それぞれに言語ロケールの要素を追加した配列を作ります。
+一つの投稿につきすべての言語ロケールのURLを生成するため、`/pages/posts/`フォルダー内のすべてのディレクトリ名（=スラッグとして利用）を展開しながら、それぞれに言語ロケールの要素を追加した配列を作ります。
 
 <div class="filename">/pages/post/[slug].js</div>
 
@@ -175,14 +177,14 @@ import path from 'path'
 //...
 
 export async function getStaticPaths({ locales }) {
-  // /posts/内の全てのディレクトリ名を取得
-  const dirnames = fs.readdirSync(path.join('posts'))
-  // 全てのパスとロケールを格納する空の配列を用意
+  // /posts/内のすべてのディレクトリ名を取得
+  const dirnames = fs.readdirSync(path.join("posts"))
+  // すべてのパスとロケールを格納する空の配列を用意
   const pathsArray = []
 
-  //全てのディレクトリ名について、全ての言語ロケール分のパス名を用意
-  dirnames.map((dirname) => {
-    locales.map((language) => {
+  //すべてのディレクトリ名について、すべての言語ロケール分のパス名を用意
+  dirnames.map(dirname => {
+    locales.map(language => {
       pathsArray.push({ params: { slug: dirname }, locale: language })
     })
   })
@@ -197,13 +199,13 @@ export async function getStaticPaths({ locales }) {
 ここで生成される`pathArray`は、`console.log()`を使って確認すると、以下のようになります。
 
 ```js
-[
-  { params: { slug: 'first-post' }, locale: 'en' },
-  { params: { slug: 'first-post' }, locale: 'fr' },
-  { params: { slug: 'first-post' }, locale: 'ja' },
-  { params: { slug: 'second-post' }, locale: 'en' },
-  { params: { slug: 'second-post' }, locale: 'fr' },
-  { params: { slug: 'second-post' }, locale: 'ja' },
+;[
+  { params: { slug: "first-post" }, locale: "en" },
+  { params: { slug: "first-post" }, locale: "fr" },
+  { params: { slug: "first-post" }, locale: "ja" },
+  { params: { slug: "second-post" }, locale: "en" },
+  { params: { slug: "second-post" }, locale: "fr" },
+  { params: { slug: "second-post" }, locale: "ja" },
 ]
 ```
 
@@ -224,20 +226,19 @@ export async function getStaticProps({ locale, params: { slug } }) {
 
   // 2. フロント側で利用するデータを返す
   return {
-    props: {
-    },
+    props: {},
   }
 }
 ```
 
-今回は、.mdフォルダ内にタイトルや投稿日時などのメタデータをfrontmatterで用意しているので、それらのデータを扱うために[gray-matter](https://github.com/jonschlinkert/gray-matter)の`matter`をインポートします（要インストール）。
+今回は、.mdフォルダー内にタイトルや投稿日時などのメタデータをfrontmatterで用意しているので、それらのデータを扱うために[gray-matter](https://github.com/jonschlinkert/gray-matter)の`matter`をインポートします（要インストール）。
 
 <div class="filename">/pages/post/[slug].js</div>
 
 ```js
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter' //<--これ
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter" //<--これ
 ```
 
 今から.mdファイルを取り込んで記事データを生成していきますが、「日本語では.mdファイルを作ったけれど、英語ではまだ同記事の.mdファイルがない」という場合、英語版のファイルを読み込もうとするとエラーになってしまいます。
@@ -259,18 +260,16 @@ import matter from 'gray-matter' //<--これ
 export async function getStaticProps({ locale, params: { slug } }) {
   // 1. ファイルを読み込み、中身を取得
   try {
-
     // 2-A. フロント側で利用するデータを返す
     return {
-      props: {
-      },
+      props: {},
     }
   } catch (e) {
     // 2-B. 翻訳がない場合は、空のタイトルのみを返す
     return {
       props: {
         frontmatter: {
-          title: '',
+          title: "",
         },
         // content: 'No content!',
       },
@@ -310,32 +309,29 @@ export async function getStaticProps({ locale, params: { slug } }) {
 }
 ```
 
-余談：当ブログでは、frontmatterのデータが`draft: true`の場合はデータが生成されないよう、`try`内で更に分岐させています。
+余談：当ブログでは、frontmatterのデータが`draft: true`の場合はデータが生成されないよう、`try`内でさらに分岐させています。
 
 ### フロント側での表示用出力
 
-これで`frontmatter`（メタデータ）と`content`（Markdown本文）をフロント側で取得出来るようになったので、これらを実際のデータ表示部分で使えばOK。イメージとしては、ざっくり以下のようなコードになります。
+これで`frontmatter`（メタデータ）と`content`（Markdown本文）をフロント側で取得できるようになったので、これらを実際のデータ表示部分で使えばOK。イメージとしては、ざっくり以下のようなコードになります。
 
 <div class="filename">/pages/post/[slug].js</div>
 
 ```js
 //...
 
-export default function Post({
-  frontmatter: { title, date },
-  content,
-}) {
+export default function Post({ frontmatter: { title, date }, content }) {
   return (
     <>
       <h1>{title}</h1>
-      <article dangerouslySetInnerHTML={{__html: marked(content)}} />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
       {/* markedを使い、Markdownをhtmlに変換 */}
     </>
   )
 }
 ```
 
-更に、翻訳ファイルがない場合は「翻訳がない旨」が表示がされるように、`title`の有無で表示を分岐させます。
+さらに、翻訳ファイルがない場合は「翻訳がない旨」が表示がされるように、`title`の有無で表示を分岐させます。
 
 言語によって「翻訳がない旨」の文章を変えるため、ここでは`useRouter()`を使い現在の表示言語`locale`を取得して、言語別の分岐を入れています。
 
@@ -372,7 +368,7 @@ export default function Post({
 }
 ```
 
-実際の場面ではコンポーネントを使う場合が殆どだと思いますので、表示方法は状況に応じてアレンジして下さい。
+実際の場面ではコンポーネントを使う場合が殆どだと思いますので、表示方法は状況に応じてアレンジしてください。
 
 ### 日付表示
 
@@ -391,21 +387,21 @@ export default function Post({
 <div class="filename">/components/convert-date.js</div>
 
 ```js
-import { parseISO, format } from 'date-fns'
-import ja from 'date-fns/locale/ja'
-import en from 'date-fns/locale/en-US'
-import fr from 'date-fns/locale/fr'
-import { useRouter } from 'next/router'
+import { parseISO, format } from "date-fns"
+import ja from "date-fns/locale/ja"
+import en from "date-fns/locale/en-US"
+import fr from "date-fns/locale/fr"
+import { useRouter } from "next/router"
 
 export default function ConvertDate({ dateISO }) {
   const { locale } = useRouter()
   return (
     <time dateTime={dateISO}>
-      {locale === 'ja' && format(parseISO(dateISO), 'yyyy-M-d', { locale: ja })}
-      {locale === 'en' &&
-        format(parseISO(dateISO), 'MMM d, yyyy', { locale: en })}
-      {locale === 'fr' &&
-        format(parseISO(dateISO), 'd MMM yyyy', { locale: fr })}
+      {locale === "ja" && format(parseISO(dateISO), "yyyy-M-d", { locale: ja })}
+      {locale === "en" &&
+        format(parseISO(dateISO), "MMM d, yyyy", { locale: en })}
+      {locale === "fr" &&
+        format(parseISO(dateISO), "d MMM yyyy", { locale: fr })}
     </time>
   )
 }
@@ -419,20 +415,19 @@ export default function ConvertDate({ dateISO }) {
 
 ```js
 //...
-import ConvertDate from 'components/convert-date'
+import ConvertDate from "components/convert-date"
 
-export default function Post({
-  frontmatter: { title, date },
-  content,
-}) {
-  return title !== '' ? (
+export default function Post({ frontmatter: { title, date }, content }) {
+  return title !== "" ? (
     <>
       <h1>{title}</h1>
       <ConvertDate dateISO={date} /> {/* <--これ */}
-      <article dangerouslySetInnerHTML={{__html: marked(content)}} />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </>
   ) : (
-    {/* 翻訳がない場合の表示 */}
+    {
+      /* 翻訳がない場合の表示 */
+    }
   )
 }
 ```
@@ -495,7 +490,7 @@ export async function getStaticProps({ locale }) {
   const data = dirnames
     .map((dirname) => {
       try {
-        // 全ての投稿ファイルを取得
+        // すべての投稿ファイルを取得
         const markdownWithMeta = fs.readFileSync(
           path.join('posts/' + dirname + `/${locale}.md`),
           'utf-8'
@@ -523,9 +518,9 @@ export async function getStaticProps({ locale }) {
 }
 ```
 
-これで言語別に必要な記事一覧が取得出来ましたが、並び順がディレクトリ名順になってしまいます。
+これで言語別に必要な記事一覧が取得できましたが、並び順がディレクトリ名順になってしまいます。
 
-日付順にするため、並べ替えの関数を作ります。関数はユーティリティ用フォルダに作成しました。
+日付順にするため、並べ替えの関数を作ります。関数はユーティリティ用フォルダーに作成しました。
 
 <div class="filename">/utils/index.js</div>
 
@@ -558,35 +553,32 @@ export async function getStaticProps({ locale }) {
 
 これで日付順の並べ替えは完成です。
 
-※今回はページネーションの方法は省きますが、ここまで出来る方なら問題なく出来るでしょう・・・
+※今回はページネーションの方法は省きますが、ここまでできる方なら問題なくできるでしょう・・・
 
 ## 独立した固定ページ
 
-[動的ルーティング](https://nextjs-ja-translation-docs.vercel.app/docs/routing/dynamic-routes)を行わない固定ページの多言語化は、当サイトでは、冒頭で説明した`useRouter()`から取得出来る現在の表示言語 `{ locale }`による分岐を使っています。
+[動的ルーティング](https://nextjs-ja-translation-docs.vercel.app/docs/routing/dynamic-routes)を行わない固定ページの多言語化は、当サイトでは、冒頭で説明した`useRouter()`から取得できる現在の表示言語 `{ locale }`による分岐を使っています。
 
-例えば、ABOUTページ`/pages/about.js`ではこのような感じです。
+たとえば、ABOUTページ`/pages/about.js`ではこのような感じです。
 
 <div class="filename">/pages/about.js</div>
 
 ```js
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 export default function About() {
   const { locale } = useRouter()
   return (
     <article>
-      {locale === 'en' && (
+      {locale === "en" && (
         <p>Hi! I&#39;m Mayumi (she/her). Thanks for visiting my website.</p>
-        )
-      }
-      {locale === 'fr' && (
+      )}
+      {locale === "fr" && (
         <p>Coucou ! Je suis Mayumi (elle). Merci pour visiter mon site web.</p>
-        )
-      }
-      {locale === 'ja' && (
+      )}
+      {locale === "ja" && (
         <p>こんにちは、Mayumiです。サイトをご覧下さりありがとうございます。</p>
-        )
-      }
+      )}
     </article>
   )
 }
@@ -601,19 +593,17 @@ export default function About() {
 <div class="filename">/components/language-switcher.js</div>
 
 ```js
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 export default function LanguageSwitcher() {
   const { locales, asPath } = useRouter()
   return (
     <ul>
-      {locales.map((lang) => (
+      {locales.map(lang => (
         <li key={lang}>
           <Link href={asPath} locale={lang} hrefLang={lang} rel="alternate">
-            <a>
-              {lang.toUpperCase()}
-            </a>
+            <a>{lang.toUpperCase()}</a>
           </Link>
         </li>
       ))}
@@ -622,10 +612,10 @@ export default function LanguageSwitcher() {
 }
 ```
 
-1. `const { locales } = useRouter()`でnext.config.jsに設定した全ての言語を取得し、それを`map()`で展開。
+1. `const { locales } = useRouter()`でnext.config.jsに設定したすべての言語を取得し、それを`map()`で展開。
 2. リンク先hrefには、`const { asPath } = useRouter()`で取得した、同スラッグの他の言語へのリンクを付与。
 
-これにより、例えば英語の`/about/`ページを開いている時には、仏語リンクは`/fr/about/`に、日本語リンクは`/ja/about/`に、自動で出力がされます。
+これにより、たとえば英語の`/about/`ページを開いている時には、仏語リンクは`/fr/about/`に、日本語リンクは`/ja/about/`に、自動で出力がされます。
 
 ## メタデータの出力
 
@@ -651,10 +641,14 @@ export default function LanguageSwitcher() {
 
 ```html
 <!-- 出力結果 -->
-<link rel="alternate" hreflang="en" href="[現在のページの英語版]">
-<link rel="alternate" hreflang="fr" href="[現在のページの仏語版]">
-<link rel="alternate" hreflang="ja" href="[現在のページの日本語版]">
-<link rel="alternate" hreflang="x-default" href="[現在のページのデフォルト言語版]">
+<link rel="alternate" hreflang="en" href="[現在のページの英語版]" />
+<link rel="alternate" hreflang="fr" href="[現在のページの仏語版]" />
+<link rel="alternate" hreflang="ja" href="[現在のページの日本語版]" />
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="[現在のページのデフォルト言語版]"
+/>
 ```
 
 <span class="label warning">参考</span> [ページのローカライズ版 | Google 検索セントラル](https://developers.google.com/search/docs/specialty/international/localized-versions)
@@ -685,31 +679,30 @@ export default function LanguageSwitcher() {
 
 ```js
 //...
-import Meta from '/components/meta'
+import Meta from "/components/meta"
 
-export default function Post({
-  frontmatter: { title, date },
-  content,
-}) {
-  return title !== '' ? (
+export default function Post({ frontmatter: { title, date }, content }) {
+  return title !== "" ? (
     <>
       <Meta /> {/* 通常のmeta */}
       <h1>{title}</h1>
-      <article dangerouslySetInnerHTML={{__html: marked(content)}} />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </>
   ) : (
-    <>{/* 翻訳がない場合の表示ここから */}
+    <>
+      {/* 翻訳がない場合の表示ここから */}
       <Meta noIndex /> {/* 翻訳がない場合はnoIndexをMetaコンポーネントへ送る */}
       <h1>Sorry!</h1>
-      {locale === 'ja' && (
+      {locale === "ja" && (
         <p>この記事はまだ日本語に訳せておりません。ごめんなさい。</p>
       )}
-      {locale === 'fr' && (
-        <p>Pardonnez-moi, cet article n&#39;est pas encore disponible en français.</p>
+      {locale === "fr" && (
+        <p>
+          Pardonnez-moi, cet article n&#39;est pas encore disponible en
+          français.
+        </p>
       )}
-      {locale === 'en' && (
-        <p>Sorry, this entry is not available yet in English.</p>
-      )}
+      {locale === "en" && <p>Sorry, this entry is not available yet in English.</p>}
     </>
   )
 }
@@ -743,7 +736,7 @@ Next.jsにはサードパーティーによるサイトマップ自動生成モ�
 
 これを読むと、多言語サイトの場合のサイトマップは単言語のサイトよりもずっと煩雑なことがわかります。
 
-せっかく海外の人にもアピール出来るサイトを作っているので、検索エンジンにもしっかり理解されるように準備したいところです。
+せっかく海外の人にもアピールできるサイトを作っているので、検索エンジンにもしっかり理解されるように準備したいところです。
 
 ## RSSフィード
 
@@ -779,6 +772,6 @@ useEffect(() => {
 
 率直に申し上げると、多言語サイトは想像以上にやることが多過ぎました。翻訳だけでも大変なのに、構築に気軽に手を出すもんじゃありません。
 
-今回の設計方法では翻訳がない場合でもページ生成を行っていますので、SEO的に記事は全ての翻訳版も揃えた上で公開するほうが良いですね。「翻訳版がない場合」の表示方法は、応急処置です。
+今回の設計方法では翻訳がない場合でもページ生成を行っていますので、SEO的に記事はすべての翻訳版も揃えた上で公開するほうが良いですね。「翻訳版がない場合」の表示方法は、応急処置です。
 
 当サイトのコードは他にも色々な要素を入れているので、実際はもう少し複雑です。現在は試運転段階なので、落ち着いたら公開したいですね。

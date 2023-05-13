@@ -10,7 +10,7 @@ draft: false
 
 [Algolia](https://www.algolia.com/)は、超高速のサイト内検索を実現する、同名の会社の検索エンジン製品です。
 
-様々なサイトに採用されており、エンジニアの方であればドキュメンテーション系でAlgoliaのロゴをご覧になったこともあると思います。Gatsby.jsのドキュメントでも採用されていますね。
+さまざまなサイトに採用されており、エンジニアの方であればドキュメンテーション系でAlgoliaのロゴをご覧になったこともあると思います。Gatsby.jsのドキュメントでも採用されていますね。
 
 Google Custom Searchは導入の敷居は低いですが、せっかくのJamstackサイトがGoogleのスクリプトで重くなってしまうため、今回このAlgoliaをGatsby.jsサイトに導入してみました。
 
@@ -30,17 +30,17 @@ Google Custom Searchは導入の敷居は低いですが、せっかくのJamsta
 3. 検索結果をサイトに表示する機能の構築
 4. スタイルを整える
 
-尚、今回の例では「Markdownのブログを検索させる」前提とします。ヘッドレスCMSからGraphQLクエリを引っ張ってきている場合は、クエリの取得部分をご自身の状況に合わせて書き換えて下さい。
+尚、今回の例では「Markdownのブログを検索させる」前提とします。ヘッドレスCMSからGraphQLクエリを引っ張ってきている場合は、クエリの取得部分をご自身の状況に合わせて書き換えてください。
 
 ## Algoliaにアカウント登録
 
 まずはAlgoliaにサインアップし、新規のインデックスデータの名前を作ります。インデックス名は、運用環境により`dev_`や`test_`、`prod_`などの接頭語をつける旨が公式でアドバイスされています。
 
-![Algoliaの新規インデックス登録画面](../../../images/algolia01.png "&copy;Algolia")
+![Algoliaの新規インデックス登録画面](../../../images/algolia01.png "©Algolia")
 
 インデックス名を登録したら、「2. Configure search relevance」を無視して、左下の⚙️**Settings -> API Keys**へ進みます。
 
-![Algoliaの新規インデックス登録画面](../../../images/algolia02.png "&copy;Algolia")
+![Algoliaの新規インデックス登録画面](../../../images/algolia02.png "©Algolia")
 
 「API Keys」ページで、必要なAPIキーを確認。必要なのは、上から3つです。
 
@@ -48,7 +48,7 @@ Google Custom Searchは導入の敷居は低いですが、せっかくのJamsta
 - Search-Only API Key
 - Admin API Key
 
-![AlgoliaのAPI確認画面](../../../images/algolia03.png "&copy;Algolia")
+![AlgoliaのAPI確認画面](../../../images/algolia03.png "©Algolia")
 
 これらは後に必要になるため、Algoliaの画面はとりあえずこのままにしておきます。
 
@@ -99,7 +99,7 @@ module.exports = {
         chunkSize: 10000,
       },
     },
-  ]
+  ],
 }
 ```
 
@@ -119,7 +119,7 @@ ALGOLIA_INDEX_NAME=[your_index_name]
 
 ### 検索用データ生成ようのAlgolia製Gatsby.js用プラグイン
 
-Algoliaを使うには、Algolia上に予め検索用のデータを保存しておく必要があります。データ構築・保存作業に使うのが、先ほどインストールしたgatsby-plugin-algoliaです。
+Algoliaを使うには、Algolia上にあらかじめ検索用のデータを保存しておく必要があります。データ構築・保存作業に使うのが、先ほどインストールしたgatsby-plugin-algoliaです。
 
 `gatsby-config.js`のプラグイン情報に、Algoliaに保存したいインデックスデータのクエリを追記すれば、もう動きます。
 
@@ -170,23 +170,22 @@ module.exports = {
                   excerpt: node.frontmatter.description,
                   title: node.frontmatter.title,
                   categories: node.frontmatter.categories.map(
-                    (category) => category.title
+                    category => category.title
                   ),
                 }
-              }
-            ),
+              }),
           },
         ],
         chunkSize: 10000,
       },
-    }
-  ]
+    },
+  ],
 }
 ```
 
 Algoliaでは`objectID`がデータ管理に使われており、`objectID`を基準に差分判定がされます。
 
-今回はスラッグを`objectID`にしていますが、スラッグが変更になると、差分判定に無駄が出てしまいます。スラッグが頻繁に変わる可能性がある場合は、他のデータを充てるようにして下さい。
+今回はスラッグを`objectID`にしていますが、スラッグが変さらになると、差分判定に無駄が出てしまいます。スラッグが頻繁に変わる可能性がある場合は、他のデータを充てるようにしてください。
 
 ### ビルドをして検索用データをAlgoliaに送る
 
@@ -201,9 +200,9 @@ success index to Algolia - 10.728s - Done!
 ...
 ```
 
-Algoliaのダッシュボードを見ると、インデックスにデータが保存されているのが確認出来ます。
+Algoliaのダッシュボードを見ると、インデックスにデータが保存されているのが確認できます。
 
-![Algoliaのインデックス済みアイテム](../../../images/algolia05.png "&copy;Algolia")
+![Algoliaのインデックス済みアイテム](../../../images/algolia05.png "©Algolia")
 
 クエリに`image:url`含めて送れば、画像を登録することも可能です。
 
@@ -225,15 +224,15 @@ yarn add algoliasearch react-instantsearch-hooks-web
 
 Algoliaはこれまで複数の同様のライブラリをリリースしており、上記[react-instantsearch-hooks-web](https://www.npmjs.com/package/react-instantsearch-hooks-web)が2023年22月時点の最新型となっています（重要ポイント）。
 
-公式ドキュメントではこれまでの全てのライブラリの情報が収められている上、別々のライブラリでも同じ名前のコンポーネントがあるので（互換性もあったりなかったり）、ドキュメント検索時には注意が必要です。
+公式ドキュメントではこれまでのすべてのライブラリの情報が収められている上、別々のライブラリでも同じ名前のコンポーネントがあるので（互換性もあったりなかったり）、ドキュメント検索時には注意が必要です。
 
-当エントリーを参考にしてAlgoliaを導入する場合は、ドキュメント検索時に画面右下のライブラリ名が「**React InstantSearch Hooks v6**」になっているかを確認して下さい。
+当エントリーを参考にしてAlgoliaを導入する場合は、ドキュメント検索時に画面右下のライブラリ名が「**React InstantSearch Hooks v6**」になっているかを確認してください。
 
-![Algoliaのドキュメント](../../../images/algolia04.png "&copy;Algolia")
+![Algoliaのドキュメント](../../../images/algolia04.png "©Algolia")
 
 ### 検索結果を表示させる
 
-componentsフォルダに、algolia.jsというファイルを用意。以下のコードは、検索結果を表示させるための基本の形です。
+componentsフォルダーに、algolia.jsというファイルを用意。以下のコードは、検索結果を表示させるための基本の形です。
 
 <div class="filename">/src/components/algolia.js</div>
 
@@ -311,7 +310,7 @@ const Algolia = () => {
 export default Algolia
 ```
 
-このAlgoliaコンポーネントを他のコンポーネントやテンプレート内で使えば、サイト上に検索ボックスが表示出来ます。
+このAlgoliaコンポーネントを他のコンポーネントやテンプレート内で使えば、サイト上に検索ボックスが表示できます。
 
 #### 検索結果表示部分を作る
 
@@ -340,7 +339,11 @@ const Algolia = () => {
         <article>
           <h1>{hit.title}</h1>
           <p>{hit.excerpt}...</p>
-          <ul>{hit.categories.map((category) => <li>{category}</li>)}</ul>
+          <ul>
+            {hit.categories.map(category => (
+              <li>{category}</li>
+            ))}
+          </ul>
         </article>
       </Link>
     )
@@ -369,7 +372,7 @@ export default Algolia
 
 Algoliaによるコードには独自クラス名が割り振られているので、そのクラス名を利用してスタイリングが可能です。
 
-または、`classNames``className`プロパティを使って、CSSモジュールやTailwind CSSなどでスタイリングすることも出来ます。
+または、` classNames``className `プロパティを使って、CSSモジュールやTailwind CSSなどでスタイリングすることもできます。
 
 ## （本番前に）Gatsby.jsプラグインの調整
 
@@ -401,7 +404,7 @@ gatsby build
 
 私の場合は、必要な時のみ「`dryRun: false`」とし、通常のビルドではAlgoliaへ送信しないようにしています。
 
-状況に応じて、どのポイントのビルドでインデックスをAlgoliaに送るかご判断下さい。
+状況に応じて、どのポイントのビルドでインデックスをAlgoliaに送るかご判断ください。
 
 ## 参考サイト
 

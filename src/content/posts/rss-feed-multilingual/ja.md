@@ -72,7 +72,7 @@ const author = "Tokugawa Ieyasu"
 const email = "ieyasu@example.com"
 ```
 
-上記はフィード用に表示するデータの例です。通常は、`/lib/constats.js`などにサイトの基本情報を用意していることと思いますので、それをインポートするなりして下さい。
+上記はフィード用に表示するデータの例です。通常は、`/lib/constats.js`などにサイトの基本情報を用意していることと思いますので、それをインポートするなりしてください。
 
 ### RSSフィードの基本データを生成
 
@@ -81,7 +81,7 @@ RSSフィードでは、サイトの基本情報がフィードの階層上部�
 <div class="filename">/lib/feed.js</div>
 
 ```js
-import { Feed } from 'feed'
+import { Feed } from "feed"
 
 export default function GeneratedRssFeed(locale, posts) {
   const siteTitle = {
@@ -118,8 +118,8 @@ export default function GeneratedRssFeed(locale, posts) {
     author: {
       name: author,
       email: email,
-      link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`
-    }
+      link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`,
+    },
   })
 }
 ```
@@ -141,12 +141,12 @@ export default function GeneratedRssFeed(locale, posts) {
 
 また、`content`（本文）については、ここでは参考サイトと同様に`marked`で整形していますが、もちろん他のライブラリやモジュールを使っても問題ありません。
 
-データ生成や管理方法によって少し異なってきますので、各自で調整して下さい。
+データ生成や管理方法によって少し異なってきますので、各自で調整してください。
 
 <div class="filename">/lib/feed.js</div>
 
 ```js
-import { Feed } from 'feed'
+import { Feed } from "feed"
 import { marked } from "marked"
 
 export default function GeneratedRssFeed(locale, posts) {
@@ -158,20 +158,22 @@ export default function GeneratedRssFeed(locale, posts) {
   posts.forEach(post => {
     feed.addItem({
       title: post.frontmatter.title,
-      id: locale === defaultLocale
-        ? `${siteUrl}post/${post.frontmatter.slug}/`
-        : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
-      link: locale === defaultLocale
-        ? `${siteUrl}post/${post.frontmatter.slug}/`
-        : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
+      id:
+        locale === defaultLocale
+          ? `${siteUrl}post/${post.frontmatter.slug}/`
+          : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
+      link:
+        locale === defaultLocale
+          ? `${siteUrl}post/${post.frontmatter.slug}/`
+          : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
       description: marked(post.content).slice(0, 120),
       content: marked(post.content),
       author: [
         {
           name: author,
           email: email,
-          link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`
-        }
+          link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`,
+        },
       ],
       date: new Date(post.frontmatter.date),
     })
@@ -181,18 +183,18 @@ export default function GeneratedRssFeed(locale, posts) {
 
 やはり、ここでも`link`や`id`に使うURLは、言語によって代わるように分岐を入れています。
 
-また、上記の例では`description`は120文字、`content`は全文としていますので、こちらも状況に応じて変更して下さい。
+また、上記の例では`description`は120文字、`content`は全文としていますので、こちらも状況に応じて変更してください。
 
 ### RSSフィードを言語別に保存
 
-最後に、fsモジュールを利用して、RSSフィードを`/public/rss/`フォルダ内に保存させます。
+最後に、fsモジュールを利用して、RSSフィードを`/public/rss/`フォルダー内に保存させます。
 
 RSSフィードは言語別に保存させたいので、拡張子の前に言語ロケールを入れています。
 
 <div class="filename">/lib/feed.js</div>
 
 ```js
-import fs from 'fs'
+import fs from "fs"
 //...
 
 export default function GeneratedRssFeed(locale, posts) {
@@ -201,7 +203,7 @@ export default function GeneratedRssFeed(locale, posts) {
     //...
   })
 
-  fs.mkdirSync('./public/rss', { recursive: true })
+  fs.mkdirSync("./public/rss", { recursive: true })
   fs.writeFileSync(`./public/rss/feed.${locale}.json`, feed.json1())
   fs.writeFileSync(`./public/rss/feed.${locale}.xml`, feed.rss2())
   fs.writeFileSync(`./public/rss/atom.${locale}.xml`, feed.atom1())
@@ -224,7 +226,7 @@ Next.jsで多言語サイトを作っている場合、`getStaticProps`は引数
 <div class="filename">/pages/index.js</div>
 
 ```js
-import GeneratedRssFeed from 'lib/feed'
+import GeneratedRssFeed from "lib/feed"
 
 //...
 
@@ -260,8 +262,8 @@ RSSフィード生成用のコンポーネントは、最終的に以下のよ�
 <div class="filename">/lib/feed.js</div>
 
 ```js
-import fs from 'fs'
-import { Feed } from 'feed'
+import fs from "fs"
+import { Feed } from "feed"
 import { marked } from "marked"
 
 export default function GeneratedRssFeed(locale, posts) {
@@ -299,33 +301,35 @@ export default function GeneratedRssFeed(locale, posts) {
     author: {
       name: author,
       email: email,
-      link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`
-    }
+      link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`,
+    },
   })
 
   posts.forEach(post => {
     feed.addItem({
       title: post.frontmatter.title,
-      id: locale === defaultLocale
-        ? `${siteUrl}post/${post.frontmatter.slug}/`
-        : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
-      link: locale === defaultLocale
-        ? `${siteUrl}post/${post.frontmatter.slug}/`
-        : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
+      id:
+        locale === defaultLocale
+          ? `${siteUrl}post/${post.frontmatter.slug}/`
+          : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
+      link:
+        locale === defaultLocale
+          ? `${siteUrl}post/${post.frontmatter.slug}/`
+          : `${siteUrl}${locale}/post/${post.frontmatter.slug}/`,
       description: marked(post.content).slice(0, 120),
       content: marked(post.content),
       author: [
         {
           name: author,
           email: email,
-          link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`
-        }
+          link: locale === defaultLocale ? siteUrl : `${siteUrl}${locale}/`,
+        },
       ],
       date: new Date(post.frontmatter.date),
     })
   })
 
-  fs.mkdirSync('./public/rss', { recursive: true })
+  fs.mkdirSync("./public/rss", { recursive: true })
   fs.writeFileSync(`./public/rss/feed.${locale}.json`, feed.json1())
   fs.writeFileSync(`./public/rss/feed.${locale}.xml`, feed.rss2())
   fs.writeFileSync(`./public/rss/atom.${locale}.xml`, feed.atom1())

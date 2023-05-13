@@ -28,11 +28,11 @@ DeepLのAPIを利用するには、アカウント登録と、無料版でもク
 
 https://www.deepl.com/pro-api
 
-![DeepLのAPIトップページ](../../../images/deepl01.ja.png "DeepL APIのトップページ &copy;DeepL")
+![DeepLのAPIトップページ](../../../images/deepl01.ja.png "DeepL APIのトップページ ©DeepL")
 
-アカウント登録とクレジットカードの登録が終わったら、[自分のアカウントページ](https://www.deepl.com/account/summary)の「アカウント」タブをクリック。「DeepL APIで使用する認証キー」で、認証キー確認することが出来ます。
+アカウント登録とクレジットカードの登録が終わったら、[自分のアカウントページ](https://www.deepl.com/account/summary)の「アカウント」タブをクリック。「DeepL APIで使用する認証キー」で、認証キー確認することができます。
 
-![DeepLのアカウントページ](../../../images/deepl02.ja.png "DeepLのアカウントページ &copy;DeepL")
+![DeepLのアカウントページ](../../../images/deepl02.ja.png "DeepLのアカウントページ ©DeepL")
 
 ## StrapiにDeepL用プラグインをインストール
 
@@ -68,7 +68,7 @@ DEEPL_API_FREE=true
 
 ここまで準備が整ったら、ほぼ完了です。
 
-プラグインがインストールされた状態の環境を構築する必要があるため、一旦Strapiをビルドをしてから立ち上げます。
+プラグインがインストールされた状態の環境を構築する必要があるため、いったんStrapiをビルドをしてから立ち上げます。
 
 ```bash
 # npmの場合
@@ -84,8 +84,8 @@ $ yarn build && yarn develop
 
 複数のロケールでの編集画面において、右サイドバーに「DEEPL - Translate from another locale」という項目が出てきていますので、そこをクリックすればOK。
 
-![Strapiの編集画面](../../../images/strapi03.png "&copy;Strapi")
+![Strapiの編集画面](../../../images/strapi03.png "©Strapi")
 
-翻訳元の言語を選んで、反映させましょう。尚、それまで編集していた内容は全て消えてしまうのでご注意下さい。
+翻訳元の言語を選んで、反映させましょう。尚、それまで編集していた内容はすべて消えてしまうのでご注意ください。
 
 以上です。

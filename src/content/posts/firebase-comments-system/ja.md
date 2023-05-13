@@ -10,15 +10,15 @@ draft: false
 
 Gatsby.jsサイト用に[Google Firebase](https://firebase.google.com/)を使ってコメントシステムを作った際の、備忘録です。
 
-Firebaseとは、アプリ開発用のプラットフォームで、ログインシステムやカートシステム等のデータを格納したり読み書きが出来る機能を提供しています。
+Firebaseとは、アプリ開発用のプラットフォームで、ログインシステムやカートシステム等のデータを格納したり読み書きができる機能を提供しています。
 
-Firebaseの機能の一つである「Realtime Database」は、json形式でデータを読み書き出来る上、javascriptのHTTPリクエスト等でデータにアクセス出来るため、コメントシステムにも使いやすいかと思います。
+Firebaseの機能の一つである「Realtime Database」は、json形式でデータを読み書きできる上、javascriptのHTTPリクエスト等でデータにアクセスできるため、コメントシステムにも使いやすいかと思います。
 
 私がFirebaseのRealtime Databaseでコメントシステムを作ったのはGatsbyサイト用でしたが、表示部分を工夫すればNext.js等でも使えるはずです。
 
-また、Firebaseを利用したコメントシステムでは**入力項目が自由に設定出来る**ため、製品にレビュー（星評価）機能をつけたいECサイト用にもいいかと思います。
+また、Firebaseを利用したコメントシステムでは**入力項目が自由に設定できる**ため、製品にレビュー（星評価）機能をつけたいECサイト用にもいいかと思います。
 
-※私自身はFirebaseに明るいとはとても言えないレベルのため、間違いや改善点がありましたら何なりとご指摘下さい🙇‍♀️
+※私自身はFirebaseに明るいとはとても言えないレベルのため、間違いや改善点がありましたら何なりとご指摘ください🙇‍♀️
 
 動作環境:
 
@@ -34,15 +34,15 @@ Firebaseには既に登録済みという前提で進めます。
 
 まずは新しいプロジェクトを作成。
 
-![Firebaseで新しいプロジェクトを作成](../../../images/firebase01.ja.png '&copy; Google Firebase')
+![Firebaseで新しいプロジェクトを作成](../../../images/firebase01.ja.png "© Google Firebase")
 
 プロジェクト名は自由です。今回は「comments」としました。
 
-![Firebaseで新しいプロジェクトを作成](../../../images/firebase02.ja.png '&copy; Google Firebase')
+![Firebaseで新しいプロジェクトを作成](../../../images/firebase02.ja.png "© Google Firebase")
 
 今回はGoogle Analyticsは使わないので、アナリティクスとの連携はオフにしています。
 
-![Firebaseで新しいプロジェクトを作成](../../../images/firebase03.ja.png '&copy; Google Firebase')
+![Firebaseで新しいプロジェクトを作成](../../../images/firebase03.ja.png "© Google Firebase")
 
 「プロジェクトの作成」ボタンをクリックすると、10秒もかからずプロジェクトが作成されます。
 
@@ -50,15 +50,15 @@ Firebaseには既に登録済みという前提で進めます。
 
 プロジェクトの中に、Realtime Databaseというデータベースを作成します。
 
-![FirebaseでRealtime Databaseを作成](../../../images/firebase04.ja.png '&copy; Google Firebase')
+![FirebaseでRealtime Databaseを作成](../../../images/firebase04.ja.png "© Google Firebase")
 
 セキュリティルールは「ロックモードで開始」でかまいません。
 
-![FirebaseでRealtime Databaseのルール編集画面](../../../images/firebase05.ja.png '&copy; Google Firebase')
+![FirebaseでRealtime Databaseのルール編集画面](../../../images/firebase05.ja.png "© Google Firebase")
 
 ## Realtime Databaseに接続する準備
 
-Realtime Databaseでは、データベースのURLの末尾にjsonファイル名を指定するだけで、データベースの中身にアクセスが出来ます。
+Realtime Databaseでは、データベースのURLの末尾にjsonファイル名を指定するだけで、データベースの中身にアクセスができます。
 
 ```text
 https://[yourproject].firebasedatabase.app/comments.json
@@ -70,9 +70,9 @@ https://[yourproject].firebasedatabase.app/comments.json
 
 トップの⚙️アイコンから、「プロジェクトの設定」→「サービスアカウント」タブ「Database Secrets」で、シークレットを確認します。
 
-![FirebaseでRealtime DatabaseのDatabase Secrets](../../../images/firebase06.ja.png '&copy; Google Firebase')
+![FirebaseでRealtime DatabaseのDatabase Secrets](../../../images/firebase06.ja.png "© Google Firebase")
 
-このシークレットが認証AUTHとなり、`fetch()`内のHTTPリクエスト用URLの末尾に追加することで、Firebase のREST APIへアクセスが出来るようになります。
+このシークレットが認証AUTHとなり、`fetch()`内のHTTPリクエスト用URLの末尾に追加することで、Firebase のREST APIへアクセスができるようになります。
 
 ```js
 fetch(`https://[yourproject].firebasedatabase.app/comments.json?auth=[secret]`)
@@ -80,19 +80,19 @@ fetch(`https://[yourproject].firebasedatabase.app/comments.json?auth=[secret]`)
 
 ただ、このシークレットキーはGoogle Firebase上ではレガシー扱いとなっており、Firebase Admin SDKを使用してアクセストークンを取得することが推奨されています。
 
-アクセストークンはRealtime Databaseの「秘密鍵」を生成した上で、[Google APIクライアントライブラリ](https://developers.google.com/api-client-library/)を利用して発行出来ます。（Node.js版を使うのが楽でしょうか。）
+アクセストークンはRealtime Databaseの「秘密鍵」を生成した上で、[Google APIクライアントライブラリ](https://developers.google.com/api-client-library/)を利用して発行できます。（Node.js版を使うのが楽でしょうか。）
 
-一方、この方法で発行できるアクセストークンは短時間で無効になってしまうため、ビルドの度にアクセストークン取得用ファイルを実行する必要があり、難易度が上がります。出来る方はチャレンジしてみて下さい。
+一方、この方法で発行できるアクセストークンは短時間で無効になってしまうため、ビルドの度にアクセストークン取得用ファイルを実行する必要があり、難易度が上がります。できる方はチャレンジしてみてください。
 
 <span class="label warning">参考</span> [REST リクエストの認証 | Firebase Realtime Database](https://firebase.google.com/docs/database/rest/auth?hl=ja)
 
 ## 投稿フォームのコンポーネントの作成
 
-以下のコードは、説明のためにフォームバリデーションなどを省略するなど、かなり簡略化しています。実際の場合では実装して下さい。
+以下のコードは、説明のためにフォームバリデーションなどを省略するなど、かなり簡略化しています。実際の場合では実装してください。
 
-また、今回はGatsby.jsでの実装のため、環境変数は`GATSBY_FIREBASE_TOKEN`としています（※）。必要に応じて変更して下さい。
+また、今回はGatsby.jsでの実装のため、環境変数は`GATSBY_FIREBASE_TOKEN`としています（※）。必要に応じて変更してください。
 
-※クライアント側で実行する場合の環境変数は、Gatsbyなら「GATSBY_」、Next.jsなら「NEXT_」等と接頭辞を付与する必要があります。
+※クライアント側で実行する場合の環境変数は、Gatsbyなら「GATSBY*」、Next.jsなら「NEXT*」等と接頭辞を付与する必要があります。
 
 <div class="filename">/src/components/commentForm.js</div>
 
@@ -306,7 +306,7 @@ exports.sourceNodes = async ({
 
 ![Gatsby上のGraphQL画面](../../../images/graphql01.png)
 
-尚、今回は「投稿者のe-mailを表示しない」という前提で、表示用としてはe-mailをGraphQLに反映させていません。不必要なデータをGraphQLとして生成しなければ、ビルド時間を節約することが出来ます。
+尚、今回は「投稿者のe-mailを表示しない」という前提で、表示用としてはe-mailをGraphQLに反映させていません。不必要なデータをGraphQLとして生成しなければ、ビルド時間を節約することができます。
 
 ### コメントの日付フォーマットオプションを有効にする
 
@@ -334,11 +334,11 @@ exports.createSchemaCustomization = ({ actions }) => {
 
 ### コメントを投稿に紐付けする
 
-更に、コメントを各投稿と紐付けすれば、記事一覧ページでもコメント数や星の数を表示することが可能になります。投稿とコメントの共通項はスラッグなので、`slug`が一致するそれぞれを結びつけます。
+さらに、コメントを各投稿と紐付けすれば、記事一覧ページでもコメント数や星の数を表示することが可能になります。投稿とコメントの共通項はスラッグなので、`slug`が一致するそれぞれを結びつけます。
 
 異なるクエリを紐付けるにはいくつか方法がありますが、今回は[createResolvers](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createResolvers)を使いました。
 
-※以下はサイトコンテンツがMarkdownで管理されている場合の例です。ヘッドレスCMSからデータを引っ張ってきている場合は、MarkdownRemarkやfilterの部分をよしなに変更して下さい。
+※以下はサイトコンテンツがMarkdownで管理されている場合の例です。ヘッドレスCMSからデータを引っ張ってきている場合は、MarkdownRemarkやfilterの部分をよしなに変更してください。
 
 <div class="filename">gatsby-node.js</div>
 
@@ -372,9 +372,9 @@ exports.createResolvers = ({ createResolvers }) => {
 
 ## 既存のコメントシステムからの引っ越し
 
-Realtime Databaseはjsonデータのインポートも可能なので、既存のコメントをjsonデータに変換すればコメントシステムをFirebaseに引っ越すことも出来ます。
+Realtime Databaseはjsonデータのインポートも可能なので、既存のコメントをjsonデータに変換すればコメントシステムをFirebaseに引っ越すこともできます。
 
-例えば、今までのコメントを以下のようにまとめます。
+たとえば、今までのコメントを以下のようにまとめます。
 
 <div class="filename">comments.json</div>
 
@@ -403,13 +403,13 @@ Realtime Databaseはjsonデータのインポートも可能なので、既存�
 }
 ```
 
-Realtime Databaseのトップページ（「データ」タブ）の右の3点マークから、jsonデータがインポート出来ます。
+Realtime Databaseのトップページ（「データ」タブ）の右の3点マークから、jsonデータがインポートできます。
 
-![Realtime Databaseのインポート画面](../../../images/firebase07.ja.png '&copy; Google Firebase')
+![Realtime Databaseのインポート画面](../../../images/firebase07.ja.png "© Google Firebase")
 
 ## まとめ（その他課題など）
 
-Disqusなど既存のコメントシステムで満足出来ない場合の代替手段として、Firebaseを使った方法を紹介しました。
+Disqusなど既存のコメントシステムで満足できない場合の代替手段として、Firebaseを使った方法を紹介しました。
 
 今回のコードは動作部分の説明だけですので、コメントシステムとしては入力値のバリデーションも含めて、他にもやることは色々あります。
 

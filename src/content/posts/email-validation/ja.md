@@ -33,7 +33,7 @@ https://www.abstractapi.com/
 
 ## フォームのコンポーネントを作る
 
-今回は説明の簡便化に、フォームコンポーネントに直接Eメール判定機能を追加します。マメな方であれば、判定機能を更に別のコンポーネントにしてもいいですね。
+今回は説明の簡便化に、フォームコンポーネントに直接Eメール判定機能を追加します。マメな方であれば、判定機能をさらに別のコンポーネントにしてもいいですね。
 
 ### フォーム部分
 
@@ -43,12 +43,7 @@ https://www.abstractapi.com/
 const Form = () => {
   return (
     <form>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        required
-      />
+      <input id="email" name="email" type="email" required />
     </form>
   )
 }
@@ -69,13 +64,7 @@ const Form = () => {
   const emailRef = useRef()
   return (
     <form>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        required
-        ref={emailRef}
-      />
+      <input id="email" name="email" type="email" required ref={emailRef} />
     </form>
   )
 }
@@ -83,14 +72,15 @@ const Form = () => {
 export default Form
 ```
 
-入力内容は`emailRef.current.value`で取得出来ます。
+入力内容は`emailRef.current.value`で取得できます。
 
 ### Eメール形式かどうかを判定するための定数
 
 無駄に判定が起きないように、「入力内容がE-mail形式の時のみ判定」が働くようにします。その判定のための、「E-mail形式」を用意。
 
 ```js
-const pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
+const pattern =
+  /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
 ```
 
 ### Eメールの入力からカーソルが外れた時に判定をする
@@ -123,7 +113,7 @@ const Form = () => {
 
 `input`からカーソルが外れた時に判定を行うハンドラを追加します。「カーソルが外れた時」は`onBlur`属性ですね。
 
-更に、ハンドラは入力内容が定数`pattern`に合致する場合のみに動かし、無駄に判定をしないようにしておきます。`useRef()`を使って記憶した`emailRef`からは、`emailRef.current.value`とすることで、現在の入力値を参照することが出来ます。それをjavascriptの`test()`メソッドを使い、`pattern`で定義したEメール形式（正規表現）に合致するかどうかを判定しています。
+さらに、ハンドラは入力内容が定数`pattern`に合致する場合のみに動かし、無駄に判定をしないようにしておきます。`useRef()`を使って記憶した`emailRef`からは、`emailRef.current.value`とすることで、現在の入力値を参照することができます。それをjavascriptの`test()`メソッドを使い、`pattern`で定義したEメール形式（正規表現）に合致するかどうかを判定しています。
 
 ```js
 pattern.test(emailRef.current.value)
@@ -175,7 +165,7 @@ export default Form
 
 APIへの接続には、`fetch()`を使います。
 
-Abstract APIでは、以下のURLへアクセスすることでバリデーション結果が取得出来ます。
+Abstract APIでは、以下のURLへアクセスすることでバリデーション結果が取得できます。
 
 ```html
 https://emailvalidation.abstractapi.com/v1/?api_key=[API_KEY]&email=[EMAIL_TO_VALIDATE]
@@ -184,12 +174,13 @@ https://emailvalidation.abstractapi.com/v1/?api_key=[API_KEY]&email=[EMAIL_TO_VA
 APIに接続してレスポンスを取得
 
 ```js
-const url = "https://emailvalidation.abstractapi.com/v1/?api_key=[API_KEY]&email=[EMAIL_TO_VALIDATE]"
+const url =
+  "https://emailvalidation.abstractapi.com/v1/?api_key=[API_KEY]&email=[EMAIL_TO_VALIDATE]"
 const response = await fetch(url)
 const data = await response.json()
 ```
 
-`console.log(data)`等でレスポンスを確認すると、以下のようなデータを確認出来ます。
+`console.log(data)`等でレスポンスを確認すると、以下のようなデータを確認できます。
 
 ```js
 {
@@ -230,7 +221,7 @@ const data = await response.json()
 
 Abstract APIのEメールバリデーションは、スコア`quality_score`によって信頼度を判定しています（最小0.01、最大0.99）。
 
-上記ではレスポンスを`data`に代入したので、スコア自体は`data.quality_score`で取得出来ますね。
+上記ではレスポンスを`data`に代入したので、スコア自体は`data.quality_score`で取得できますね。
 
 実際にテストしてみたところ、手持ちのGmailではスコアが0.7でした。いくつかのメールアドレスで試してみて基準を確認し、「0.7以上ならOK」等としておけばいいでしょう。
 
@@ -239,19 +230,21 @@ Abstract APIのEメールバリデーションは、スコア`quality_score`に�
 <div class="filename">/components/form.js</div>
 
 ```js
-  const emailCheckHandler = async () => {
-    if (pattern.test(emailRef.current.value)) {
-      const url = `https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.ABSTRACT_API_KEY}&email=${emailRef.current.value}`
-      const response = await fetch(url)
-      const data = await response.json()
+const emailCheckHandler = async () => {
+  if (pattern.test(emailRef.current.value)) {
+    const url = `https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.ABSTRACT_API_KEY}&email=${emailRef.current.value}`
+    const response = await fetch(url)
+    const data = await response.json()
 
-      if (data.quality_score >= 0.7) {// 合格時
-        setEmailIsValid(true)
-      } else {// 不合格時
-        setEmailIsValid(false)
-      }
+    if (data.quality_score >= 0.7) {
+      // 合格時
+      setEmailIsValid(true)
+    } else {
+      // 不合格時
+      setEmailIsValid(false)
     }
   }
+}
 ```
 
 環境変数はクライアントサイドでの動作になるため、Next.jsやGatsby.jsの場合は接頭辞を追加する必要があります。
@@ -265,6 +258,7 @@ NEXT_PUBLIC_ABSTRACT_API=xxxxxxxxxxxxxxxxx
 # Gatsby.jsの場合
 GATSBY_ABSTRACT_API=xxxxxxxxxxxxxxxxx
 ```
+
 ## コードまとめ
 
 <div class="filename">/components/form.js</div>
@@ -272,7 +266,8 @@ GATSBY_ABSTRACT_API=xxxxxxxxxxxxxxxxx
 ```js
 import { useRef, useState } from "react"
 
-const pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
+const pattern =
+  /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
 const Form = () => {
   const emailRef = useRef()
   const [emailIsValid, setEmailIsValid] = useState(false)
@@ -308,14 +303,14 @@ const Form = () => {
 export default Form
 ```
 
-## 更に実用的にするには
+## さらに実用的にするには
 
-ここでは単にバリデーション部分のみの解説となりましたが、reCaptcha等と組み合わせるとより安全性の高いフォームにすることが出来ます。
+ここでは単にバリデーション部分のみの解説となりましたが、reCaptcha等と組み合わせるとより安全性の高いフォームにすることができます。
 
 - reCaptchaやhCaptchaの実装（安全性の向上）
 - メールアドレス判定やreCaptchaの合格後に送信ボタンを有効化（安全性の向上）
 - メールアドレス判定中にスピナーの表示（ユーザー体験の向上）
 
-フォームは他にも気をつける点が多いです。[公式のフォーム・バリデーションの解説](https://www.abstractapi.com/guides/react-form-validation#react-hook-form-validation)もわかりやすいので、チェックしてみて下さい。
+フォームは他にも気をつける点が多いです。[公式のフォーム・バリデーションの解説](https://www.abstractapi.com/guides/react-form-validation#react-hook-form-validation)もわかりやすいので、チェックしてみてください。
 
 以上です。

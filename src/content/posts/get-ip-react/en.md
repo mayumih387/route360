@@ -9,7 +9,7 @@ draft: false
 
 This is the method I used to get an IP address for a comment system or an inquiry form.
 
-Because Javascript itself can't catch the client IP address, here we're using a third-party API.
+Because JavaScript itself can't catch the client IP address, here we're using a third-party API.
 
 The React Hooks to use for this example are `useState()` and `useEffect()`.
 
@@ -43,7 +43,7 @@ If you need only an IPv4 format, you should consider the paid plan or another AP
 ## The code
 
 ```js
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 
 export default function GetIP() {
   // Prepare a constant `ip` with empty data by default
@@ -51,7 +51,7 @@ export default function GetIP() {
 
   const getIp = async () => {
     // Connect ipapi.co with fetch()
-    const response = await fetch('https://ipapi.co/json/')
+    const response = await fetch("https://ipapi.co/json/")
     const data = await response.json()
     // Set the IP address to the constant `ip`
     setIp(data.ip)
@@ -62,9 +62,7 @@ export default function GetIP() {
     getIp()
   }, [])
 
-  return (
-    <p>Your IP address is {ip}.</p>
-  )
+  return <p>Your IP address is {ip}.</p>
 }
 ```
 

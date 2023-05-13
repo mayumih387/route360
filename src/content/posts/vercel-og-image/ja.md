@@ -14,7 +14,7 @@ draft: false
 
 以前まであった`vercel/og-image`は、リポジトリを別に用意・デプロイをして画像を生成するもので、準備に時間がかかり使えるようになるまでの作業が繁雑でした。
 
-新しい`@vercel/og`では、プロジェクト内にファイルを一つ追加するだけで出来ます（要Typescript）。
+新しい`@vercel/og`では、プロジェクト内にファイルを1つ追加するだけでできます（要TypeScript）。
 
 今回はローカルで試してみて動きましたので、この`@vercel/og`を使って「動的にタイトルを挿入する」方法を紹介したいと思います。
 
@@ -125,7 +125,7 @@ export default function handler(req: NextRequest) {
 
 <span class="label warning">参考</span> [Dynamic text generated as image - OG Image Example | Vercel Docs](https://vercel.com/docs/concepts/functions/edge-functions/og-image-examples#dynamic-text-generated-as-image)
 
-この状態でプロジェクトを立ち上げ、以下URLにアクセスすると、もう画像が出来上がっています。
+この状態でプロジェクトを立ち上げ、以下URLにアクセスすると、もう画像ができ上がっています。
 
 ```html
 http://localhost:3000/api/og/?title={ここにタイトル}

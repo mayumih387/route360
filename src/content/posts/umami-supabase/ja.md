@@ -29,7 +29,7 @@ Umamiアナリティクスは無料で使えるものの、インストールは
 - オープンソース
 - 日本語表示も可（インストール作業自体は英語環境のみ）
 - リアルタイムのアクセス状況がわかる
-- APIでデータ取得が出来る
+- APIでデータ取得ができる
 - UIがシンプルで見やすい
 
 ### 発展途上なところ
@@ -54,13 +54,13 @@ GitHubのUmamiの公式リポジトリから、Umamiのプログラムをフォ�
 
 ※「フォーク」とは、本家の更新もフォローされるコピー的なこと
 
-![GitHubのumamiページ](../../../images/github-umami01.png "&copy;GitHub umami-software/umami")
+![GitHubのumamiページ](../../../images/github-umami01.png "©GitHub umami-software/umami")
 
 「fork」ボタンを押すと、自分のアカウント上にフォークリポジトリを作成する画面に映ります。リポジトリ名は自由ですが、ここではわかりやすく「umami」としました。
 
-![GitHubのumamiをフォーク](../../../images/github-umami02.png "&copy;GitHub")
+![GitHubのumamiをフォーク](../../../images/github-umami02.png "©GitHub")
 
-Create forkボタンを押して、自分のアカウントにUmamiのリポジトリが出来ていたらOKです。
+Create forkボタンを押して、自分のアカウントにUmamiのリポジトリができていたらOKです。
 
 ## Supabaseでプロジェクトを作成する
 
@@ -68,11 +68,11 @@ Create forkボタンを押して、自分のアカウントにUmamiのリポジ�
 
 Supabase上で、新規にプロジェクトを作成するために、トップページで「New Project」をクリック。
 
-![Supabaseのアカウントトップページ](../../../images/supabase01.png "&copy;Supabase")
+![Supabaseのアカウントトップページ](../../../images/supabase01.png "©Supabase")
 
 プロジェクト名のNameは自由ですが、今回はわかりやすいようにこちらも「umami」にしました。Regionは自分の住んでいる場所に一番近いところを選択。日本なら「Northeast Asia (Tokyo)」です。
 
-![Supabaseで新規プロジェクトを作成](../../../images/supabase02.png "&copy;Supabase")
+![Supabaseで新規プロジェクトを作成](../../../images/supabase02.png "©Supabase")
 
 この時に入力したDatabase password（パスワード）はコピーして、後で使うので別のところに保存しておきます。
 
@@ -84,19 +84,19 @@ Supabase上で、新規にプロジェクトを作成するために、トップ
 
 SQL Editorを開き、「New query」で新規のコード入力欄を開きます。
 
-![Supabaseでプロジェクトにテーブルを作成](../../../images/supabase03.png "SQL Editorページ &copy;Supabase")
+![Supabaseでプロジェクトにテーブルを作成](../../../images/supabase03.png "SQL Editorページ ©Supabase")
 
 入力欄に入れるのは、以下ページにあるコードです。
 
 [umami/schema.postgresql.sql at master | GitHub](https://github.com/umami-software/umami/blob/master/sql/schema.postgresql.sql)
 
-Umamiはv1.37.0からテーブルの行の名前が2つ変更になっていますが、v1.38.0の時点では上記コードではその名前がまだ変更されていません。そのため、コピペをする前にその2カ所を変更します。
+Umamiはv1.37.0からテーブルの行の名前が2つ変さらになっていますが、v1.38.0の時点では上記コードではその名前がまだ変更されていません。そのため、コピペをする前にその2カ所を変更します。
 
 まずはGitHubのUmami本家からコードをコピー。
 
-![GitHubからSQLコードをコピー](../../../images/github-umami03.png "GitHubからSQLコードをコピー &copy;GitHub umami-software/umami")
+![GitHubからSQLコードをコピー](../../../images/github-umami03.png "GitHubからSQLコードをコピー ©GitHub umami-software/umami")
 
-コピー出来たら、Supabase上にペースト。このまま「RUN」を押さずに、20行目と21行目を編集します。
+コピーできたら、Supabase上にペースト。このまま「RUN」を押さずに、20行目と21行目を編集します。
 
 編集前：
 
@@ -105,7 +105,7 @@ Umamiはv1.37.0からテーブルの行の名前が2つ変更になっていま�
 "event_value" VARCHAR(50) NOT NULL,
 ```
 
-![SupabaseのSQL Editor](../../../images/supabase04.png "SQL Editorページ &copy;Supabase")
+![SupabaseのSQL Editor](../../../images/supabase04.png "SQL Editorページ ©Supabase")
 
 上記の`"event_type"`と、`"event_value"`は、Umamiバージョン1.37.0以降は違う名前になっている（[参照](https://github.com/umami-software/umami/discussions/1391)）ので、以下のように変えます。
 
@@ -116,15 +116,15 @@ Umamiはv1.37.0からテーブルの行の名前が2つ変更になっていま�
 "event_data" VARCHAR(50) NOT NULL,
 ```
 
-![SupabaseのSQL Editor](../../../images/supabase05.png "SQL Editorページ &copy;Supabase")
+![SupabaseのSQL Editor](../../../images/supabase05.png "SQL Editorページ ©Supabase")
 
-変更出来たら「RUN」です。
+変更できたら「RUN」です。
 
 無事にコードが走ると「Success. Now rows returned」と表示され、テーブルが作成されます。
 
 完了後、Table Editorを開くと、テーブルが作成されていることが確認できます。
 
-![SupabaseのTable Editor](../../../images/supabase06.png "Table Editorページ &copy;Supabase")
+![SupabaseのTable Editor](../../../images/supabase06.png "Table Editorページ ©Supabase")
 
 ## （注意）バージョン1.38.0でのデプロイ時エラー対策
 
@@ -166,7 +166,7 @@ yarn prisma migrate resolve --applied "02_add_event_data"
 yarn build
 ```
 
-これでSupabase側の準備がOKになります。これらが無事に実行できてから、次のセクション「Vercelにデプロイするための準備」へ進んで下さい。
+これでSupabase側の準備がOKになります。これらが無事に実行できてから、次のセクション「Vercelにデプロイするための準備」へ進んでください。
 
 ※環境変数の書き方は以下の通りです。次セクション参照。
 
@@ -190,13 +190,13 @@ HASH_SALT=any-random-string
   - `[HOST]`：SupabaseのプロジェクトURL等から確認可
 - HASH_SALT：任意のランダム文字列（何でも良い）
 
-DATABASE_URLは、Supabaseプロジェクトの **Settings > Database > Connection Pooling** からも確認出来ます。※パスワード以外
+DATABASE_URLは、Supabaseプロジェクトの **Settings > Database > Connection Pooling** からも確認できます。※パスワード以外
 
-![SupabaseのSettings](../../../images/supabase07.png "Settingsページ &copy;Supabase")
+![SupabaseのSettings](../../../images/supabase07.png "Settingsページ ©Supabase")
 
 HOSTに関しては、プロジェクトのURLからも確認可能。
 
-![Supabaseのプロジェクトページ](../../../images/supabase08.png "プロジェクトのトップページ &copy;Supabase")
+![Supabaseのプロジェクトページ](../../../images/supabase08.png "プロジェクトのトップページ ©Supabase")
 
 HASH_SALTは、[MD5 Hash Generator](https://www.md5hashgenerator.com/)等で適当に作って入れましょう。
 
@@ -204,11 +204,11 @@ HASH_SALTは、[MD5 Hash Generator](https://www.md5hashgenerator.com/)等で適�
 
 [Vercelのダッシュボード](https://vercel.com/dashboard)へ行き、Umami用に新規プロジェクトを作成します。
 
-![Vercelのダッシュボード](../../../images/vercel-umami01.png "ダッシュボードページ &copy;Vercel")
+![Vercelのダッシュボード](../../../images/vercel-umami01.png "ダッシュボードページ ©Vercel")
 
 GitHubに接続。
 
-![Vercelのプロジェクト作成ページ](../../../images/vercel-umami02.png "GitHubに接続 &copy;Vercel")
+![Vercelのプロジェクト作成ページ](../../../images/vercel-umami02.png "GitHubに接続 ©Vercel")
 
 VercelからGitHubに接続してリポジトリを参照するには、GitHub側でVercelからのアクセス権限を付与する必要があります。
 
@@ -216,25 +216,25 @@ GitHubに接続後に表示される「Adjust GitHub App Permissions →」を�
 
 GitHub側で、Vercelに接続したいリポジトリを選択して、インストール。
 
-![GitHubで権限を追加](../../../images/vercel-umami03.png "GitHubで権限を追加 &copy;Vercel")
+![GitHubで権限を追加](../../../images/vercel-umami03.png "GitHubで権限を追加 ©Vercel")
 
-全てのリポジトリの接続を許可してもいいですが、使いたいリポジトリのみを許可した方が安全です。ここでは「Only Select Repositories」をクリックし、冒頭でフォークして作成した自分のUmamiのリポジトリを選択しています。
+すべてのリポジトリの接続を許可してもいいですが、使いたいリポジトリのみを許可した方が安全です。ここでは「Only Select Repositories」をクリックし、冒頭でフォークして作成した自分のUmamiのリポジトリを選択しています。
 
-VercelからGitHubのリポジトリが参照出来るようになったので、インポート元のGitHubリポジトリを選択。
+VercelからGitHubのリポジトリが参照できるようになったので、インポート元のGitHubリポジトリを選択。
 
-![Vercelのプロジェクト作成ページ](../../../images/vercel-umami04.png "リポジトリをインポート &copy;Vercel")
+![Vercelのプロジェクト作成ページ](../../../images/vercel-umami04.png "リポジトリをインポート ©Vercel")
 
 最終のデプロイ直前の画面で、先ほど準備したDATABASE_URLとHASH_SALTを、「Environment Variables」（環境変数）に入力します。Addボタンを押さないと入力内容が追加されないので注意。
 
-![Vercelのプロジェクト作成の環境変数](../../../images/vercel-umami05.png "環境変数を設定 &copy;Vercel")
+![Vercelのプロジェクト作成の環境変数](../../../images/vercel-umami05.png "環境変数を設定 ©Vercel")
 
 Deployして、おおよそ3分程度待ち、表示が「Ready」になれば完了です。URLも生成されています。
 
-![Vercelのデプロイ完了ページ](../../../images/vercel-umami06.png "デプロイ完了 &copy;Vercel")
+![Vercelのデプロイ完了ページ](../../../images/vercel-umami06.png "デプロイ完了 ©Vercel")
 
 表示されたURLにアクセスすると、Umamiのトップページが見られるようになります。
 
-![Umamiアナリティクスのトップページ](../../../images/umami01.en.png "Umamiアナリティクスのトップページ &copy;Umami")
+![Umamiアナリティクスのトップページ](../../../images/umami01.en.png "Umamiアナリティクスのトップページ ©Umami")
 
 ## Umamiにログイン
 
@@ -247,16 +247,21 @@ Password: umami
 
 この情報でログイン後、アカウントページに行きユーザー名とパスワードを変更しておきましょう。
 
-![Umamiアナリティクスのアカウント変更](../../../images/umami02.ja.png "Umamiのアカウント情報を変更 &copy;Umami")
+![Umamiアナリティクスのアカウント変更](../../../images/umami02.ja.png "Umamiのアカウント情報を変更 ©Umami")
 
 尚、Umami自体は日本語表示も可能です。すごいですね。
 
 ## Umamiのトラッキングコードをウェブサイトに導入
 
-Umamiにログイン出来たら、「設定」からサイトを追加してトラッキングコードを取得します。
+Umamiにログインできたら、「設定」からサイトを追加してトラッキングコードを取得します。
 
 ```html
-<script async defer data-website-id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" src="https://example.vercel.app/umami.js"></script>
+<script
+  async
+  defer
+  data-website-id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  src="https://example.vercel.app/umami.js"
+></script>
 ```
 
 これを運用中のウェブサイトに追加すればOKです。
@@ -268,12 +273,17 @@ Next.jsに埋め込む場合は、`_app.js`に`next/script`を使って埋め込
 <div class="filename">/pages/_app.js</div>
 
 ```js
-import Script from 'next/script'
+import Script from "next/script"
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Script strategy="afterInteractive" data-website-id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" src="https://example.vercel.app/umami.js" data-do-not-track="true" />
+      <Script
+        strategy="afterInteractive"
+        data-website-id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        src="https://example.vercel.app/umami.js"
+        data-do-not-track="true"
+      />
       <Layout>
         <Component {...pageProps} />
       </Layout>
@@ -294,11 +304,11 @@ Umamiは常にアップデートが加えられています。
 
 フォーク元のUmamiでバージョンアップがあると、Umamiの本番画面に「新しいバージョンが利用可能です！」の通知が出ます。
 
-![Umamiアナリティクスの更新通知](../../../images/umami03.ja.png "Umamiの更新通知 &copy;Umami")
+![Umamiアナリティクスの更新通知](../../../images/umami03.ja.png "Umamiの更新通知 ©Umami")
 
 更新の方法は、GitHub上の自分のUmamiレポジトリへ行き、**「Sync fork」→「Update branch」**をクリックすればOKです。これで本家Umamiの内容を自分のUmamiに同期できます。
 
-![Umamiを更新](../../../images/umami04.en.png "GitHubでアップデート &copy;GitHub")
+![Umamiを更新](../../../images/umami04.en.png "GitHubでアップデート ©GitHub")
 
 更新を放置しすぎると、更新内容とのギャップが大きくなり同期に失敗する場合があるので、更新通知が出ていたらなるべく早めに更新しておきましょう。
 
@@ -308,7 +318,7 @@ Umamiは常にアップデートが加えられています。
 
 Settings > Environment Variables
 
-![Vercelで環境変数設定](../../../images/vercel-umami07.png "環境変数の設定画面 &copy;Vercel")
+![Vercelで環境変数設定](../../../images/vercel-umami07.png "環境変数の設定画面 ©Vercel")
 
 <span class="label warning">参考</span> [Environment variables | Umami](https://umami.is/docs/environment-variables)
 
@@ -316,7 +326,7 @@ Settings > Environment Variables
 
 ## 補足3：独自ドメインで運用
 
-URLに独自ドメインを設定することも出来ます。既に運用中のドメインがあれば、そのサブドメインをVercelにホストされているUmamiに充てることも可能です。
+URLに独自ドメインを設定することもできます。既に運用中のドメインがあれば、そのサブドメインをVercelにホストされているUmamiに充てることも可能です。
 
 <!-- Umamiに独自ドメインを設定しよう -->
 
@@ -324,9 +334,9 @@ URLに独自ドメインを設定することも出来ます。既に運用中�
 
 ## 補足4：Supabaseの利用状況
 
-約半年ほどこの方法でUmamiをVercelとSupabaseで動かしていますが、Supabaseのデータは無料の範囲に十分収まっており、問題なく運用出来ています。
+約半年ほどこの方法でUmamiをVercelとSupabaseで動かしていますが、Supabaseのデータは無料の範囲に十分収まっており、問題なく運用できています。
 
-![SupabaseのSettings](../../../images/supabase09.png "Settingsページ &copy;Supabase")
+![SupabaseのSettings](../../../images/supabase09.png "Settingsページ ©Supabase")
 
 余談ですが、以前は[Railway](https://railway.app/)でもSupabaseと同様にUmamiデータを無料の範囲内で運用できていましたが、2022年7月から無料プランの稼働時間が月500時間（または月$5分の早く到達したほう）までに制限され、無料運用ができなくなってしまいました。
 

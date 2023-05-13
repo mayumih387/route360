@@ -9,7 +9,7 @@ draft: false
 
 C'est la méthode que j'ai utilisée pour obtenir une adresse IP pour le système de commentaires ou le formulaire de demande.
 
-Comme Javascript lui-même ne peut pas saisir l'adresse IP du client, nous allons utiliser une API tierce.
+Comme JavaScript lui-même ne peut pas saisir l'adresse IP du client, nous allons utiliser une API tierce.
 
 Les Hooks React à utiliser pour cet exemple sont `useState()` et `useEffect()`.
 
@@ -45,7 +45,7 @@ Si vous n'avez besoin que du format IPv4, vous devriez envisager le plan payant 
 ## Le code
 
 ```js
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 
 export default function GetIP() {
   // Préparer une constante `ip` avec des données vides par défaut
@@ -53,7 +53,7 @@ export default function GetIP() {
 
   const getIp = async () => {
     // Connecter ipapi.co avec fetch()
-    const response = await fetch('https://ipapi.co/json/')
+    const response = await fetch("https://ipapi.co/json/")
     const data = await response.json()
     // Définir l'adresse IP avec la constante `ip`.
     setIp(data.ip)
@@ -64,9 +64,7 @@ export default function GetIP() {
     getIp()
   }, [])
 
-  return (
-    <p>Votre adresse IP est {ip}.</p>
-  )
+  return <p>Votre adresse IP est {ip}.</p>
 }
 ```
 

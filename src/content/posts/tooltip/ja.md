@@ -18,7 +18,7 @@ UI コンポーネントやライブラリ等を使う方が多いかもしれ�
 
 ## ツールチップを表示するためにクリックする要素（ボタン）を作る
 
-ツールチップはコンポーネントとして作るため、コンポーネント用フォルダに Tooltip.js を作成。
+ツールチップはコンポーネントとして作るため、コンポーネント用フォルダーに Tooltip.js を作成。
 
 <div class="filename">/component/Tooltip.js</div>
 
@@ -36,7 +36,7 @@ export default function Tooltip(props) {
 
 今回はクリック可能な要素が必要となるため、`<button>`を使います。
 
-※`<div>`等はクリック可能要素ではなく、アクセシビリティ（利用のしやすさ）の観点から推奨されません。見た目は後で CSS でいくらでも変更出来るので、大人しく`<button>`を使いましょう。
+※`<div>`等はクリック可能要素ではなく、アクセシビリティ（利用のしやすさ）の観点から推奨されません。見た目は後で CSS でいくらでも変更できるので、大人しく`<button>`を使いましょう。
 
 ページ毎でツールチップの中身やボタン名は使う場所で自由に変えられるようにするため、`props`でデータを受け取って自由に表示内容が変えられるようにします。
 
@@ -46,7 +46,7 @@ export default function Tooltip(props) {
 
 今回の[デモ](https://starlit-lollipop-635291.netlify.app/demo/tooltip-demo)は Next.js 上に作っているので、デモページは`/pages/demo/`フォルダー内に作成しています。
 
-Gatsby.js 等の他のライブラリや通常の React アプリの場合は、適宜変更して下さい。
+Gatsby.js 等の他のライブラリや通常の React アプリの場合は、適宜変更してください。
 
 <div class="filename">/pages/demo/tooltip-demo.js</div>
 
@@ -94,7 +94,7 @@ Gatsby.js などの場合、「React をインポートせよ」というエラ�
 import React, { useState } from "react"
 ```
 
-として、React をインポートするようにして下さい。
+として、React をインポートするようにしてください。
 
 試しに`useState`の初期状態を`true`にしたり`false`にしてみたりしてください。ツールチップの表示・非表示が変われば、`useState`の設定は成功です。
 
@@ -131,7 +131,7 @@ export default function Tooltip(props) {
 
 その`tooltipHandler`は、`tooltipIsOpen`が`false`の状態ならば`true`に、`true`の状態なら`false`になるような関数です。
 
-ボタンを何度かクリックして確かめてみて下さい。ツールチップが表示・非表示と繰り返されれば成功です。
+ボタンを何度かクリックして確かめてみてください。ツールチップが表示・非表示と繰り返されれば成功です。
 
 ## ツールチップ表示中に画面上クリックでツールチップを非表示にするハンドラ（関数）を追加する
 
@@ -148,7 +148,7 @@ export default function Tooltip(props) {
   const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
 
   const tooltipHandler = () => {
-    setTooltipIsOpen((prevState) => !prevState)
+    setTooltipIsOpen(prevState => !prevState)
   }
 
   const closeTooltipHandler = () => {
@@ -175,9 +175,9 @@ export default function Tooltip(props) {
 
 ## CSS で見栄えを整える
 
-今回は CSS モジュールでスタイルを整えます。便宜的に同じ component フォルダに入れましたが、styles フォルダがあればそちらに入れても良しです。
+今回は CSS モジュールでスタイルを整えます。便宜的に同じ component フォルダーに入れましたが、styles フォルダがあればそちらに入れても良しです。
 
-以下のスタイリングは最低限の内容の例なので、適宜アレンジして下さい。
+以下のスタイリングは最低限の内容の例なので、適宜アレンジしてください。
 
 ```css
 /* /component/Tooltip.module.css */
@@ -225,7 +225,7 @@ export default function Tooltip(props) {
 
 ## コードまとめ
 
-※CSS（Tooltip.module.css）は先ほどの内容を参照下さい。
+※CSS（Tooltip.module.css）は先ほどの内容を参照ください。
 
 <div class="filename">/component/Tooltip.js</div>
 
@@ -237,7 +237,7 @@ export default function Tooltip(props) {
   const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
 
   const tooltipHandler = () => {
-    setTooltipIsOpen((prevState) => !prevState)
+    setTooltipIsOpen(prevState => !prevState)
   }
   const closeTooltipHandler = () => {
     setTooltipIsOpen(false)

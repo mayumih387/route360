@@ -9,7 +9,7 @@ draft: false
 
 問い合わせフォームやコメント欄のいたずら防止用としてIPアドレスを取得する必要があったために、実施した方法です。
 
-Javascriptは単体では閲覧者のIPアドレスを取得できないため、外部APIを利用します。
+JavaScriptは単体では閲覧者のIPアドレスを取得できないため、外部APIを利用します。
 
 今回利用するReact Hookは`useState()`と`useEffect()`です。
 
@@ -27,7 +27,7 @@ https://ipapi.co/
 
 [ipinfo.io](https://ipinfo.io/)も試してみましたが、Adblockがあると上手く動きませんでした。登録が必要な分、機能は多いです。また、ipinfo.ioは退会の際にサポートにわざわざメールで連絡する必要がありますので、「ちょっと試したいだけ」には少々面倒です。
 
-他にもいくつかIPアドレスを取得出来る無料のAPIサービスはあります。基本的にコードは同じ（多少、IP取得のためのオブジェクトは代わる）なので、アレンジしてみて下さい。
+他にもいくつかIPアドレスを取得できる無料のAPIサービスはあります。基本的にコードは同じ（多少、IP取得のためのオブジェクトは代わる）なので、アレンジしてみてください。
 
 私のオススメは[Abstract API](https://www.abstractapi.com/)による「IP Geolocation API」です。利用に登録が必要で、月20,000リクエストまでが無料です。Adblockによる不具合もなく、以下に追記したipapi.coようなIPv6での返答も（恐らく）ありません。
 
@@ -42,7 +42,7 @@ IPv4形式のみで利用したい場合は、ipapi.coでは有料プランの�
 ## コード
 
 ```js
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 
 export default function GetIP() {
   // 初期状態は空の定数`ip`を用意
@@ -50,7 +50,7 @@ export default function GetIP() {
 
   const getIp = async () => {
     // fetchを使ってipapi.coに接続
-    const response = await fetch('https://ipapi.co/json/')
+    const response = await fetch("https://ipapi.co/json/")
     const data = await response.json()
     // 取得したIPアドレスを、定数`ip`にセット
     setIp(data.ip)
@@ -61,9 +61,7 @@ export default function GetIP() {
     getIp()
   }, [])
 
-  return (
-    <p>あなたのIPアドレスは{ip}です。</p>
-  )
+  return <p>あなたのIPアドレスは{ip}です。</p>
 }
 ```
 
@@ -105,6 +103,6 @@ export default function GetIP() {
 }
 ```
 
-IPアドレスだけでなく、国名や経度緯度、タイムゾーンや、更にはユーロ圏であるかどうかも取得出来るので、様々な用途に使えそうです。
+IPアドレスだけでなく、国名や経度緯度、タイムゾーンや、さらにはユーロ圏であるかどうかも取得できるので、さまざまな用途に使えそうです。
 
 このあたりはReactの基礎の部分なので、よい練習になります。とは言え、ここに来た方々はコピペで終わりでしょうね😂

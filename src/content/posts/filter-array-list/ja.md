@@ -9,7 +9,7 @@ draft: false
 
 EC・ショッピングアプリなどで、グループや種類による複数条件での絞り込みをReactで行う方法です。
 
-今回は例として、プロダクト毎にタグをつけ、タグで絞り込みが出来るようにします。
+今回は例として、プロダクト毎にタグをつけ、タグで絞り込みができるようにします。
 
 - [デモ](https://starlit-lollipop-635291.netlify.app/demo/filter-demo)
 - [コード（GitHub）](https://github.com/mayumih387/demo-nextjs/blob/main/pages/demo/filter-demo.js)
@@ -29,87 +29,87 @@ EC・ショッピングアプリなどで、グループや種類による複数
 const DATA = [
   {
     id: 1,
-    title: 'Enjoy studying English',
+    title: "Enjoy studying English",
     tags: [
       {
-        id: 'tag1',
-        title: 'English',
-        slug: 'english',
+        id: "tag1",
+        title: "English",
+        slug: "english",
       },
       {
-        id: 'tag2',
-        title: 'For kids',
-        slug: 'kids',
+        id: "tag2",
+        title: "For kids",
+        slug: "kids",
       },
     ],
   },
   {
     id: 2,
-    title: 'Parlons français',
+    title: "Parlons français",
     tags: [
       {
-        id: 'tag3',
-        title: 'French',
-        slug: 'french',
+        id: "tag3",
+        title: "French",
+        slug: "french",
       },
-      { id: 'tag2', title: 'Kids', slug: 'kids' },
+      { id: "tag2", title: "Kids", slug: "kids" },
     ],
   },
   {
     id: 3,
-    title: 'Intermediate English',
+    title: "Intermediate English",
     tags: [
       {
-        id: 'tag1',
-        title: 'English',
-        slug: 'english',
+        id: "tag1",
+        title: "English",
+        slug: "english",
       },
       {
-        id: 'tag4',
-        title: 'Adults',
-        slug: 'adults',
+        id: "tag4",
+        title: "Adults",
+        slug: "adults",
       },
     ],
   },
   {
     id: 4,
-    title: 'How to study French',
+    title: "How to study French",
     tags: [
       {
-        id: 'tag3',
-        title: 'French',
-        slug: 'french',
+        id: "tag3",
+        title: "French",
+        slug: "french",
       },
       {
-        id: 'tag4',
-        title: 'Adults',
-        slug: 'adults',
+        id: "tag4",
+        title: "Adults",
+        slug: "adults",
       },
     ],
   },
 ]
 ```
 
-今回は上記のようにハードコーディングしていますが、通常の現場ではNext.jsやGatsby.js等により全てのアイテムを`map()`で展開するパターンとなると思います。
+今回は上記のようにハードコーディングしていますが、通常の現場ではNext.jsやGatsby.js等によりすべてのアイテムを`map()`で展開するパターンとなると思います。
 
 この`const DATA`は後ほど`return`内で`map()`展開するため、`key`指定のための`id`を設定しています。
 
 ## 絞り込みフィルターを通したリストを生成
 
-用意した`const DATA`をそのまま表示しても絞り込みは出来ないため、フィルターを通した「整形可能な配列データ」に変換させます。
+用意した`const DATA`をそのまま表示しても絞り込みはできないため、フィルターを通した「整形可能な配列データ」に変換させます。
 
 今回はタグを利用して絞り込みをするため、"ユーザーによって選択されたタグ"を含むアイテムのみ展開するようにします。
 
 ```js
-  const [filterTags, setFilterTags] = useState([])
+const [filterTags, setFilterTags] = useState([])
 
-  const filteredDATA = DATA.filter((node) =>
-    filterTags.length > 0
-      ? filterTags.every((filterTag) =>
-          node.tags.map((tag) => tag.slug).includes(filterTag)
-        )
-      : DATA
-  )
+const filteredDATA = DATA.filter(node =>
+  filterTags.length > 0
+    ? filterTags.every(filterTag =>
+        node.tags.map(tag => tag.slug).includes(filterTag)
+      )
+    : DATA
+)
 ```
 
 何かしらのタグが選択されている場合（= `filterTags.length > 0`）では、選択されているタグが含まれるアイテムのみをフィルタリング。タグが一切選択されていない時は、初期状態である`DATA`を返します。
@@ -138,7 +138,7 @@ return(
 )
 ```
 
-この時点ではまだ絞り込み用のチェックボックスはなく、絞り込みは出来ません。
+この時点ではまだ絞り込み用のチェックボックスはなく、絞り込みはできません。
 
 次に絞り込み用のチェックボックスを作ります。
 
@@ -157,59 +157,57 @@ return (
           value="english"
           id="english"
         />
-          <span>English</span>
-        </label>
-        <label htmlFor="french">
-          <input
-            type="checkbox"
-            onChange={filterHandler}
-            value="french"
-            id="french"
-          />
-          <span>French</span>
-        </label>
-        <label htmlFor="kids">
-          <input
-            type="checkbox"
-            onChange={filterHandler}
-            value="kids"
-            id="kids"
-          />
-          <span>Kids</span>
-        </label>
-        <label htmlFor="adults">
-          <input
-            type="checkbox"
-            onChange={filterHandler}
-            value="adults"
-            id="adults"
-          />
-          <span>Adults</span>
-        </label>
-      </div>
-      
-      <div>
-        <ul>
-         {/* ... */}
-        </ul>
-      </div>
-    </>
-  )
-```
-    
-ここでもハードコーディングしていますが、実際の現場ではやはりタグを`map()`で展開することになると思います。生成方法は適宜アレンジして下さい。
+        <span>English</span>
+      </label>
+      <label htmlFor="french">
+        <input
+          type="checkbox"
+          onChange={filterHandler}
+          value="french"
+          id="french"
+        />
+        <span>French</span>
+      </label>
+      <label htmlFor="kids">
+        <input
+          type="checkbox"
+          onChange={filterHandler}
+          value="kids"
+          id="kids"
+        />
+        <span>Kids</span>
+      </label>
+      <label htmlFor="adults">
+        <input
+          type="checkbox"
+          onChange={filterHandler}
+          value="adults"
+          id="adults"
+        />
+        <span>Adults</span>
+      </label>
+    </div>
 
-それぞれの`input`タグにおいて、チェックが入った時・外れた時に発火するハンドラー（ここでは`filterHandler`という関数名で作成）を設定します。ハンドラーは全て共通です。このハンドラーによって、`filterTags`（チェック済みタグのリスト）を逐次書き換えます。
+    <div>
+      <ul>{/* ... */}</ul>
+    </div>
+  </>
+)
+```
+
+ここでもハードコーディングしていますが、実際の現場ではやはりタグを`map()`で展開することになると思います。生成方法は適宜アレンジしてください。
+
+それぞれの`input`タグにおいて、チェックが入った時・外れた時に発火するハンドラー（ここでは`filterHandler`という関数名で作成）を設定します。ハンドラーはすべて共通です。このハンドラーによって、`filterTags`（チェック済みタグのリスト）を逐次書き換えます。
 
 ハンドラ自体は以下のようにしました。
 
 ```js
-const filterHandler = (event) => {
+const filterHandler = event => {
   if (event.target.checked) {
     setFilterTags([...filterTags, event.target.value])
   } else {
     setFilterTags(
-      filterTags.filter((filterTag) => filterTag !== event.target.value)
+      filterTags.filter(filterTag => filterTag !== event.target.value)
     )
   }
 }
@@ -219,70 +217,70 @@ const filterHandler = (event) => {
 
 ## コードまとめ
 
-全てのコードをまとめると、以下の通りになります。
+すべてのコードをまとめると、以下の通りになります。
 
 ```js
-import { useState } from 'react'
+import { useState } from "react"
 
 export default function Filter() {
   const DATA = [
     {
       id: 1,
-      title: 'Enjoy studying English',
+      title: "Enjoy studying English",
       tags: [
         {
-          id: 'tag1',
-          title: 'English',
-          slug: 'english',
+          id: "tag1",
+          title: "English",
+          slug: "english",
         },
         {
-          id: 'tag2',
-          title: 'For kids',
-          slug: 'kids',
+          id: "tag2",
+          title: "For kids",
+          slug: "kids",
         },
       ],
     },
     {
       id: 2,
-      title: 'Parlons français',
+      title: "Parlons français",
       tags: [
         {
-          id: 'tag3',
-          title: 'French',
-          slug: 'french',
+          id: "tag3",
+          title: "French",
+          slug: "french",
         },
-        { id: 'tag2', title: 'Kids', slug: 'kids' },
+        { id: "tag2", title: "Kids", slug: "kids" },
       ],
     },
     {
       id: 3,
-      title: 'Intermediate English',
+      title: "Intermediate English",
       tags: [
         {
-          id: 'tag1',
-          title: 'English',
-          slug: 'english',
+          id: "tag1",
+          title: "English",
+          slug: "english",
         },
         {
-          id: 'tag4',
-          title: 'Adults',
-          slug: 'adults',
+          id: "tag4",
+          title: "Adults",
+          slug: "adults",
         },
       ],
     },
     {
       id: 4,
-      title: 'How to study French',
+      title: "How to study French",
       tags: [
         {
-          id: 'tag3',
-          title: 'French',
-          slug: 'french',
+          id: "tag3",
+          title: "French",
+          slug: "french",
         },
         {
-          id: 'tag4',
-          title: 'Adults',
-          slug: 'adults',
+          id: "tag4",
+          title: "Adults",
+          slug: "adults",
         },
       ],
     },
@@ -290,20 +288,20 @@ export default function Filter() {
 
   const [filterTags, setFilterTags] = useState([])
 
-  const filteredDATA = DATA.filter((node) =>
+  const filteredDATA = DATA.filter(node =>
     filterTags.length > 0
-      ? filterTags.every((filterTag) =>
-          node.tags.map((tag) => tag.slug).includes(filterTag)
+      ? filterTags.every(filterTag =>
+          node.tags.map(tag => tag.slug).includes(filterTag)
         )
       : DATA
   )
 
-  const filterHandler = (event) => {
+  const filterHandler = event => {
     if (event.target.checked) {
       setFilterTags([...filterTags, event.target.value])
     } else {
       setFilterTags(
-        filterTags.filter((filterTag) => filterTag !== event.target.value)
+        filterTags.filter(filterTag => filterTag !== event.target.value)
       )
     }
   }
@@ -349,7 +347,7 @@ export default function Filter() {
         </label>
       </div>
       <ul>
-        {filteredDATA.map((node) => (
+        {filteredDATA.map(node => (
           <li key={node.id}>{node.title}</li>
         ))}
       </ul>

@@ -27,10 +27,10 @@ draft: true
 ほぼ何もないHTMLファイルを作成。なんなら空でもいいです。
 
 ```html
-<!Doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-  <title>TEST</title>
+    <title>TEST</title>
   </head>
   <body>
     ここにコンテンツを記入。
@@ -40,7 +40,7 @@ draft: true
 
 `<body>`タグ内に、埋め込みたいインスタグラム投稿の埋め込みコードをコピペします。
 
-***
+---
 
 補足📖：埋め込みコードはスクリプトのsrcが、
 
@@ -52,11 +52,11 @@ draft: true
 
 と修正します。（補足終わり）
 
-***
+---
 
 htmlファイルをブラウザで開き、F12を押して出力を確認。iframe部分をコピー。
 
-![インスタグラムの画面](../../../images/instagram02.png "&copy;instagram/gatsbyjs")
+![インスタグラムの画面](../../../images/instagram02.png "©instagram/gatsbyjs")
 
 コピーした内容を、Markdownファイルにペーストすれば完成です。↓こんな感じで埋め込めます。
 
@@ -82,8 +82,8 @@ Next.jsであれば`_app.js`、Gatsby.jsであれば`gatsby-ssr.js`に、イン�
 <div class="filename">/pages/_app.js</div>
 
 ```js
-import 'styles/globals.css'
-import Layout from 'components/layout'
+import "styles/globals.css"
+import Layout from "components/layout"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -110,9 +110,7 @@ const HeadComponents = [
   <script async src="https://www.instagram.com/embed.js" key="instagram" />,
 ]
 
-exports.onRenderBody = ({
-  setHeadComponents,
-}) => {
+exports.onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents(HeadComponents)
 }
 ```
@@ -125,18 +123,21 @@ exports.onRenderBody = ({
 
 インスタグラムの通常の埋め込みコードは、htmlとして出力されるとiframeに変換されています。
 
-以下のコードをコピペし、`[postID]`を、埋め込みたい投稿のIDに入れ替えます。スタイルは適宜調整して下さい（以下のスタイルは、インスタグラム埋め込みコードが勝手に生成する内容）。
+以下のコードをコピペし、`[postID]`を、埋め込みたい投稿のIDに入れ替えます。スタイルは適宜調整してください（以下のスタイルは、インスタグラム埋め込みコードが勝手に生成する内容）。
 
 ```html
-<iframe src="https://www.instagram.com/reel/[postID]/embed/" style=" background: white; max-width: 540px; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"></iframe>
+<iframe
+  src="https://www.instagram.com/reel/[postID]/embed/"
+  style=" background: white; max-width: 540px; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"
+></iframe>
 ```
 
-埋め込みたい投稿のIDは、当該の投稿のURLから確認出来ます。
+埋め込みたい投稿のIDは、当該の投稿のURLから確認できます。
 
-![インスタグラムの画面](../../../images/instagram01.png "&copy;instagram/gatsbyjs")
+![インスタグラムの画面](../../../images/instagram01.png "©instagram/gatsbyjs")
 
 ## 余談（Twitterの場合）
 
-同様の方法で、Twitterの投稿も埋め込みが出来るようになります。
+同様の方法で、Twitterの投稿も埋め込みができるようになります。
 
 Twitterに関しては、Gatsby.jsの場合は公式プラグイン（[gatsby-plugin-twitter](https://www.gatsbyjs.com/plugins/gatsby-plugin-twitter/)）が用意されています。プラグインを使えばTwitterを埋め込んでいないページではスクリプトは読み込まれないため、より効率的です。

@@ -26,29 +26,31 @@ draft: false
 
 ## カテゴリー用jsonファイルを作る
 
-今回、カテゴリーはjsonファイルで管理します。ファイルは`src`フォルダ下に`data`フォルダを作り、その中に入れています。
+今回、カテゴリーはjsonファイルで管理します。ファイルは`src`フォルダー下に`data`フォルダーを作り、その中に入れています。
 
 ※jsファイルでも可。その場合はgatsby-transformer-jsonは不要。
 
 <div class="filename">/src/data/category.json</div>
 
 ```js
-[
+;[
   {
-    "title": "コメディー",
-    "slug": "comedy",
-    "description": "コメディー映画の記事一覧です。コメディーと言えば私の中では三谷幸喜「ラヂオの時間」、当時映画館で爆笑しながら見ました。"
+    title: "コメディー",
+    slug: "comedy",
+    description:
+      "コメディー映画の記事一覧です。コメディーと言えば私の中では三谷幸喜「ラヂオの時間」、当時映画館で爆笑しながら見ました。",
   },
   {
-    "title": "ホラー",
-    "slug": "horror",
-    "description": "ホラー映画の記事一覧です。現実の私はホラー映画は見ませんが。"
+    title: "ホラー",
+    slug: "horror",
+    description: "ホラー映画の記事一覧です。現実の私はホラー映画は見ませんが。",
   },
   {
-    "title": "加山雄三",
-    "slug": "kayamayuzo",
-    "description": "加山雄三さん出演の映画一覧です。永遠の若大将、これからも元気でいてほしいです！"
-  }
+    title: "加山雄三",
+    slug: "kayamayuzo",
+    description:
+      "加山雄三さん出演の映画一覧です。永遠の若大将、これからも元気でいてほしいです！",
+  },
 ]
 ```
 
@@ -88,13 +90,13 @@ npm install gatsby-transformer-json
 yarn add gatsby-transformer-json
 ```
 
-更に、`gatsby-config.js`にプラグインの追加と、`gatsby-source-filesystem`でjsonファイルのディレクトリを追加しておきます。
+さらに、`gatsby-config.js`にプラグインの追加と、`gatsby-source-filesystem`でjsonファイルのディレクトリを追加しておきます。
 
 <div class="filename">/gatsby-config.json</div>
 
 ```js
 module.exports = {
-　//...
+  //...
 
   plugins: [
     //...
@@ -106,17 +108,17 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
-  ]
+  ],
 }
 ```
 
-これで、カテゴリーデータのクエリ`CategoryJson`を、GraphQLで取得出来るようになります。
+これで、カテゴリーデータのクエリ`CategoryJson`を、GraphQLで取得できるようになります。
 
 ## Frontmatterのカテゴリーslugと、CategoryJsonのデータを紐付ける
 
 この時点ではまだ、Frontmatterで記事に追加したカテゴリーと、`CategoryJson`のデータは紐付いていません。紐付けに使えるのは、`CategoryJson`の`slug`ですね。
 
-Frontmatterのカテゴリーに指定された文字列と一致する`CategoryJson`の`slug`を紐付けて、Frontmatterのカテゴリーからカテゴリーのタイトルなどを取得出来るようにします。
+Frontmatterのカテゴリーに指定された文字列と一致する`CategoryJson`の`slug`を紐付けて、Frontmatterのカテゴリーからカテゴリーのタイトルなどを取得できるようにします。
 
 `gatsby-node.js`にコードを追加。
 
@@ -177,7 +179,7 @@ query MyQuery {
 
 ポイントは、クエリ取得に`categoryJson`は使わない点。
 
-というのは、`category.json`の中に用意されたカテゴリーが全て、必ずしも記事で使われているかはわからないためです。使っていないカテゴリーがある場合、そのカテゴリーページのパスが生成されても困りますよね。
+というのは、`category.json`の中に用意されたカテゴリーがすべて、必ずしも記事で使われているかはわからないためです。使っていないカテゴリーがある場合、そのカテゴリーページのパスが生成されても困りますよね。
 
 そのため、ここでは`allMarkdownRemark`から、カテゴリーのグループを利用します。GatsbyのGraphQLは、これがあるから便利なんですよね～😺
 
@@ -220,37 +222,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 <div class="filename">/gatsby-node.js</div>
 
 ```js
-  // 上記コードの続き
+// 上記コードの続き
 
-  const catPostPerPage = 10 // 1ページあたりの記事数
-  blogresult.data.allMarkdownRemark.group.forEach((node) => {
-    const catPosts = node.totalCount
-    const catPages = Math.ceil(catPosts / catPostPerPage)
-    Array.from({ length: catPages }).forEach((_, i) => {
-      createPage({
-        path:
-          i === 0
-            ? `/category/${node.fieldValue}` // 最初のページ
-            : `/category/${node.fieldValue}/page/${i + 1}`, // 2ページ目以降
-        component: path.resolve(`./src/templates/cat-template.js`), // テンプレート指定
-        context: {
-          cat_slug: node.fieldValue, // カテゴリースラッグをテンプレートに送る
-          skip: catPostPerPage * i,
-          limit: catPostPerPage,
-        },
-      })
+const catPostPerPage = 10 // 1ページあたりの記事数
+blogresult.data.allMarkdownRemark.group.forEach(node => {
+  const catPosts = node.totalCount
+  const catPages = Math.ceil(catPosts / catPostPerPage)
+  Array.from({ length: catPages }).forEach((_, i) => {
+    createPage({
+      path:
+        i === 0
+          ? `/category/${node.fieldValue}` // 最初のページ
+          : `/category/${node.fieldValue}/page/${i + 1}`, // 2ページ目以降
+      component: path.resolve(`./src/templates/cat-template.js`), // テンプレート指定
+      context: {
+        cat_slug: node.fieldValue, // カテゴリースラッグをテンプレートに送る
+        skip: catPostPerPage * i,
+        limit: catPostPerPage,
+      },
     })
   })
+})
 ```
 
-ここで一旦、ローカルでGatsby.jsを立ち上げて、ブラウザ上で404ページ（存在しないページ）を表示してみましょう。生成されたパスが確認できるはずです。
+ここでいったん、ローカルでGatsby.jsを立ち上げて、ブラウザ上で404ページ（存在しないページ）を表示してみましょう。生成されたパスが確認できるはずです。
 
 ## カテゴリーテンプレートを編集
 
-カテゴリーページのテンプレートでは、GraphQLから二つの階層を利用します。
+カテゴリーページのテンプレートでは、GraphQLから2つの階層を利用します。
 
 - カテゴリー情報である`categoryJson` → カテゴリーのタイトルやディスクリプション
-- 全記事`allMarkdownRemark` → そのカテゴリーに属する記事全て
+- 全記事`allMarkdownRemark` → そのカテゴリーに属する記事すべて
 
 `gatsby-node.js`でのカテゴリーページ生成時に、コンテキストとして`cat_slug`を作りました。その`cat_slug`を使い、表示するカテゴリーや記事一覧の絞り込みをします。
 
@@ -263,9 +265,7 @@ export const query = graphql`
   query ($cat_slug: String!, $skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       filter: {
-        frontmatter: {
-          category: { elemMatch: { slug: { eq: $cat_slug } } }
-        }
+        frontmatter: { category: { elemMatch: { slug: { eq: $cat_slug } } } }
       }
     ) {
       nodes {
