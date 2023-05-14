@@ -249,3 +249,16 @@ details[open] .tocBtn {
 :global(.twitter-tweet) {
   margin-top: var(--stack-space, 1.5em) !important;
 }
+
+/* Prism.js */
+:global(.entry-dir)::before {
+  content: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMgMTdWN2MwLTEuMS45LTIgMi0yaDQuNmMuMyAwIC41LjEuNy4zTDEyIDdoN2EyIDIgMCAwIDEgMiAydjhhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJaIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+");
+  display: inline-block;
+  width: 1em;
+  margin-right: 5px;
+  vertical-align: middle;
+  line-height: 0;
+}
+:global(.entry-line) {
+  opacity: 0.5;
+}
