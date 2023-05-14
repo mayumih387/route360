@@ -2,12 +2,14 @@ import React, { useState, useContext } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import ThemeContext from "../context/ThemeContext"
 
+import { langName } from "../../data/i18n"
 import * as classes from "../styles/header.module.css"
 
 const Header = ({
   currentLang = "en",
   availLangs = ["en", "fr", "ja"],
   pagePath = "",
+  pageLayout = "",
 }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -27,18 +29,21 @@ const Header = ({
     setShowLangSelector(prevState => !prevState)
   }
 
-  const langName = {
-    en: "English",
-    fr: "français",
-    ja: "日本語",
-  }
-
   return (
     <header>
       <div className={classes.headerContainer}>
-        <Link to={`/${currentLang}/`} className={classes.logo}>
-          {data.site.siteMetadata.title}
-        </Link>
+        {pageLayout === "post" && (
+          <Link to={`/${currentLang}/`} className={classes.logoLink}>
+            {data.site.siteMetadata.title}
+          </Link>
+        )}
+        {pageLayout === "archive" && (
+          <h1 className={classes.logoHeading}>
+            <Link to={`/${currentLang}/`} className={classes.logoLink}>
+              {data.site.siteMetadata.title}
+            </Link>
+          </h1>
+        )}
         <nav className={classes.nav}>
           <button
             type="button"

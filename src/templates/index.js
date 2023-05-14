@@ -18,6 +18,7 @@ const IndexPage = ({ data, pageContext }) => {
       pagePath={
         pageContext.currentPage > 1 ? `page/${pageContext.currentPage}/` : ``
       }
+      pageLayout="archive"
     >
       <Author currentLang={currentLang} />
       <div className={classes.postsContainer}>

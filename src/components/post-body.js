@@ -1,15 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { tocTitle } from "../../data/i18n"
 import * as classes from "../styles/post-body.module.css"
 
 const PostBody = ({ markdownRemark, currentLang = "en" }) => {
-  const tocTitle = {
-    en: "Table of Contents",
-    fr: "Table des matières",
-    ja: "目次",
-  }
-
   return (
     <article>
       <header className={classes.header}>

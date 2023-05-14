@@ -16,6 +16,7 @@ const TagPage = ({ data, pageContext }) => {
     <Layout
       currentLang={pageContext.language}
       pagePath={`tag/${pageContext.slug}/`}
+      pageLayout="archive"
     >
       <Author currentLang={currentLang} />
       <div className={classes.postsContainer}>

@@ -20,6 +20,7 @@ const SinglePost = ({ data, pageContext }) => {
       currentLang={currentLang}
       availLangs={availLangs}
       pagePath={`post/${pageContext.slug}`}
+      pageLayout="post"
     >
       <PostBody
         markdownRemark={data.markdownRemark}

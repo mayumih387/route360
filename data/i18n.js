@@ -39,3 +39,15 @@ export const languageMap = {
   fr: "fr",
   en: "en",
 }
+
+export const tocTitle = {
+  en: "Table of Contents",
+  fr: "Table des matières",
+  ja: "目次",
+}
+
+export const langName = {
+  en: "English",
+  fr: "français",
+  ja: "日本語",
+}
