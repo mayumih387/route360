@@ -8,7 +8,7 @@ lastmod: 2023-02-15T07:31:59.925Z
 draft: false
 ---
 
-Integration of a search system to an Astro website is a bit troubling. 
+Integration of a search system to an Astro website is a bit troubling.
 
 Astro doesn't provide any search system plugin now, as Gatsby.js does.
 
@@ -47,14 +47,13 @@ On Jan. 11th, 2023, Meilisearch pre-released v1.0.0-RC. (I haven't tried it in t
 
 In this example, the Astro project structure is as follows;
 
-```text
-├ src/
-│  ├ pages/
-│  │  └ ...
-│  └ posts/
-│    ├ first-post.md
-│    ├ second-post.md 
-│    └ ...
+```tree
+src/
+└─ pages/
+     └─ posts/
+          ├─ first-post.md
+          ├─ second-post.md
+          └─ ...
 ```
 
 Also, the post Markdown YAML frontmatter is as follows;
@@ -78,7 +77,7 @@ The free plan includes 100,000 documents and 10,000 searches/per month. Enough f
 
 Start it on their [register page](https://cloud.meilisearch.com/register).
 
-![Register page of Meilisearch](../../../images/meilisearch01.png '&copy; Meilisearch')
+![Register page of Meilisearch](../../../images/meilisearch01.png "© Meilisearch")
 
 Confirm e-mail from Meilisearch.
 
@@ -86,11 +85,11 @@ Confirm e-mail from Meilisearch.
 
 Press "New Project" on Meilisearch Cloud after logging in, and start to create a new project.
 
-![Meilisearch dashboard](../../../images/meilisearch02.png '&copy; Meilisearch')
+![Meilisearch dashboard](../../../images/meilisearch02.png "© Meilisearch")
 
 Choose the closest region from the "Select a region" and "Build $0 / month" plan.
 
-![Meilisearch project creation](../../../images/meilisearch03.png '&copy; Meilisearch')
+![Meilisearch project creation](../../../images/meilisearch03.png "© Meilisearch")
 
 Then, press "Create" - it's ready!
 
@@ -129,17 +128,16 @@ Next, create a .js file to build and send a dataset (documents) to Meilisearch C
 - `meilisearch.js` under the `lib` directory (file name and directory are up to you)
 - `.env` under the project root
 
-```text
-├ src/
-├  ├ pages/
-├  │  └ ...
-├  ├ posts/
-├  │  ├ first-post.md
-├  │  ├ second-post.md 
-├  │  └ ...
-├  └ lib/
-├    └ meilisearch.js <--this and
-├ .env <--this
+```tree
+src/
+├─ pages/
+│    ├─ posts/
+│    │    ├─ first-post.md
+│    │    ├─ second-post.md
+│    │    └─ ...
+│    └─ lib/
+│         └─ meilisearch.js <-- this and
+├─ .env <-- this
 ```
 
 ### Edit .env file
@@ -156,7 +154,7 @@ MEILISEARCH_MASTER_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 You can find the host and keys on Meilisearch Cloud by clicking "Build" of the project.
 
-![Project settings of Meilisearch](../../../images/meilisearch04.png '&copy; Meilisearch')
+![Project settings of Meilisearch](../../../images/meilisearch04.png "© Meilisearch")
 
 ### Create meilisearch.js
 
@@ -167,16 +165,14 @@ Next, create a javascript file to send index documents to Meilisearch Cloud.
 The base code to send a dataset to Meilisearch Cloud would be as follows;
 
 ```js
-import { MeiliSearch } from 'meilisearch'
+import { MeiliSearch } from "meilisearch"
 const client = new MeiliSearch({
-  host: 'HOST URL',
-  apiKey: 'API KEY',
+  host: "HOST URL",
+  apiKey: "API KEY",
 })
 
-client
-  .index('INDEX NAME')
-  .addDocuments('JSON DATA')
-  // .then((res) => console.log(res))
+client.index("INDEX NAME").addDocuments("JSON DATA")
+// .then((res) => console.log(res))
 ```
 
 We need to collect data from all the posts and provide it as "JSON DATA" to Meilisearch Cloud.
@@ -188,7 +184,7 @@ At the top of `meilisearch.js`, enable dotenv.
 <div class="filename">src/lib/meilisearch.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
 // to be continued
@@ -203,7 +199,7 @@ Then, add the base code; I named the index "posts" (it's up to you).
 ```js
 // continued
 
-import { MeiliSearch } from 'meilisearch'
+import { MeiliSearch } from "meilisearch"
 const client = new MeiliSearch({
   host: process.env.PUBLIC_MEILISEARCH_HOST,
   apiKey: process.env.MEILISEARCH_MASTER_KEY,
@@ -213,9 +209,9 @@ const client = new MeiliSearch({
 
 // 2. Send the dataset in JSON format
 client
-  .index('posts')
-  .addDocuments('JSON DATA')
-  .then((res) => console.log(res)) //show the result
+  .index("posts")
+  .addDocuments("JSON DATA")
+  .then(res => console.log(res)) //show the result
 ```
 
 #### Build a dataset for the search
@@ -231,15 +227,15 @@ To remove markdown tags, I use [remove-markdown](https://www.npmjs.com/package/r
 ```js
 // continued
 // 1. Build a dataset
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       id: frontmatter.slug,
@@ -271,9 +267,9 @@ Format the dataset `data` as JSON format and put it in `addDocuments()`.
 // continued
 // 2. Send the dataset in JSON format
 client
-  .index('posts')
+  .index("posts")
   .addDocuments(JSON.parse(JSON.stringify(data))) //<--this
-  .then((res) => console.log(res)) //show the result
+  .then(res => console.log(res)) //show the result
 ```
 
 #### The whole code of meilisearch.js
@@ -281,25 +277,25 @@ client
 <div class="filename">src/lib/meilisearch.js</div>
 
 ```js
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 
-import { MeiliSearch } from 'meilisearch'
+import { MeiliSearch } from "meilisearch"
 const client = new MeiliSearch({
   host: process.env.MEILISEARCH_HOST,
   apiKey: process.env.MEILISEARCH_MASTER_KEY,
 })
 
 // 1. Build a dataset
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 import removeMd from "remove-markdown"
 
-const filenames = fs.readdirSync(path.join('./src/posts'))
-const data = filenames.map((filename) => {
+const filenames = fs.readdirSync(path.join("./src/posts"))
+const data = filenames.map(filename => {
   try {
-    const markdownWithMeta = fs.readFileSync('./src/posts/' + filename)
+    const markdownWithMeta = fs.readFileSync("./src/posts/" + filename)
     const { data: frontmatter, content } = matter(markdownWithMeta)
     return {
       id: frontmatter.slug,
@@ -313,9 +309,9 @@ const data = filenames.map((filename) => {
 
 // 2. Send the dataset in JSON format
 client
-  .index('posts')
+  .index("posts")
   .addDocuments(JSON.parse(JSON.stringify(data)))
-  .then((res) => console.log(res)) //show the result
+  .then(res => console.log(res)) //show the result
 ```
 
 Now, `meilisearch.js` is done!
@@ -324,7 +320,7 @@ Now, `meilisearch.js` is done!
 
 Once `meilisearch.js` is ready, execute it with Node.
 
-At the root of the Astro project, run the following code. *If you put the file under another directory, run that file.
+At the root of the Astro project, run the following code. \*If you put the file under another directory, run that file.
 
 <div class="filename">bash</div>
 
@@ -348,7 +344,7 @@ EnqueuedTask {
 
 Then, go to Meilisearch Cloud and see the index. Yes, the dataset (of documents) has been indexed.🙂
 
-![Indexed data on Meilisearch](../../../images/meilisearch05.png '&copy; Meilisearch')
+![Indexed data on Meilisearch](../../../images/meilisearch05.png "© Meilisearch")
 
 ## Create a component for the search box and search result
 
@@ -356,19 +352,18 @@ Finally, let's display a search box and the search result.
 
 Create a component file named `Search.astro` (the name is up to you) under the `components` directory.
 
-```text
-├ src/
-│  ├ components/
-│  │  └ Search.astro <--this
-│  ├ pages/
-│  │  └ ...
-│  ├ posts/
-│  │  ├ first-post.md
-│  │  ├ second-post.md 
-│  │  └ ...
-│  └ lib/
-│    └ meilisearch.js
-├ .env
+```tree
+src/
+├─ components/
+│    └─ Search.astro <-- this
+├─ pages/
+│    ├─ posts/
+│    │    ├─ first-post.md
+│    │    ├─ second-post.md
+│    │    └─ ...
+│    └─ lib/
+│         └─ meilisearch.js
+├─ .env
 ```
 
 Referring to the [official guidance](https://github.com/meilisearch/instant-meilisearch#-usage), I developed the component as follows;
@@ -385,7 +380,9 @@ Referring to the [official guidance](https://github.com/meilisearch/instant-meil
   is:inline
   src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch/dist/instant-meilisearch.umd.min.js"
 ></script>
-<script is:inline src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"
 ></script>
 <script is:inline>
   const search = instantsearch({

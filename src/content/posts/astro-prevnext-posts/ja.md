@@ -30,20 +30,20 @@ CMSのAPI等でデータを引っ張ってくる場合でも、渡すデータ�
 
 今回は、以下の構造でAstroブログを作ることとします。
 
-`src`フォルダー直下の`[slug].astro`をブログ記事用テンプレートとして利用。URLパスは`https://example.com/[slug]/`という形になります。
+`pages`フォルダー下の`[slug].astro`をブログ記事用テンプレートとして利用。URLパスは`https://example.com/[slug]/`という形になります。
 
-```text
+```tree
 src/
-  ├ components/
-  │  └ prevNext.astro
-  ├ pages/
-  │  └ [slug].astro
-  ├ posts/
-  │  ├ first-post.md
-  │  ├ second-post.md
-  │  └ ...
-  └ utils/
-    └ sortByDate.js
+├─ components/
+│    └─ prevNext.astro
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ utils/
+│    └─ sortByDate.js
 ```
 
 - `/components/prevNext.astro` 前後の記事用コンポーネント

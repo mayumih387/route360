@@ -28,20 +28,20 @@ Working environment
 
 In this entry, I am developing an Astro + Markdown blog with the following structure.
 
-`[slug].astro` under `src` is the post template, and the post URL would be something like `https://example.com/[slug]/`.
+`[slug].astro` under `pages` is the post template, and the post URL would be something like `https://example.com/[slug]/`.
 
-```text
+```tree
 src/
-  ├ components/
-  │  └ prevNext.astro
-  ├ pages/
-  │  └ [slug].astro
-  ├ posts/
-  │  ├ first-post.md
-  │  ├ second-post.md 
-  │  └ ...
-  └ utils/
-    └ sortByDate.js
+├─ components/
+│    └─ prevNext.astro
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ utils/
+│    └─ sortByDate.js
 ```
 
 - `/components/prevNext.astro` Previous/Next posts Component

@@ -38,14 +38,13 @@ Ils offrent la bibliothèque React ou Vue également, bien que je ne les ai pas 
 
 Dans cet exemple, la structure du projet Astro est la suivante ;
 
-```text
-├ src/
-│  ├ pages/
-│  │  └ ...
-│  └ posts/
-│    ├ first-post.md
-│    ├ second-post.md
-│    └ ...
+```tree
+src/
+└─ pages/
+     └─ posts/
+          ├─ first-post.md
+          ├─ second-post.md
+          └─ ...
 ```
 
 En outre, le post Markdown YAML frontmatter est le suivant ;
@@ -141,17 +140,16 @@ Ensuite, créez un fichier .js pour construire et envoyer un jeu de données (do
 - `algoliasearch.js` sous le répertoire `lib` (le nom du fichier et le répertoire sont à votre choix)
 - `.env` sous la racine du projet
 
-```text
-├ src/
-├  ├ pages/
-├  │  └ ...
-├  ├ posts/
-├  │  ├ first-post.md
-├  │  ├ second-post.md
-├  │  └ ...
-├  └ lib/
-├    └ algoliasearch.js <--this and
-├ .env <--this
+```tree
+src/
+├─ pages/
+│    ├─ posts/
+│    │    ├─ first-post.md
+│    │    ├─ second-post.md
+│    │    └─ ...
+│    └─ lib/
+│         └─ algoliasearch.js <-- ceci et
+├─ .env <-- ceci
 ```
 
 ### Modifier le fichier .env
@@ -364,19 +362,18 @@ Enfin, affichons un champ de recherche et le résultat de la recherche.
 
 Créez un fichier de composant nommé `Search.astro` (le nom vous appartient) dans le répertoire `components`.
 
-```text
-├ src/
-│  ├ components/
-│  │  └ Search.astro <--ceci
-│  ├ pages/
-│  │  └ ...
-│  ├ posts/
-│  │  ├ first-post.md
-│  │  ├ second-post.md
-│  │  └ ...
-│  └ lib/
-│    └ algolia.js
-├ .env
+```tree
+src/
+├─ components/
+│    └─ Search.astro <-- ceci
+├─ pages/
+│    ├─ posts/
+│    │    ├─ first-post.md
+│    │    ├─ second-post.md
+│    │    └─ ...
+│    └─ lib/
+│         └─ algoliasearch.js
+├─ .env
 ```
 
 C'est presque la même chose quand [j'ai intégré Meilisearch dans Astro](/fr/post/astro-meilisearch).

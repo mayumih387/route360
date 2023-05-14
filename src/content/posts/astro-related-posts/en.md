@@ -20,19 +20,19 @@ Working environment:
 
 Astro + Markdown blog for this example is as follows;
 
-```text
+```tree
 src/
-  ├ pages/
-  │  └ [slug].astro
-  ├ posts/
-  │  ├ first-post.md
-  │  ├ second-post.md 
-  │  └ ...
-  └ lib/
-    └ getRelatedPosts.js
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ lib/
+│    └─ getRelatedPosts.js
 ```
 
-`[slug].astro` under the `src` directory is the blog post template. The URL path for a post would be something like `https://example.com/[slug]/`.
+`[slug].astro` under the `pages` directory is the blog post template. The URL path for a post would be something like `https://example.com/[slug]/`.
 
 ### YAML frontmatter for a Markdown post
 
@@ -42,7 +42,7 @@ YAML frontmatter for this example:
 ---
 title: My First Post
 slug: first-post
-categories: ['book', 'english']
+categories: ["book", "english"]
 ---
 ```
 
@@ -50,10 +50,16 @@ categories: ['book', 'english']
 
 Then, create `getRelatedPosts.js` under the `lib` directory to put a custom function.
 
-```text
+```tree
 src/
-  └ lib/
-    └ getRelatedPosts.js
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ lib/
+│    └─ getRelatedPosts.js <- this
 ```
 
 As the simplest way, let's get "4 posts under the same category of the current post".
@@ -63,7 +69,7 @@ As the simplest way, let's get "4 posts under the same category of the current p
 ```js
 export function getRelatedPosts(allPosts, currentSlug, currentCats) {
   const relatedPosts = allPosts.filter(
-    (post) =>
+    post =>
       post.frontmatter.slug !== currentSlug &&
       post.frontmatter.categories.includes(currentCats[0])
   )
@@ -100,7 +106,7 @@ export function getRelatedPosts(allPosts, currentSlug, currentCats) {
   }
 
   const relatedPosts = allPosts.filter(
-    (post) =>
+    post =>
       post.frontmatter.slug !== currentSlug &&
       post.frontmatter.categories.includes(currentCats[0])
   )

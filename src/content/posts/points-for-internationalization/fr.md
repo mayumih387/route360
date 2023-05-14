@@ -38,13 +38,14 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['en', 'fr', 'ja'],
-    defaultLocale: 'en',
+    locales: ["en", "fr", "ja"],
+    defaultLocale: "en",
   },
 }
 
 module.exports = nextConfig
 ```
+
 Ce réglage est pour "Sub-path Routing"
 
 - URL pour la locale par défaut: `example.com`
@@ -61,15 +62,18 @@ Vous pouvez choisir "Domain Routing" aussi. Jetez un clin d'œil au guide offici
 Une fois le paramètre i18 ajouté au fichier `next.config.js`, toutes les informations sur les locales peuvent être récupérées via `useRouter()` de Next.js.
 
 ```js
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 export default function SomeComponent() {
   const { locale, defaultLocale, locales } = useRouter()
   return (
     <>
-      <p>La locale actuelle est{ locale }</p>
-      <p>La locale par défaut est { defaultLocale }.</p>
-      <p>Les locales dans le réglage sont {locales.map((locale) => `${locale},`)}です</p>
+      <p>La locale actuelle est{locale}</p>
+      <p>La locale par défaut est {defaultLocale}.</p>
+      <p>
+        Les locales dans le réglage sont {locales.map(locale => `${locale},`)}
+        です
+      </p>
     </>
   )
 }
@@ -89,26 +93,27 @@ Cela permet de séparer facilement les contenus par langue dans les composants o
 
 Il y a plein d'options à stocker les fichiers de post. Voici comment je réalise la structure du dossier du répertoire;
 
-```treeview
-projectRoot
-├ /pages/
-│  ...
-├ /posts/
-│ ├ /first-post/
-| | ├ en.md
-| | ├ fr.md
-| | └ ja.md
-| ├ /second-post/
-| | ├ en.md
-| | ├ fr.md
-| | └ ja.md
+```tree
+ROOT
+├─ pages/
+│    └─ ...
+├─ posts/
+│    ├─ first-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
+│    ├─ second-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
 ```
+
 - Chemin d'accès du répertoire -> slug de l'article
 - Nom de fichier -> locale
 
-La façon est à vous de décider. Vous pouvez préférer nommer ces fichiers comme `slug.lang.md`.*.
+La façon est à vous de décider. Vous pouvez préférer nommer ces fichiers comme `slug.lang.md`.\*.
 
-*Example: `first-post.fr.md`
+\*Example: `first-post.fr.md`
 
 Les noms de répertoires ou de fichier
 
@@ -138,22 +143,24 @@ Les pas doit être;
 
 Et maintenant, créer les chemins d'accès (qui composent l'URL) par `getStaticPaths`.
 
-Dans mon cas, je crée un répertoire nommé `/post/` sous `/pages/`, puis mets `[slug].js`* comme modèle de page d'article.
+Dans mon cas, je crée un répertoire nommé `/post/` sous `/pages/`, puis mets `[slug].js`\* comme modèle de page d'article.
 
-*C'est le nom de la ficher pour le modèle (le template) qui utilise slug comme chemin. Le chemin d'accès doit être quelque chose comme `example.com/post/first-post/`.
+\*C'est le nom de la ficher pour le modèle (le template) qui utilise slug comme chemin. Le chemin d'accès doit être quelque chose comme `example.com/post/first-post/`.
 
-```treeview
-projectRoot
-├ /pages/
-│ ├ /post/
-| | └[slug].js <-- ceci
-│ ├ _app.js
-│ └ index.js
-├ /posts/
-│ ├ /first-post/
-| | ├ en.md
-| | ├ fr.md
-| | └ ja.md
+```tree
+ROOT
+├─ pages/
+│    └─ post/
+│         └─ [slug].js <-- ceci
+├─ posts/
+│    ├─ first-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
+│    ├─ second-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
 ```
 
 Ensuite, importez les modules `fs` et `path` pour gérer les fichiers locaux. L'installation n'est pas nécessaire car ce sont des modules par défaut de Node.js.
@@ -161,8 +168,8 @@ Ensuite, importez les modules `fs` et `path` pour gérer les fichiers locaux. L'
 <div class="filename">/pages/post/[slug].js</div>
 
 ```js
-import fs from 'fs'
-import path from 'path'
+import fs from "fs"
+import path from "path"
 ```
 
 Et maintenant, on crée les chemin par `getStaticPaths`.
@@ -176,13 +183,13 @@ Afin de générer les chemins de chaque article pour toutes les locales, récup�
 
 export async function getStaticPaths({ locales }) {
   // Récupérer tous les noms de répertoires sous /posts/
-  const dirnames = fs.readdirSync(path.join('posts'))
+  const dirnames = fs.readdirSync(path.join("posts"))
   // Preparer un tableau vide pour stocker les chemins avec la locale
   const pathsArray = []
 
   //Lister tous les nomes de répertoires pour toutes les locales
-  dirnames.map((dirname) => {
-    locales.map((language) => {
+  dirnames.map(dirname => {
+    locales.map(language => {
       pathsArray.push({ params: { slug: dirname }, locale: language })
     })
   })
@@ -197,13 +204,13 @@ export async function getStaticPaths({ locales }) {
 Le `pathArray` généré contient ces paramètres comme nous pouvons les voir par `console.log()`.
 
 ```js
-[
-  { params: { slug: 'first-post' }, locale: 'en' },
-  { params: { slug: 'first-post' }, locale: 'fr' },
-  { params: { slug: 'first-post' }, locale: 'ja' },
-  { params: { slug: 'second-post' }, locale: 'en' },
-  { params: { slug: 'second-post' }, locale: 'fr' },
-  { params: { slug: 'second-post' }, locale: 'ja' },
+;[
+  { params: { slug: "first-post" }, locale: "en" },
+  { params: { slug: "first-post" }, locale: "fr" },
+  { params: { slug: "first-post" }, locale: "ja" },
+  { params: { slug: "second-post" }, locale: "en" },
+  { params: { slug: "second-post" }, locale: "fr" },
+  { params: { slug: "second-post" }, locale: "ja" },
 ]
 ```
 
@@ -224,20 +231,19 @@ export async function getStaticProps({ locale, params: { slug } }) {
 
   // 2. Retourner les données à utiliser dans le frontend
   return {
-    props: {
-    },
+    props: {},
   }
 }
 ```
 
-Les métadonnées (telles que le title, la date, etc.) doivent être définies en tant que YAML Frontmatter au tout début de chaque fichier Markdown. Afin de récupérer les métadonnées, importez `matter` de [gray-matter](https://github.com/jonschlinkert/gray-matter). *gray-matter doit être installé.
+Les métadonnées (telles que le title, la date, etc.) doivent être définies en tant que YAML Frontmatter au tout début de chaque fichier Markdown. Afin de récupérer les métadonnées, importez `matter` de [gray-matter](https://github.com/jonschlinkert/gray-matter). \*gray-matter doit être installé.
 
 <div class="filename">/pages/post/[slug].js</div>
 
 ```js
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter' //<-- ceci
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter" //<-- ceci
 ```
 
 Ensuite, on va générer le contenu d'article avec les fichiers Markdown, mais une chose: Si certains traductions ne sont pas encore prêtes, le code renvoie une erreur.
@@ -259,18 +265,16 @@ Si un fichier Markdown traduit attendu n'existe pas et s'il passe en `catch`, je
 export async function getStaticProps({ locale, params: { slug } }) {
   // 1. Lire le fichier Markdown, et obtenir le contenu à l'intérieur
   try {
-
     // 2-A. Renvoyer le contenu vers le front-end
     return {
-      props: {
-      },
+      props: {},
     }
   } catch (e) {
     // 2-B. Si le fichier de traduction n'existe pas, il faut retourner un titre vide.
     return {
       props: {
         frontmatter: {
-          title: '',
+          title: "",
         },
         // content: 'No content!',
       },
@@ -321,14 +325,11 @@ Donc, il est maintenant prêt à afficher les métadonnées de `frontmatter` et 
 ```js
 //...
 
-export default function Post({
-  frontmatter: { title, date },
-  content,
-}) {
+export default function Post({ frontmatter: { title, date }, content }) {
   return (
     <>
       <h1>{title}</h1>
-      <article dangerouslySetInnerHTML={{__html: marked(content)}} />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
       {/* Convertir Markdown en HTML avec marked */}
     </>
   )
@@ -391,25 +392,26 @@ D'abord, importer un module [date-fns](https://github.com/date-fns/date-fns) à 
 <div class="filename">/components/convert-date.js</div>
 
 ```js
-import { parseISO, format } from 'date-fns'
-import ja from 'date-fns/locale/ja'
-import en from 'date-fns/locale/en-US'
-import fr from 'date-fns/locale/fr'
-import { useRouter } from 'next/router'
+import { parseISO, format } from "date-fns"
+import ja from "date-fns/locale/ja"
+import en from "date-fns/locale/en-US"
+import fr from "date-fns/locale/fr"
+import { useRouter } from "next/router"
 
 export default function ConvertDate({ dateISO }) {
   const { locale } = useRouter()
   return (
     <time dateTime={dateISO}>
-      {locale === 'fr' &&
-        format(parseISO(dateISO), 'd MMM yyyy', { locale: fr })}
-      {locale === 'en' &&
-        format(parseISO(dateISO), 'MMM d, yyyy', { locale: en })}
-      {locale === 'ja' && format(parseISO(dateISO), 'yyyy-M-d', { locale: ja })}
+      {locale === "fr" &&
+        format(parseISO(dateISO), "d MMM yyyy", { locale: fr })}
+      {locale === "en" &&
+        format(parseISO(dateISO), "MMM d, yyyy", { locale: en })}
+      {locale === "ja" && format(parseISO(dateISO), "yyyy-M-d", { locale: ja })}
     </time>
   )
 }
 ```
+
 Importez aussi chaque fichier de locale de `date-fns`, et divisez le résultat par locale.
 
 Ensuite, appelez ce Composant à l'intérieur de `[slug].js`, et faire passer les données de la date par le Composant.
@@ -418,20 +420,19 @@ Ensuite, appelez ce Composant à l'intérieur de `[slug].js`, et faire passer le
 
 ```js
 //...
-import ConvertDate from 'components/convert-date'
+import ConvertDate from "components/convert-date"
 
-export default function Post({
-  frontmatter: { title, date },
-  content,
-}) {
-  return title !== '' ? (
+export default function Post({ frontmatter: { title, date }, content }) {
+  return title !== "" ? (
     <>
       <h1>{title}</h1>
       <ConvertDate dateISO={date} /> {/* <-- ceci */}
-      <article dangerouslySetInnerHTML={{__html: marked(content)}} />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </>
   ) : (
-    {/* Résultat dans le cas où aucune traduction n'est disponible */}
+    {
+      /* Résultat dans le cas où aucune traduction n'est disponible */
+    }
   )
 }
 ```
@@ -557,7 +558,7 @@ export async function getStaticProps({ locale }) {
 
 C'est tout pour la page de la liste des articles triés par date.
 
-*Je ne vais pas expliquer cette fois-ci comment paginer, j'imagine que ce serait possible si vous pouviez comprendre les codes ci-dessus que j'ai expliqués...
+\*Je ne vais pas expliquer cette fois-ci comment paginer, j'imagine que ce serait possible si vous pouviez comprendre les codes ci-dessus que j'ai expliqués...
 
 ## Pages de routes imbriquées
 
@@ -568,24 +569,21 @@ Par exemple, cela ressemble à ce qui suit sur la page ABOUT `/pages/about.js`.
 <div class="filename">/pages/about.js</div>
 
 ```js
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 export default function About() {
   const { locale } = useRouter()
   return (
     <article>
-      {locale === 'en' && (
+      {locale === "en" && (
         <p>Hi! I&#39;m Mayumi (she/her). Thanks for visiting my website.</p>
-        )
-      }
-      {locale === 'fr' && (
+      )}
+      {locale === "fr" && (
         <p>Coucou ! Je suis Mayumi (elle). Merci pour visiter mon site web.</p>
-        )
-      }
-      {locale === 'ja' && (
+      )}
+      {locale === "ja" && (
         <p>こんにちは、Mayumiです。サイトをご覧下さりありがとうございます。</p>
-        )
-      }
+      )}
     </article>
   )
 }
@@ -595,24 +593,22 @@ C'est vous qui décidez, l'importation de contenus à partir d'autres fichiers l
 
 ## Sélecteur de langue
 
-Pour le Language Switcher, j'ai fait un Composant pour lui. *Aucun style n'est appliqué dans le code suivant.
+Pour le Language Switcher, j'ai fait un Composant pour lui. \*Aucun style n'est appliqué dans le code suivant.
 
 <div class="filename">/components/language-switcher.js</div>
 
 ```js
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 export default function LanguageSwitcher() {
   const { locales, asPath } = useRouter()
   return (
     <ul>
-      {locales.map((lang) => (
+      {locales.map(lang => (
         <li key={lang}>
           <Link href={asPath} locale={lang} hrefLang={lang} rel="alternate">
-            <a>
-              {lang.toUpperCase()}
-            </a>
+            <a>{lang.toUpperCase()}</a>
           </Link>
         </li>
       ))}
@@ -650,10 +646,26 @@ Je ne montrerai pas les codes exacts, mais je vous montre ceux que j'ai faits po
 
 ```html
 <!-- Résultat -->
-<link rel="alternate" hreflang="en" href="[Traduction en anglais de la page actuelle]">
-<link rel="alternate" hreflang="fr" href="[Traduction en français de la page actuelle]">
-<link rel="alternate" hreflang="ja" href="[Traduction en japonais de la page actuelle]">
-<link rel="alternate" hreflang="x-default" href="[Locale par défaut de la page actuelle]">
+<link
+  rel="alternate"
+  hreflang="en"
+  href="[Traduction en anglais de la page actuelle]"
+/>
+<link
+  rel="alternate"
+  hreflang="fr"
+  href="[Traduction en français de la page actuelle]"
+/>
+<link
+  rel="alternate"
+  hreflang="ja"
+  href="[Traduction en japonais de la page actuelle]"
+/>
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="[Locale par défaut de la page actuelle]"
+/>
 ```
 
 <span class="label warning">Référence</span> [Versions localisées de vos pages | Google Search Central](https://developers.google.com/search/docs/specialty/international/localized-versions)
@@ -684,31 +696,30 @@ Dans la section [Sortie pour le frontend](#sortie-pour-le-frontend) de cet artic
 
 ```js
 //...
-import Meta from '/components/meta'
+import Meta from "/components/meta"
 
-export default function Post({
-  frontmatter: { title, date },
-  content,
-}) {
-  return title !== '' ? (
+export default function Post({ frontmatter: { title, date }, content }) {
+  return title !== "" ? (
     <>
       <Meta /> {/* Méta normal */}
       <h1>{title}</h1>
-      <article dangerouslySetInnerHTML={{__html: marked(content)}} />
+      <article dangerouslySetInnerHTML={{ __html: marked(content) }} />
     </>
   ) : (
-    <>{/* Lorsqu'aucune traduction n'est disponible */}
+    <>
+      {/* Lorsqu'aucune traduction n'est disponible */}
       <Meta noIndex /> {/* passer la prop noIndex au Meta Composant */}
       <h1>Sorry!</h1>
-      {locale === 'fr' && (
-        <p>Pardonnez-moi, cet article n&#39;est pas encore disponible en français.</p>
+      {locale === "fr" && (
+        <p>
+          Pardonnez-moi, cet article n&#39;est pas encore disponible en
+          français.
+        </p>
       )}
-      {locale === 'ja' && (
+      {locale === "ja" && (
         <p>この記事はまだ日本語に訳せておりません。ごめんなさい。</p>
       )}
-      {locale === 'en' && (
-        <p>Sorry, this entry is not available yet in English.</p>
-      )}
+      {locale === "en" && <p>Sorry, this entry is not available yet in English.</p>}
     </>
   )
 }
@@ -772,7 +783,7 @@ useEffect(() => {
 
 De nombreux blogs techniques que j'ai consultés n'ont pas ajouté les deuxièmes dépendances (`[events]` ici), mais ça ne marche pas pour moi lorsque la langue est changée. C'est pour ça que j'ajoute les dépendances afin que Prism.js puisse être rendu à chaque transition de page.
 
-*Avec `events` qui peut être récupéré à partir de `const { events } = useRouter()`, cela ne fonctionne pas bien.
+\*Avec `events` qui peut être récupéré à partir de `const { events } = useRouter()`, cela ne fonctionne pas bien.
 
 ## Réflexions après la réalisation du site international (conclusion)
 

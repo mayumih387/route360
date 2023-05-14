@@ -20,19 +20,19 @@ Environnement de fonctionnement :
 
 Le blog Astro + Markdown pour cet exemple est le suivant ;
 
-```text
+```tree
 src/
-  ├ pages/
-  │  └ [slug].astro
-  ├ posts/
-  │  ├ first-post.md
-  │  ├ second-post.md 
-  │  └ ...
-  └ lib/
-    └ getRelatedPosts.js
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ lib/
+│    └─ getRelatedPosts.js
 ```
 
-`[slug].astro` dans le répertoire `src` est le modèle de billet de blog. Le chemin d'accès à l'URL d'un article serait quelque chose comme `https://example.com/[slug]/`.
+`[slug].astro` dans le répertoire `pages` est le modèle de billet de blog. Le chemin d'accès à l'URL d'un article serait quelque chose comme `https://example.com/[slug]/`.
 
 ### Frontmatter YAML pour un billet Markdown
 
@@ -42,7 +42,7 @@ Frontmatter YAML pour cet exemple :
 ---
 title: Mon premier article
 slug: first-post
-categories: ['libre', 'anglais']
+categories: ["libre", "anglais"]
 ---
 ```
 
@@ -50,10 +50,16 @@ categories: ['libre', 'anglais']
 
 Ensuite, créez `getRelatedPosts.js` dans le répertoire `lib` pour y placer une fonction personnalisée.
 
-```text
+```tree
 src/
-  └ lib/
-    └ getRelatedPosts.js
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ lib/
+│    └─ getRelatedPosts.js <- ceci
 ```
 
 De la manière la plus simple, obtenons "4 articles dans la même catégorie que le message actuel".
@@ -63,7 +69,7 @@ De la manière la plus simple, obtenons "4 articles dans la même catégorie que
 ```js
 export function getRelatedPosts(allPosts, currentSlug, currentCats) {
   const relatedPosts = allPosts.filter(
-    (post) =>
+    post =>
       post.frontmatter.slug !== currentSlug &&
       post.frontmatter.categories.includes(currentCats[0])
   )
@@ -100,7 +106,7 @@ export function getRelatedPosts(allPosts, currentSlug, currentCats) {
   }
 
   const relatedPosts = allPosts.filter(
-    (post) =>
+    post =>
       post.frontmatter.slug !== currentSlug &&
       post.frontmatter.categories.includes(currentCats[0])
   )

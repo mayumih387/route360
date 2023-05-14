@@ -51,14 +51,13 @@ v.1.0以上になれば、日本語検索の精度も良くなってきそうで
 
 今回は、以下の構造でAstroサイトを作ることとします。
 
-```text
-├ src/
-│  ├ pages/
-│  │  └ ...
-│  └ posts/
-│    ├ first-post.md
-│    ├ second-post.md
-│    └ ...
+```tree
+src/
+└─ pages/
+     └─ posts/
+          ├─ first-post.md
+          ├─ second-post.md
+          └─ ...
 ```
 
 さらに、MarkdownのデータのYAML frontmatterは以下ようにしています。
@@ -133,17 +132,17 @@ yarn add dotenv
 - libフォルダー内に、`meilisearch.js`（ファイル名、ファイルの場所は任意）
 - ルート直下に`.env`
 
-```text
-├ src/
-├  ├ pages/
-├  │  └ ...
-├  ├ posts/
-├  │  ├ first-post.md
-├  │  ├ second-post.md
-├  │  └ ...
-├  └ lib/
-├    └ meilisearch.js <--これと
-├ .env <--これ
+```tree
+src/
+├─ pages/
+│    │  └─ ...
+│    ├─ posts/
+│    │    ├─ first-post.md
+│    │    ├─ second-post.md
+│    │    └─ ...
+│    └─ lib/
+│         └─ meilisearch.js <--これと
+├─ .env <--これ
 ```
 
 ### .envファイルの編集
@@ -357,19 +356,18 @@ Meilisearchのホストに移動して、インデックスを確認してみま
 
 `src`フォルダー直下の`components`ディレクトリ（なければ作成）下に、検索ボックス+検索結果を表示するコンポーネントを作成。ここではファイル名を「Search.astro」としました。
 
-```text
-├ src/
-│  ├ components/
-│  │  └ Search.astro <--これ
-│  ├ pages/
-│  │  └ ...
-│  ├ posts/
-│  │  ├ first-post.md
-│  │  ├ second-post.md
-│  │  └ ...
-│  └ lib/
-│    └ meilisearch.js
-├ .env
+```tree
+src/
+├─ components/
+│    └─ Search.astro <--これ
+├─ pages/
+│    ├─ posts/
+│    │    ├─ first-post.md
+│    │    ├─ second-post.md
+│    │    └─ ...
+│    └─ lib/
+│         └─ meilisearch.js
+├─ .env
 ```
 
 [公式ガイド](https://github.com/meilisearch/instant-meilisearch#-usage)を参考に、こんな風にしてみました。

@@ -28,20 +28,20 @@ Environnement
 
 Dans cet article, je développe un blog Astro + Markdown avec la structure suivante.
 
-`[slug].astro` sous `src` est le modèle de billet, et l'URL du billet serait quelque chose comme `https://example.com/[slug]/`.
+`[slug].astro` sous `pages` est le modèle de billet, et l'URL du billet serait quelque chose comme `https://example.com/[slug]/`.
 
-```text
+```tree
 src/
-  ├ components/
-  │  └ prevNext.astro
-  ├ pages/
-  │  └ [slug].astro
-  ├ posts/
-  │  ├ first-post.md
-  │  ├ second-post.md 
-  │  └ ...
-  └ utils/
-    └ sortByDate.js
+├─ components/
+│    └─ prevNext.astro
+├─ pages/
+│    └─ [slug].astro
+├─ posts/
+│    ├─ first-post.md
+│    ├─ second-post.md
+│    └─ ...
+├─ utils/
+│    └─ sortByDate.js
 ```
 
 - `/components/prevNext.astro` Composant des billets précédent/suivant

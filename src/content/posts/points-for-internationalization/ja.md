@@ -59,7 +59,7 @@ module.exports = nextConfig
 
 ### useRouter()で現在の表示言語が取得できる
 
-`next.config.js`に追加したi18nの設定により、Next.jsの`useRouter()`で、フロント側で現在表示されている言語やデフォルトの言語等を取得することができるようになります。
+`next.config.js`に追加したi18nの設定により、Next.jsの`useRouter()`で、フロント側で現在表示されている言語やデフォルトの言語等を取得できるようになります。
 
 ```js
 import { useRouter } from "next/router"
@@ -90,19 +90,19 @@ export default function SomeComponent() {
 
 投稿データの管理方法は色々あると思いますが、当サイトでは以下のようにしています。
 
-```treeview
-projectRoot
-├ /pages/
-│  ...
-├ /posts/
-│ ├ /first-post/
-| | ├ en.md
-| | ├ fr.md
-| | └ ja.md
-| ├ /second-post/
-| | ├ en.md
-| | ├ fr.md
-| | └ ja.md
+```tree
+ROOT
+├─ pages/
+│    └─ ...
+├─ posts/
+│    ├─ first-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
+│    ├─ second-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
 ```
 
 - ディレクトリ（フォルダ）名 → スラッグとして利用
@@ -144,18 +144,20 @@ projectRoot
 
 ※スラッグをパス（URL）のベースにする投稿テンプレート名で、生成されるパス（URL）は、`example.com/post/first-post/`のような形になる。
 
-```treeview
-projectRoot
-├ /pages/
-│ ├ /post/
-| | └[slug].js <--これ
-│ ├ _app.js
-│ └ index.js
-├ /posts/
-│ ├ /first-post/
-| | ├ en.md
-| | ├ fr.md
-| | └ ja.md
+```tree
+ROOT
+├─ pages/
+│    └─ post/
+│         └─ [slug].js <--これ
+├─ posts/
+│    ├─ first-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
+│    ├─ second-post/
+│    │    ├─ en.md
+│    │    ├─ fr.md
+│    │    └─ ja.md
 ```
 
 ファイル操作に関連するモジュールである`fs`と`path`をインポートしておきます（Node.jsに初めから入っているのでインストール不要）。
