@@ -1171,4 +1171,49 @@
       hreflang="en"
       href="https://route360.dev/en/post/codeium/"/>
   </url>
+  <url>
+    <loc>https://route360.dev/en/post/gatsby-i18n/</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://route360.dev/fr/post/gatsby-i18n/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="ja"
+      href="https://route360.dev/ja/post/gatsby-i18n/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en"
+      href="https://route360.dev/en/post/gatsby-i18n/"/>
+  </url>
+  <url>
+    <loc>https://route360.dev/fr/post/gatsby-i18n/</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://route360.dev/fr/post/gatsby-i18n/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="ja"
+      href="https://route360.dev/ja/post/gatsby-i18n/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en"
+      href="https://route360.dev/en/post/gatsby-i18n/"/>
+  </url>
+  <url>
+    <loc>https://route360.dev/ja/post/gatsby-i18n/</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://route360.dev/fr/post/gatsby-i18n/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="ja"
+      href="https://route360.dev/ja/post/gatsby-i18n/"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="en"
+      href="https://route360.dev/en/post/gatsby-i18n/"/>
+  </url>
 </urlset>

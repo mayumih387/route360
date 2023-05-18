@@ -1,5 +1,5 @@
 ---
-title: Switching a i18n blog to Gatsby.js - Reasons and design overview
+title: Switching an i18n blog to Gatsby.js - Reasons and design overview
 tags:
   - gatsbyjs
   - jamstack
