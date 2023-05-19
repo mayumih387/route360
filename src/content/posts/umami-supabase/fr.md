@@ -5,7 +5,7 @@ tags:
   - analytics
   - supabase
 date: 2022-10-30T01:00:00.000Z
-lastmod: 2023-05-19T10:10:39.747Z
+lastmod: 2023-05-19T13:04:35.491Z
 draft: false
 ---
 
@@ -13,7 +13,7 @@ draft: false
 
 Umami est développé par [Make Cao](https://github.com/mikecao), un ancien ingénieur d'Adobe. Sa société Umami Software est l'une des startups en pleine croissance.
 
-L'app est complètement gratuit, mais, l'installation peut être difficile pour les débutants. Ils sont en train de développer sa version cloud maintenant (octobre 2022).
+Puisque Umami est un programme open source, il peut être exécuté gratuitement si nous utilisons des services d'hébergement/de base de données gratuits. \*Il existe également [un plan de cloud gratuit](https://umami.is/pricing) avec des fonctionnalités limitées.
 
 Dans ce billet de blog, je vais expliquer comment démarrer une base de données sur Supabase puis installer-le sur votre site web approprié.
 
