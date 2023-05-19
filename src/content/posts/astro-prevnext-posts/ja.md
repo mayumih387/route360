@@ -102,11 +102,11 @@ export async function getStaticPaths() {
     },
     props: {
       post,
-      prevPost: // 一つ前の記事
+      prevPost: // 1つ前の記事
         i + 1 === numberOfPosts // 現在の投稿が最古の記事の場合
           ? { frontmatter: ""}
           : allPosts[i + 1],
-      nextPost: // 一つの記事
+      nextPost: // 1つの記事
         i === 0 // 現在の投稿が最新の記事の場合
           ? { frontmatter: "" }
           : allPosts[i - 1],

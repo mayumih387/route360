@@ -12,7 +12,7 @@ Gatsby.jsサイト用に[Google Firebase](https://firebase.google.com/)を使っ
 
 Firebaseとは、アプリ開発用のプラットフォームで、ログインシステムやカートシステム等のデータを格納したり読み書きができる機能を提供しています。
 
-Firebaseの機能の一つである「Realtime Database」は、json形式でデータを読み書きできる上、javascriptのHTTPリクエスト等でデータにアクセスできるため、コメントシステムにも使いやすいかと思います。
+Firebaseの機能の1つである「Realtime Database」は、json形式でデータを読み書きできる上、javascriptのHTTPリクエスト等でデータにアクセスできるため、コメントシステムにも使いやすいかと思います。
 
 私がFirebaseのRealtime Databaseでコメントシステムを作ったのはGatsbyサイト用でしたが、表示部分を工夫すればNext.js等でも使えるはずです。
 
@@ -28,7 +28,7 @@ Firebaseの機能の一つである「Realtime Database」は、json形式でデ
 
 ## Realtime Databaseでデータベースを作る
 
-Firebaseには既に登録済みという前提で進めます。
+Firebaseにはすでに登録済みという前提で進めます。
 
 ### プロジェクトの作成
 

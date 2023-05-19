@@ -175,7 +175,7 @@ UIが非常に洗練されており、多言語での投稿体験も良好です
 
 ※Node.jsが必要なので、良くある安いレンタルサーバーではWordPressのようにインストールはできません。
 
-最低要件の一つに2GB RAMがあるため、[DigitalOcean](https://www.digitalocean.com/)や[AWS lightsail](https://aws.amazon.com/jp/lightsail/pricing/)などでは少なくとも月10ドルプランなどの契約が必要になってきます。 -> [公式情報](jp/lightsail/pricing/)
+最低要件の1つに2GB RAMがあるため、[DigitalOcean](https://www.digitalocean.com/)や[AWS lightsail](https://aws.amazon.com/jp/lightsail/pricing/)などでは少なくとも月10ドルプランなどの契約が必要になってきます。 -> [公式情報](jp/lightsail/pricing/)
 
 ## Hygraph
 

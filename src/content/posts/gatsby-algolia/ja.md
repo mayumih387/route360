@@ -113,7 +113,7 @@ ALGOLIA_API_KEY=[Admin API Key]
 ALGOLIA_INDEX_NAME=[your_index_name]
 ```
 
-検索データの構築はビルド時にのみ動くので、`.env.development`には記載不要です（`ALGOLIA_INDEX_NAME`のみ後で使用）。
+検索データの構築はビルド時にのみ動くので、`.env.development`には記載不要です（`ALGOLIA_INDEX_NAME`のみあとで使用）。
 
 ## 検索用データを生成してAlgoliaに送る
 

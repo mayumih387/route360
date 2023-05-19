@@ -8,7 +8,7 @@ lastmod: 2023-02-15T05:57:42.911Z
 draft: false
 ---
 
-Astroで作る静的サイトで悩ましい問題の一つが、検索機能の実装です。
+Astroで作る静的サイトで悩ましい問題の1つが、検索機能の実装です。
 
 Gatsby.jsのようにAlgolia等のプラグインが用意されていれば多少は楽なのですが、Astroの場合は現時点ではそのようなものはありません。
 
@@ -38,7 +38,7 @@ Gatsby.jsのようにAlgolia等のプラグインが用意されていれば多�
 
 私もまだ使い始めたところですが、ざっくりした印象としては以下のようなイメージ。
 
-- 最も後発の全文検索エンジン
+- もっとも後発の全文検索エンジン
 - セルフホスト版・クラウド版あり
 - Algoliaと同じパラメーターが使える（Algoliaのドキュメントがほぼそのまま？使える）
 - 日本語検索にやや難あり？（随時改善中）
@@ -91,7 +91,7 @@ Meilisearchログイン後の上部メニューから「New Project」をクリ�
 
 ![Meilisearchのダッシュボード](../../../images/meilisearch02.png "© Meilisearch")
 
-地域（Select a region）は、最も近い場所を選びます。日本からなら「シンガポール」です。プランは「Build $0 / month」。尚、シンガポールを選んでも、検索体験は非常に高速です。
+地域（Select a region）は、もっとも近い場所を選びます。日本からなら「シンガポール」です。プランは「Build $0 / month」。尚、シンガポールを選んでも、検索体験は非常に高速です。
 
 ![Meilisearchのプロジェクト作成画面](../../../images/meilisearch03.png "© Meilisearch")
 
@@ -434,7 +434,7 @@ src/
 スタイルの適用方法としては、いくつか選択肢があります。
 
 - クラス名を確認して自分で作る
-- Algoliaが作ったsatellite.cssを読み込む（npm または CDN）
+- Algoliaが作ったsatellite.cssを読み込む（npmまたはCDN）
 - Meilisearch純正のbasic_search.cssを読み込む（CDN）
 
 MeilisearchはAlgoliaと同じクラス名を使って表示をしているので、Algoliaの検索結果表示のスタイルが使えます。
