@@ -69,8 +69,6 @@ export const Head = ({ data, pageContext, location }) => {
         "@id": `${data.site.siteMetadata.siteUrl}${location.pathname}#primaryimage`,
       },
       thumbnailUrl: `${data.site.siteMetadata.siteUrl}${data.file.childImageSharp.original.src}`,
-      keywords:
-        data.markdownRemark.frontmatter.tags?.map(tag => tag.title) || "",
       articleSection: data.markdownRemark.frontmatter.tags?.map(
         tag => tag.title || ""
       ),

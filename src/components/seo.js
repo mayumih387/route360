@@ -89,6 +89,7 @@ const Seo = props => {
         "@id": `${data.site.siteMetadata.siteUrl}/${currentLang}/#/schema/person/image/`,
       },
       description: description,
+      url: `${data.site.siteMetadata.siteUrl}/${currentLang}/about/`,
     },
   ]
 
