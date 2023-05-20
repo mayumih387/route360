@@ -109,7 +109,7 @@ https://www.contentful.com/
 ### J'aime:
 
 - Un des pionniers du Headless CMS, beaucoup de connaissances sur le web
-- Assez de recodes - pas de souci pour un usage personnel avec le forfait gratuit
+- Assez de records - pas de souci pour un usage personnel avec le forfait gratuit
 
 <!-- out of toc -->
 ### Je n'aime pas trop:
@@ -130,7 +130,7 @@ Ce n'est pas util quand vous voulez traduire petit à petit, cependant, ça va a
 https://strapi.io/
 
 - Local or VPS installation
-- Recodes sur le forfait gratuit: illimité
+- Records sur le forfait gratuit: illimité
 - Locales sur le forfait gratuit: illimité
 - Utilisateurs sur le forfait gratuit: illimité
 

@@ -107,7 +107,7 @@ https://www.contentful.com/
 ### I like:
 
 - One of the pioneers of Headless CMS, lots of knowledge on the web
-- Enough recodes - no worry for free plan for personal use
+- Enough records - no worry for free plan for personal use
 
 <!-- out of toc -->
 ### I don't really like:
@@ -128,7 +128,7 @@ It's not practical when you want to translate little by little. However, it'll b
 https://strapi.io/
 
 - Local or VPS installation
-- Recodes for free plan: unlimited
+- Records for free plan: unlimited
 - Locales for free plan: unlimited
 - Users for free plan: unlimited
 
