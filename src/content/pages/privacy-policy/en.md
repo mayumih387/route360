@@ -70,7 +70,7 @@ We herewith advise you that the transmission of data via the Internet (i.e., thr
 The data processing controller on this website is:
 
 Mayumi HARA  
-E-mail: [hello@route360.dev]
+E-mail: hello(at)route360.dev
 
 The controller is the natural person or legal entity that single-handedly or jointly with others makes decisions as to the purposes of and resources for the processing of personal data (e.g., names, e-mail addresses, etc.).
 

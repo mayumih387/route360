@@ -70,7 +70,7 @@ Nous vous informons par la présente que la transmission de données via Interne
 Le responsable du traitement des données sur ce site web est :
 
 Mayumi HARA  
-E-mail : [hello@route360.dev]
+E-mail : hello(at)route360.dev
 
 Le responsable du traitement est la personne physique ou morale qui, seule ou conjointement avec d'autres, prend des décisions quant aux finalités et aux moyens du traitement des données à caractère personnel (par exemple, noms, adresses électroniques, etc.).
 
