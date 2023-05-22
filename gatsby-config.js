@@ -274,5 +274,147 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            nodes {
+              path
+              pageContext
+            }
+          }
+          allMarkdownRemarkEN: allMarkdownRemark(
+            filter: {
+              frontmatter: { draft: { ne: true } }
+              fields: { language: { eq: "en" }, type: { eq: "posts" } }
+            }
+          ) {
+            nodes {
+              fields {
+                slug
+                language
+                type
+              }
+              frontmatter {
+                lastmod
+              }
+            }
+          }
+          allMarkdownRemarkFR: allMarkdownRemark(
+            filter: {
+              frontmatter: { draft: { ne: true } }
+              fields: { language: { eq: "fr" }, type: { eq: "posts" } }
+            }
+          ) {
+            nodes {
+              fields {
+                slug
+                language
+                type
+              }
+              frontmatter {
+                lastmod
+              }
+            }
+          }
+          allMarkdownRemarkJA: allMarkdownRemark(
+            filter: {
+              frontmatter: { draft: { ne: true } }
+              fields: { language: { eq: "ja" }, type: { eq: "posts" } }
+            }
+          ) {
+            nodes {
+              fields {
+                slug
+                language
+                type
+              }
+              frontmatter {
+                lastmod
+              }
+            }
+          }
+        }`,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allMarkdownRemarkEN,
+          allMarkdownRemarkFR,
+          allMarkdownRemarkJA,
+        }) => {
+          const pathToDateMap = {}
+
+          const allMarkdownRemark = [
+            ...allMarkdownRemarkEN.nodes,
+            ...allMarkdownRemarkFR.nodes,
+            ...allMarkdownRemarkJA.nodes,
+          ]
+
+          allMarkdownRemark.forEach(post => {
+            const { slug } = post.fields
+            pathToDateMap[slug] = {
+              lastmod: post.frontmatter.lastmod,
+              slug,
+              type: post.fields.type,
+            }
+          })
+
+          const pages = allPages.map(page => {
+            const match = page.path.match(/\/([^\/]+)\/?$/)
+            const alternatePages = allPages
+              .filter(
+                alterPage =>
+                  alterPage.path.replace(/\/.*?\//, "/") ===
+                  page.path.replace(/\/.*?\//, "/")
+              )
+              .map(alterPage => alterPage.pageContext?.language)
+              .filter(Boolean)
+
+            return {
+              ...page,
+              ...pathToDateMap[match ? match[1] : null],
+              ...{ alternatePages },
+            }
+          })
+
+          return pages
+        },
+        serialize: ({ path, lastmod, slug, alternatePages, type = null }) => {
+          const pagepath =
+            type === "posts"
+              ? `/post/${slug}/`
+              : `${path.replace(/\/.*?\//, "/")}`
+
+          const xhtmlLinks =
+            alternatePages.length > 1 &&
+            alternatePages.map(lang => ({
+              rel: "alternate",
+              hreflang: lang,
+              url: `/${lang}${pagepath}`,
+            }))
+
+          let entry = {
+            url: path,
+            changefreq: "daily",
+            priority: lastmod ? 0.7 : 0.5,
+          }
+
+          if (lastmod) {
+            entry.lastmod = lastmod
+          }
+          if (xhtmlLinks) {
+            entry.links = xhtmlLinks
+          }
+
+          return entry
+        },
+      },
+    },
   ],
 }
