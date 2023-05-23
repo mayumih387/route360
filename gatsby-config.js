@@ -287,7 +287,6 @@ module.exports = {
           allSitePage {
             nodes {
               path
-              pageContext
             }
           }
           allMarkdownRemarkEN: allMarkdownRemark(
@@ -357,43 +356,42 @@ module.exports = {
           ]
 
           allMarkdownRemark.forEach(post => {
-            const { slug } = post.fields
-            pathToDateMap[slug] = {
+            const { slug, language, type } = post.fields
+            pathToDateMap[
+              type === "posts"
+                ? `/${language}/post/${slug}/`
+                : `/${language}/${slug}/`
+            ] = {
               lastmod: post.frontmatter.lastmod,
-              slug,
-              type: post.fields.type,
             }
           })
 
           const pages = allPages.map(page => {
-            const match = page.path.match(/\/([^\/]+)\/?$/)
-            const alternatePages = allPages
+            const alternateLangs = allPages
               .filter(
                 alterPage =>
                   alterPage.path.replace(/\/.*?\//, "/") ===
                   page.path.replace(/\/.*?\//, "/")
               )
-              .map(alterPage => alterPage.pageContext?.language)
-              .filter(Boolean)
+              .map(alterPage => alterPage.path.match(/^\/([a-z]{2})\//))
+              .filter(match => match)
+              .map(match => match[1])
 
             return {
               ...page,
-              ...pathToDateMap[match ? match[1] : null],
-              ...{ alternatePages },
+              ...pathToDateMap[page.path],
+              ...{ alternateLangs },
             }
           })
 
           return pages
         },
-        serialize: ({ path, lastmod, slug, alternatePages, type = null }) => {
-          const pagepath =
-            type === "posts"
-              ? `/post/${slug}/`
-              : `${path.replace(/\/.*?\//, "/")}`
+        serialize: ({ path, lastmod, alternateLangs }) => {
+          const pagepath = path.replace(/\/.*?\//, "/")
 
           const xhtmlLinks =
-            alternatePages.length > 1 &&
-            alternatePages.map(lang => ({
+            alternateLangs.length > 1 &&
+            alternateLangs.map(lang => ({
               rel: "alternate",
               hreflang: lang,
               url: `/${lang}${pagepath}`,
