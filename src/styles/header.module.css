@@ -16,11 +16,12 @@
 
 .logoHeading {
   line-height: 0;
+  font-size: var(--heading3);
 }
 
 .logoLink {
   font-family: Raleway, sans-serif;
-  font-size: 32px;
+  font-size: var(--heading3);
   letter-spacing: 0.1em;
   line-height: 1;
 }

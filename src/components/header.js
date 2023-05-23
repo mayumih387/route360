@@ -9,7 +9,7 @@ const Header = ({
   currentLang = "en",
   availLangs = ["en", "fr", "ja"],
   pagePath = "",
-  pageLayout = "",
+  pageLayout = "post",
 }) => {
   const data = useStaticQuery(graphql`
     query {

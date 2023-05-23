@@ -133,7 +133,6 @@ th {
   border-left: 1px solid var(--gray-50);
   padding: 0.5em 0.75em;
   vertical-align: top;
-  word-break: break-all;
 }
 thead td,
 thead th {

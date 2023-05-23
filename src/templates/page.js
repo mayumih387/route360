@@ -18,7 +18,6 @@ const PagePost = ({ data, pageContext }) => {
       currentLang={currentLang}
       availLangs={availLangs}
       pagePath={`${pageContext.slug}`}
-      pageLayout="post"
     >
       <PostBody markdownRemark={data.markdownRemark} />
     </Layout>
