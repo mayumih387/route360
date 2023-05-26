@@ -5,7 +5,7 @@ tags:
   - internationalization
   - markdown
 date: 2023-05-18T01:00:00.000Z
-lastmod: 2023-05-18T01:00:00.000Z
+lastmod: 2023-05-26T02:57:36.787Z
 draft: false
 ---
 
@@ -558,6 +558,14 @@ Use [gatsby-plugin-feed](https://www.gatsbyjs.com/plugins/gatsby-plugin-feed/) t
 },
 ```
 
+## Creating an XML Sitemap for a Multilingual Website
+
+Gatsby's official `gatsby-plugin-sitemap` can generate an XML sitemap, but it must be optimized for multilingual websites.
+
+How to generate a custom XML sitemap with the plugin is explained in the following entry:
+
+[Generating a custom XML sitemap for a multilingual Gatsby site](/en/post/gatsby-i18n-sitemap)
+
 ## Summary
 
 With good use of `gatsby-node.js` path creation, I was able to create a multilingual site with Gatsby.js, without using any special plug-ins for i18n.
@@ -565,7 +573,5 @@ With good use of `gatsby-node.js` path creation, I was able to create a multilin
 When I created a multilingual site with Astro, the official Astro multilingual documentation helped me a lot to understand the structure. The concept worked and was applied again.
 
 It seems that right-to-left languages (e.g., Arabic) would also be okay if the layout component is separated by language.
-
-The next task to do is to internationalize the sitemap, as I mentioned in [Switching an i18n blog to Gatsby.js - Reasons and design overview](/en/post/i18n-next-to-gatsby/).
 
 That's it.

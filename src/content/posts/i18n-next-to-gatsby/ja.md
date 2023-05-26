@@ -5,7 +5,7 @@ tags:
   - jamstack
   - internationalization
 date: 2023-05-10T15:00:00.000Z
-lastmod: 2023-05-10T15:00:00.000Z
+lastmod: 2023-05-26T02:58:54.163Z
 draft: false
 ---
 
@@ -102,10 +102,6 @@ sub-pathとは、ディレクトリ型の言語別サイト構造のことです
 #### TypeScript化は必要？
 
 現時点では必要性を感じておらず、このGatsbyサイトにはTypeScriptを導入していません。今後、やる気が出れば勉強のために書き換えチャレンジするかも？
-
-#### サイトマップ
-
-また、今のところサイトマップも手入力で作っています。[Gatsby公式のサイトマッププラグイン](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/)もありますが、そのままでは多言語用に出力できないため、要勉強です。
 
 #### 自動OGP画像
 

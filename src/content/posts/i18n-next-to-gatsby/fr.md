@@ -5,7 +5,7 @@ tags:
   - jamstack
   - internationalization
 date: 2023-05-10T15:00:00.000Z
-lastmod: 2023-05-10T15:00:00.000Z
+lastmod: 2023-05-26T02:58:46.450Z
 draft: false
 ---
 
@@ -102,10 +102,6 @@ Cela me permet de ne publier que la version japonaise sans attendre la traductio
 #### TypeScript peut-être ?
 
 Je n'ai pas inclus TypeScript car je ne pense pas que ce soit nécessaire pour le moment. Si je suis motivée à l'avenir, je pourrais essayer de réécrire les fichiers.
-
-#### Génération du plan du site
-
-Pour l'instant, je tape toujours le plan du site à la main. [Gatsby.js fournit officiellement un plugin de sitemap](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/), mais il semble qu'il faille le configurer pour un style multilingue.
 
 #### Images OGP automatiques
 
