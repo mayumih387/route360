@@ -152,16 +152,6 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: `${site.siteMetadata.siteUrl}/en/post/${node.fields.slug}/`,
-                  guid: `${site.siteMetadata.siteUrl}/en/post/${node.fields.slug}/`,
-                })
-              })
-            },
             query: `
               {
                 allMarkdownRemark(
@@ -185,23 +175,23 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.en.xml",
-            title: "Route360",
-            description: "Blog by a frontend developer",
-            site_url: "https://route360.dev",
-            feed_url: "https://route360.dev/rss.en.xml",
-          },
-          {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: `${site.siteMetadata.siteUrl}/fr/post/${node.fields.slug}/`,
-                  guid: `${site.siteMetadata.siteUrl}/fr/post/${node.fields.slug}/`,
+                  url: `${site.siteMetadata.siteUrl}/en/post/${node.fields.slug}/`,
+                  guid: `${site.siteMetadata.siteUrl}/en/post/${node.fields.slug}/`,
                 })
               })
             },
+            output: "/rss.en.xml",
+            title: "Route360",
+            description: "Blog by a frontend developer",
+            site_url: "https://route360.dev/en/",
+            feed_url: "https://route360.dev/rss.en.xml",
+          },
+          {
             query: `
               {
                 allMarkdownRemark(
@@ -225,23 +215,23 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.fr.xml",
-            title: "Route360",
-            description: "Blog par une développeuse front-end",
-            site_url: "https://route360.dev",
-            feed_url: "https://route360.dev/rss.fr.xml",
-          },
-          {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: `${site.siteMetadata.siteUrl}/ja/post/${node.fields.slug}/`,
-                  guid: `${site.siteMetadata.siteUrl}/ja/post/${node.fields.slug}/`,
+                  url: `${site.siteMetadata.siteUrl}/fr/post/${node.fields.slug}/`,
+                  guid: `${site.siteMetadata.siteUrl}/fr/post/${node.fields.slug}/`,
                 })
               })
             },
+            output: "/rss.fr.xml",
+            title: "Route360",
+            description: "Blog par une développeuse front-end",
+            site_url: "https://route360.dev/fr/",
+            feed_url: "https://route360.dev/rss.fr.xml",
+          },
+          {
             query: `
               {
                 allMarkdownRemark(
@@ -265,10 +255,20 @@ module.exports = {
                 }
               }
             `,
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: `${site.siteMetadata.siteUrl}/ja/post/${node.fields.slug}/`,
+                  guid: `${site.siteMetadata.siteUrl}/ja/post/${node.fields.slug}/`,
+                })
+              })
+            },
             output: "/rss.ja.xml",
             title: "Route360",
             description: "フロントエンドの開発記録",
-            site_url: "https://route360.dev",
+            site_url: "https://route360.dev/ja/",
             feed_url: "https://route360.dev/rss.ja.xml",
           },
         ],
