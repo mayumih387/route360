@@ -185,7 +185,7 @@ module.exports = {
 
 Algoliaでは`objectID`がデータ管理に使われており、`objectID`を基準に差分判定がされます。
 
-今回はスラッグを`objectID`にしていますが、スラッグが変さらになると、差分判定に無駄が出てしまいます。スラッグが頻繁に変わる可能性がある場合は、他のデータを充てるようにしてください。
+今回はスラッグを`objectID`にしていますが、スラッグが変更になると、差分判定にムダが出てしまいます。スラッグが頻繁に変わる可能性がある場合は、他のデータを充てるようにしてください。
 
 ### ビルドをして検索用データをAlgoliaに送る
 
@@ -266,7 +266,7 @@ export default Algolia
 
 `searchClient`は`useMemo()`によりメモ化して、再レンダリングしパフォーマンス向上を図ります（[参考](https://www.gatsbyjs.com/docs/adding-search-with-algolia/)）。
 
-環境変数を.env.developmentと.env.productionの両方に記載。
+環境変数を`.env.development`と`.env.production`の両方に記載。
 
 ```text
 ALGOLIA_INDEX_NAME=[your_index_name]
