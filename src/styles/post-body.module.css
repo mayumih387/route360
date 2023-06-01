@@ -72,6 +72,10 @@
   font-size: smaller;
 }
 
+.stack blockquote > * + * {
+  margin-top: 0.75em;
+}
+
 .stack [class*="filename"] {
   width: fit-content;
   border-top-left-radius: 0.25rem;
