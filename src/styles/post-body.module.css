@@ -138,6 +138,10 @@
   font-size: small;
 }
 
+.stack figcaption p {
+  text-align: center;
+}
+
 .header {
   display: grid;
   gap: 0.75em;

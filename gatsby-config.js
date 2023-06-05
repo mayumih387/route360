@@ -106,6 +106,10 @@ module.exports = {
               showCaptions: ["title"],
               markdownCaptions: true,
               linkImagesToOriginal: false,
+              wrapperStyle: fluidResult =>
+                fluidResult.presentationWidth < 820
+                  ? `max-width: ${fluidResult.presentationWidth / 1.5}px`
+                  : `max-width: ${fluidResult.presentationWidth}px`,
             },
           },
           {
