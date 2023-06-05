@@ -62,5 +62,9 @@
   {
     "title": "FrontMatter CMS",
     "slug": "frontmattercms"
+  },
+  {
+    "title": "Python",
+    "slug": "python"
   }
 ]
