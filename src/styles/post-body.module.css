@@ -78,13 +78,13 @@
 
 .stack [class*="filename"] {
   width: fit-content;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
   background-color: var(--secondary-bg-color);
-  padding: 0.75rem 1.25rem;
+  padding: 0.75em 1.25em;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 0.75em;
+  line-height: 1.25em;
   color: var(--secondary-font-color);
 }
 
