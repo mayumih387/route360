@@ -4,7 +4,7 @@ tags:
   - meilisearch
   - python
 date: 2023-06-06
-lastmod: 2023-06-06
+lastmod: 2023-06-12T04:45:05.472Z
 draft: false
 ---
 
@@ -18,7 +18,6 @@ Environment:
 
 - Python 3.11
 - Selenium 4
-- undetected-chromedriver
 
 ## Overview
 
@@ -43,7 +42,7 @@ Set the input element `id` as `id="searchInput"`.
 
 ### Python program itself
 
-- Use [undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) to avoid the server's WAF anti-bot.
+- Specify User-Agent to bypass anti-bot server protection
 
 ## Code
 
@@ -74,7 +73,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install get-chrome-driver --upgrade
+          pip install -r requirements.txt
       - name: Run Python script
         run: python search.py
 ```
@@ -82,18 +83,29 @@ jobs:
 <div class="filename">search.py</div>
 
 ```py
-import undetected_chromedriver as uc
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import random
 
-options = uc.ChromeOptions()
+# User-Agent lists
+user_agents = [
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/B08C3901",
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
+]
+
+# Randomly select an user agent
+user_agent = random.choice(user_agents)
+
+# webdriver
+options = webdriver.ChromeOptions()
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--headless')
-# specify driver version
-driver = uc.Chrome(options=options, version_main=113)
+options.add_argument(f'user-agent={user_agent}') # add the User-Agent
+driver = webdriver.Chrome(options=options)
 
 # If element not found, wait 5 seconds
 driver.implicitly_wait(5)
@@ -116,22 +128,15 @@ driver.quit()
 
 ```txt
 selenium
-undetected-chromedriver
 ```
 
 ## Code Description
 
-### Driver version
-
-I have been testing this code on GitHub Actions, and I get errors about the difference in versions between the driver and the browser, especially when the browser is recently updated. Or it could be because `undetected-chromedriver` is running with the latest beta.
-
-So I have specified the driver version when I get an error.
-
-Since I'm not completely familiar with Python and GitHub Actions, I'd appreciate if someone could provide me with a way to automatically reconcile the two versions😅
-
 ### Anti-Bot Measures
 
-The server you are using may protect bot access with its WAF. To prevent this, I added [undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) as mentioned above. Without it, Cloudflare rejected this program.
+The server you are using may protect bot access with its WAF. To prevent this, I added User-Agent to the header. Without it, Cloudflare rejected the program.
+
+It might be better to update the versions in the code when a browser version is updated, but the program worked even if the version is not the same as the current version in real.
 
 ### Operation Interval
 

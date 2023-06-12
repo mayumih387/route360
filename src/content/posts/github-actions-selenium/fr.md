@@ -4,7 +4,7 @@ tags:
   - meilisearch
   - python
 date: 2023-06-06
-lastmod: 2023-06-06
+lastmod: 2023-06-12T04:44:52.127Z
 draft: false
 ---
 
@@ -74,7 +74,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install get-chrome-driver --upgrade
+          pip install -r requirements.txt
       - name: Run Python script
         run: python search.py
 ```
@@ -82,18 +84,29 @@ jobs:
 <div class="filename">search.py</div>
 
 ```py
-import undetected_chromedriver as uc
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import random
 
-options = uc.ChromeOptions()
+# Listes User-Agent
+user_agents = [
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/B08C3901",
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
+]
+
+# Sélectionner aléatoirement un agent utilisateur
+user_agent = random.choice(user_agents)
+
+# webdriver
+options = webdriver.ChromeOptions()
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--headless')
-# specify driver version
-driver = uc.Chrome(options=options, version_main=113)
+options.add_argument(f'user-agent={user_agent}') # ajouter l'User-Agent
+driver = webdriver.Chrome(options=options)
 
 # Si l'élément n'est pas trouvé, attendre 5 secondes
 driver.implicitly_wait(5)
@@ -116,22 +129,15 @@ driver.quit()
 
 ```txt
 selenium
-undetected-chromedriver
 ```
 
 ## Code Description
 
-### Version du driver
-
-J'ai testé ce code sur GitHub Actions, et je reçois des erreurs à propos de la différence de version entre le driver et le browser, surtout quand le browser a été récemment mis à jour. Ou alors c'est parce que `undetected-chromedriver` fonctionne avec la dernière beta.
-
-J'ai donc spécifié la version du driver lorsque j'obtiens une erreur.
-
-Comme je ne suis pas complètement familier avec Python et les GitHub Actions, j'apprécierais que quelqu'un puisse me fournir un moyen de réconcilier automatiquement les deux versions😅.
-
 ### Mesures anti-bots
 
-Le serveur que vous utilisez peut protéger l'accès des robots avec son WAF. Pour éviter cela, j'ai ajouté [undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) comme mentionné ci-dessus. Sans cela, Cloudflare a rejeté ce programme.
+Le serveur que vous utilisez peut protéger l'accès des robots avec son WAF. Pour éviter cela, j'ai ajouté User-Agent à l'en-tête. Sans cela, Cloudflare a rejeté le programme.
+
+Il serait peut-être préférable de mettre à jour les versions dans le code lorsque la version du navigateur est mise à jour, mais le programme a fonctionné même si la version n'est pas la même que la version actuelle dans la réalité.
 
 ### Intervalle d'opération
 

@@ -4,7 +4,7 @@ tags:
   - meilisearch
   - python
 date: 2023-06-06
-lastmod: 2023-06-06
+lastmod: 2023-06-12T04:37:08.046Z
 draft: false
 ---
 
@@ -18,7 +18,6 @@ draft: false
 
 - Python 3.11
 - Selenium 4
-- undetected-chromedriver
 
 ## 概要
 
@@ -43,7 +42,7 @@ root
 
 ### Pythonファイルのポイント
 
-- サーバーのアンチ・ボット対策に[undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)を利用
+- サーバーのアンチ・ボット対策にUser-Agent（ユーザーエージェント）を指定
 
 ## コード
 
@@ -74,7 +73,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install get-chrome-driver --upgrade
+          pip install -r requirements.txt
       - name: Run Python script
         run: python search.py
 ```
@@ -82,20 +83,31 @@ jobs:
 <div class="filename">search.py</div>
 
 ```py
-import undetected_chromedriver as uc
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import random
 
-options = uc.ChromeOptions()
+# User-Agentのリスト
+user_agents = [
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/B08C3901",
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
+]
+
+# ランダムにUser-Agentを選択
+user_agent = random.choice(user_agents)
+
+# webdriverの作成
+options = webdriver.ChromeOptions()
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--headless')
-# ドライバーのバージョン指定
-driver = uc.Chrome(options=options, version_main=113)
+options.add_argument(f'user-agent={user_agent}') # User-Agentを設定
+driver = webdriver.Chrome(options=options)
 
-# 要素が見つからない場合は5秒待機
+# 要素が見つからない場合は5秒待つように設定
 driver.implicitly_wait(5)
 # 要素が有効になるまで5秒待機
 wait = WebDriverWait(driver, 5)
@@ -116,22 +128,15 @@ driver.quit()
 
 ```txt
 selenium
-undetected-chromedriver
 ```
 
 ## コードの解説
 
-### ドライバーのバージョン指定
-
-数日動かしてみましたが、`undetected-chromedriver`は最新のベータ版まで対応しており、立ち上がるブラウザーのバージョンと合わないことがありました。
-
-そのため、エラーが出た場合はエラー内容を確認してバージョンを指定しています。
-
-私がPythonとGitHub Actionsに完全に精通しているとは言えないので、`undetected-chromedriver`とブラウザーのバージョンを自動で合わせる方法があれば教えてください😅
-
 ### アンチ・ボット対策
 
-運用サーバーによっては、ボットアクセスがサーバーのWAF（ファイアーウォール）で弾かれる場合があるため、先述した[undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver)を活用しています。これがないと、少なくともCloudfareには弾かれました。
+運用サーバーによっては、ボットアクセスがサーバーのWAF（ファイアーウォール）で弾かれる場合があるため、User-Agent（ユーザーエージェント）をランダムでヘッダーに挿入しています。これがないと、少なくともCloudfareには弾かれました。
+
+ブラウザーが更新された場合などは、User-Agent（ユーザーエージェント）のバージョンも変更したほうがいいかもしれませんが、現実の最新のブラウザーバージョンと違っていても動きはしました。
 
 ### 稼働間隔
 
