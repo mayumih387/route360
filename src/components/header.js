@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import ThemeContext from "../context/ThemeContext"
 
 import { langName } from "../../data/i18n"
@@ -11,16 +11,6 @@ const Header = ({
   pagePath = "",
   pageLayout = "post",
 }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   const ctx = useContext(ThemeContext)
 
   const [showLangSelector, setShowLangSelector] = useState(false)
