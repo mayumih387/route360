@@ -14,16 +14,13 @@
   padding: 2em 0;
 }
 
-.logoHeading {
-  line-height: 0;
-  font-size: var(--heading3);
+.logoLink {
+  display: flex;
 }
 
-.logoLink {
-  font-family: Raleway, sans-serif;
-  font-size: var(--heading3);
-  letter-spacing: 0.1em;
-  line-height: 1;
+.logoLink svg {
+  width: 140px;
+  fill: var(--primary-font-color)
 }
 
 .nav {
