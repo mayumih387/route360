@@ -11,15 +11,15 @@
   position: relative;
   display: block;
   width: auto;
-  min-width: 32px;
-  height: 32px;
+  min-width: 48px;
+  height: 48px;
   padding: 0;
   box-sizing: content-box;
   color: inherit;
   font-size: 1em;
   font-weight: 700;
   color: var(--secondary-font-color);
-  line-height: 32px;
+  line-height: 48px;
   text-align: center;
   text-decoration: none;
   transition: color 0.25s, background-color 0.25s;
