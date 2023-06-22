@@ -4,7 +4,7 @@ tags:
   - meilisearch
   - python
 date: 2023-06-06
-lastmod: 2023-06-12T04:44:52.127Z
+lastmod: 2023-06-12
 draft: false
 ---
 
@@ -18,7 +18,6 @@ Environnement:
 
 - Python 3.11
 - Selenium 4
-- undetected-chromedriver
 
 ## Aperçu
 
@@ -43,7 +42,7 @@ Définissez l'élément d'entrée `id` comme `id="searchInput"`.
 
 ### Programme Python lui-même
 
-- Utiliser [undetected_chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) pour éviter l'anti-bot du WAF du serveur.
+Spécifier User-Agent pour contourner la protection du serveur anti-bot
 
 ## Code
 
