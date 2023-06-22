@@ -5,7 +5,7 @@ tags:
   - markdown
   - frontmattercms
 date: 2023-04-28T15:00:00.000Z
-lastmod: 2023-04-28T15:00:00.000Z
+lastmod: 2023-06-22T03:16:16.790Z
 draft: false
 ---
 
@@ -34,7 +34,7 @@ In the case of WordPress,
 - Front-end: the pages that people can see
 - Back-end: admin/control panel that only you can see
 
-WordPress is a traditional CMS; both run on the same server. 
+WordPress is a traditional CMS; both run on the same server.
 
 Websites built with a headless CMS have the great advantage of being very secure because the back-end is completely separate from the front-end.
 
@@ -137,22 +137,62 @@ During initialization, Front Matter CMS automatically detects the Static Site Ge
 ```json
 {
   "frontMatter.taxonomy.contentTypes": [
-  {
-    "frontMatter.framework.id": "gatsby",
-    "frontMatter.preview.host": "http://localhost:8000",
-  }
-]}
+    {
+      "frontMatter.framework.id": "gatsby",
+      "frontMatter.preview.host": "http://localhost:8000"
+    }
+  ]
+}
 ```
 
 After that, you can start/stop the local server using the buttons on the left sidebar without typing `gatsby develop` or `yarn dev`.
 
 ![Front Matter CMS](../../../images/frontmattercms08.png)
 
+### Repeater Fields
+
+With its Block Field feature, we can add repeater fields like WordPress' Advanced Custom Fields (ACF).
+
+```json
+"frontMatter.taxonomy.fieldGroups": [
+  {
+    "id": "author",
+    "labelField": "name",
+    "fields": [
+      {
+        "title": "Author Name",
+        "name": "name",
+        "type": "string",
+        "single": true
+      },
+      {
+        "title": "Social link",
+        "name": "social",
+        "type": "string",
+        "single": true
+      }
+    ]
+  }
+]
+"frontMatter.taxonomy.contentTypes": [
+  {
+    "name": "default",
+    "fields": [
+      {
+        "title": "Authors",
+        "name": "authors",
+        "type": "block",
+        "fieldGroup": "author"
+      },
+      // ...
+    ]
+  }
+],
+```
+
+![Front Matter CMS](../../../images/frontmattercms02.gif)
+
 ## What can't we do with Front Matter CMS?
-
-### No Repeater Field feature
-
-There is no repeater field feature like the Advanced Custom Fields plugin for WordPress.
 
 ### No rich text editor
 
@@ -161,6 +201,25 @@ As I mentioned earlier, because Front Matter CMS is only for Markdown content. W
 However, there are support buttons for Markdown input, making it easier to mark up images, lists, or block quotes.
 
 ![Front Matter CMS](../../../images/frontmattercms09.png)
+
+It's possible to apply a WYSIWYG editor to metadata fields. I could say that it's not really comfortable to use...
+
+```json
+"frontMatter.taxonomy.contentTypes": [
+  {
+    "name": "default",
+    {
+      "title": "Description",
+      "name": "description",
+      "type": "string",
+      "wysiwyg": true
+    },
+    //...
+  }
+]
+```
+
+![Front Matter CMS](../../../images/frontmattercms03.gif)
 
 ## Conclusion
 

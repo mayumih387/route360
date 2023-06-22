@@ -5,7 +5,7 @@ tags:
   - markdown
   - frontmattercms
 date: 2023-04-28T15:00:00.000Z
-lastmod: 2023-04-28T15:00:00.000Z
+lastmod: 2023-06-22T03:16:15.179Z
 draft: false
 ---
 
@@ -34,7 +34,7 @@ Dans le cas de WordPress,
 - Front-end : les pages que les internautes peuvent voir
 - Back-end : panneau d'administration/de contrôle que vous êtes le seul à voir
 
-WordPress est un CMS traditionnel ; les deux fonctionnent sur le même serveur. 
+WordPress est un CMS traditionnel ; les deux fonctionnent sur le même serveur.
 
 Les sites web construits avec un CMS sans tête ont le grand avantage d'être très sécurisés parce que le back-end est complètement séparé du front-end.
 
@@ -137,22 +137,62 @@ Lors de l'initialisation, Front Matter CMS détecte automatiquement le Static Si
 ```json
 {
   "frontMatter.taxonomy.contentTypes": [
-  {
-    "frontMatter.framework.id": "gatsby",
-    "frontMatter.preview.host": "http://localhost:8000",
-  }
-]}
+    {
+      "frontMatter.framework.id": "gatsby",
+      "frontMatter.preview.host": "http://localhost:8000"
+    }
+  ]
+}
 ```
 
 Après cela, vous pouvez démarrer/arrêter le serveur local en utilisant les boutons de la barre latérale gauche sans avoir à taper `gatsby develop` ou `yarn dev`.
 
 ![Front Matter CMS](../../../images/frontmattercms08.png)
 
+### Le champ répéteur
+
+Avec sa fonction Block Field, nous pouvons ajouter des champs répétiteurs comme les Advanced Custom Fields (ACF) de WordPress.
+
+```json
+"frontMatter.taxonomy.fieldGroups": [
+  {
+    "id": "author",
+    "labelField": "name",
+    "fields": [
+      {
+        "title": "Author Name",
+        "name": "name",
+        "type": "string",
+        "single": true
+      },
+      {
+        "title": "Social link",
+        "name": "social",
+        "type": "string",
+        "single": true
+      }
+    ]
+  }
+]
+"frontMatter.taxonomy.contentTypes": [
+  {
+    "name": "default",
+    "fields": [
+      {
+        "title": "Authors",
+        "name": "authors",
+        "type": "block",
+        "fieldGroup": "author"
+      },
+      // ...
+    ]
+  }
+],
+```
+
+![Front Matter CMS](../../../images/frontmattercms02.gif)
+
 ## Que ne pouvons-nous pas faire avec Front Matter CMS ?
-
-### Pas de fonction de champ répétitif
-
-Il n'y a pas de champ répétitif comme dans le plugin Advanced Custom Fields pour WordPress.
 
 ### Pas d'éditeur de texte riche
 
@@ -161,6 +201,25 @@ Comme je l'ai déjà mentionné, Front Matter CMS est uniquement destiné au con
 Cependant, il y a des boutons de support pour la saisie Markdown, ce qui facilite le marquage des images, des listes ou des blocs de guillemets.
 
 ![Front Matter CMS](../../../images/frontmattercms09.png)
+
+Il est possible d'appliquer un éditeur WYSIWYG aux champs de métadonnées. Je pourrais dire que ce n'est pas vraiment confortable à utiliser...
+
+```json
+"frontMatter.taxonomy.contentTypes": [
+  {
+    "name": "default",
+    {
+      "title": "Description",
+      "name": "description",
+      "type": "string",
+      "wysiwyg": true
+    },
+    //...
+  }
+]
+```
+
+![Front Matter CMS](../../../images/frontmattercms03.gif)
 
 ## Conclusion
 

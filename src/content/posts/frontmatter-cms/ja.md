@@ -5,7 +5,7 @@ tags:
   - markdown
   - frontmattercms
 date: 2023-04-28T15:00:00.000Z
-lastmod: 2023-04-28T15:00:00.000Z
+lastmod: 2023-06-22T03:16:17.902Z
 draft: false
 ---
 
@@ -151,19 +151,77 @@ Front Matter CMSは、多くの静的サイトジェネレーターに対応し�
 
 ![Front Matter CMS](../../../images/frontmattercms08.png)
 
+### リピーターフィールドの設定
+
+「Block field」を使えば、WordPressのAdvanced Custom Fields（ACF）のリピーターフィールドのような機能も追加できます。
+
+```json
+"frontMatter.taxonomy.fieldGroups": [
+  {
+    "id": "author",
+    "labelField": "name",
+    "fields": [
+      {
+        "title": "Author Name",
+        "name": "name",
+        "type": "string",
+        "single": true
+      },
+      {
+        "title": "Social link",
+        "name": "social",
+        "type": "string",
+        "single": true
+      }
+    ]
+  }
+]
+"frontMatter.taxonomy.contentTypes": [
+  {
+    "name": "default",
+    "fields": [
+      {
+        "title": "Authors",
+        "name": "authors",
+        "type": "block",
+        "fieldGroup": "author"
+      },
+      // ...
+    ]
+  }
+],
+```
+
+![Front Matter CMS](../../../images/frontmattercms02.gif)
+
 ## Front Matter CMSでできないこと
-
-### リピーターフィールドは作れない
-
-WordPressのAdvanced Custom Fieldsプラグインのような、動的に追加・削除ができるリピーターフィールドを作る機能は、現時点ではFront Matter CMSにはありません。
 
 ### リッチテキストエディターは使えない
 
-「デメリット」にも書きましたが、リッチテキストエディター（WYSIWYGエディター）等は使えません。**Front Matter CMSは、MarkdownコンテンツのためのCMS**です。
+**Front Matter CMSは、MarkdownコンテンツのためのCMS**です。リッチなテキストエディターを記事に使うことはできません。
 
-ただし、Markdownの入力支援は上部に表示されており、画像やリスト等の挿入がしやすくなっています。
+ただし、Markdownの入力支援は上部に表示されており、画像やリスト等の挿入がしやすくなっていますし、あらかじめ登録したスニペットを呼び出して使うことができます。
 
 ![Front Matter CMS](../../../images/frontmattercms09.png)
+
+メタデータ入力欄にはWYSIWYGエディターを追加することが可能です。使いやすくはありませんが・・・
+
+```json
+"frontMatter.taxonomy.contentTypes": [
+  {
+    "name": "default",
+    {
+      "title": "Description",
+      "name": "description",
+      "type": "string",
+      "wysiwyg": true
+    },
+    //...
+  }
+]
+```
+
+![Front Matter CMS](../../../images/frontmattercms03.gif)
 
 ## おわりに
 
