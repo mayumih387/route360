@@ -70,9 +70,6 @@ yarn-error.log
 
 # Settings by me
 .prettierrc
-.prettierignore
-.textlintrc.json
-.textlintignore
 .vscode
 .frontmatter
 frontmatter.json
