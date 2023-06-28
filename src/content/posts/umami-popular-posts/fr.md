@@ -4,57 +4,57 @@ tags:
   - umami
   - analytics
   - gatsbyjs
-date: 2023-06-27
-lastmod: 2023-06-22
-draft: true
+date: 2023-06-28
+lastmod: 2023-06-28
+draft: false
 ---
 
-[Umami Analytics](https://umami.is/) is a privacy-first, open source analytics. We can host it by ourselves besides its freemium cloud version with limited features.
+[Umami Analytics](https://umami.is/) est un outil d'analyse open source axé sur la protection de la vie privée. Nous pouvons l'héberger nous-mêmes en plus de sa version freemium cloud avec des fonctionnalités limitées.
 
-Last time, I wrote [how to run Umami Analytics + Supabase + Vercel for free](../umami-supabase/).
+La dernière fois, j'ai écrit [comment utiliser Umami Analytics + Supabase + Vercel gratuitement](../umami-supabase/).
 
-This time I'd like to show you how to get the popular posts from Umami API and how to output this data to GraphQL.
+Cette fois-ci, j'aimerais vous montrer comment récupérer les articles populaires à partir de l'API Umami et comment sortir ces données vers GraphQL de Gatsby.
 
-I have tested my codes with a self-hosted Umami. I didn't test with Umami Cloud.
+J'ai testé mes codes avec un Umami auto-hébergé. Je n'ai pas testé avec Umami Cloud.
 
-Environment
+Environnement
 
 - Umami v2.2.0
 
-## Prerequisite
+## Prérequis
 
-- Umami is already being running (see [how to run Umami Analytics for free](../umami-supabase/))
+- Umami est déjà en cours d'exécution (voir [Comment gérer Umami Analytics + Supabase + Vercel gratuitement](../umami-supabase/))
 
-## Getting a Token
+## Obtenir un token
 
-First you need to get a token to connect to the Umami API.
+Tout d'abord, vous devez obtenir un token pour vous connecter à l'API Umami.
 
-We can get the token by [the official way](https://umami.is/docs/authentication), but the easiest way is;
+Nous pouvons obtenir le token par [la méthode officielle](https://umami.is/docs/authentication), mais la méthode la plus simple est la suivante ;
 
-**Go to your Umami page and check the umami.auth value from F12 -> Application -> Local Storage.**
+**Allez sur votre page Umami et vérifiez la valeur umami.auth à partir de F12 -> Application -> Stockage Local.**
 
-![Local storage of Umami page](../../../images/umami-auth01.en.png)
+![Stockage local de la page Umami](../../../images/umami-auth01.fr.png)
 
-Link - [Authentication | Umami](https://umami.is/docs/authentication)
+Lien - [Authentication | Umami](https://umami.is/docs/authentication)
 
-## Checking out the Website ID
+## Vérification de l'ID du site Web
 
-Besides the way shown by [Umami official](https://umami.is/docs/websites-api), the easiest way is;
+Outre la méthode indiquée par [Umami official](https://umami.is/docs/websites-api), la méthode la plus simple est la suivante :
 
-**Go to your Umami page, view the details of your website, and check the URL.**
+**Allez sur votre page Umami, affichez les détails de votre site web et vérifiez l'URL.**
 
-![UmamiページのURL](../../../images/umami-auth02.en.png)
+![Umami page url](../../../images/umami-auth02.fr.png)
 
-Link - [Websites | Umami](https://umami.is/docs/websites-api)
+Lien - [Websites | Umami](https://umami.is/docs/websites-api)
 
-## Connecting to the API
+## Connexion à l'API
 
-Once you have the token and the Website ID, you can use JavaScript `fetch` to the metrics data.
+Une fois que vous avez le token et l'ID du site Web, vous pouvez utiliser JavaScript `fetch` pour les données de métriques.
 
 ```js
 const today = new Date()
-const todayTs = today.getTime() // Curent timestamp
-const sevenDaysAgoTs = todayTs - 604800000 // Timestamp of 7 days ago from now
+const todayTs = today.getTime() // Horodatage actuel
+const sevenDaysAgoTs = todayTs - 604800000 // Horodatage d'il y a 7 jours à partir de maintenant
 
 const params = { startAt: sevenDaysAgoTs, endAt: todayTs, type: "url" }
 const query = new URLSearchParams(params)
@@ -72,9 +72,9 @@ const data = await response.json()
 console.log(data)
 ```
 
-Link - [Website statistics](https://umami.is/docs/website-stats)
+Lien - [Website statistics](https://umami.is/docs/website-stats)
 
-What we can get here with the code is the paths and the number of visitors. It means it contains the home page or the contact page.
+Ce que nous pouvons obtenir ici avec le code, ce sont les chemins d'accès et le nombre de visiteurs. Cela signifie qu'il contient la page d'accueil ou la page de contact.
 
 ```json
 [
@@ -85,9 +85,9 @@ What we can get here with the code is the paths and the number of visitors. It m
 ]
 ```
 
-If you only want the blog pages, filter the json data with the conditions like "including `/post/` value in `x`" when extending it with `forEach` or `map`.
+Si vous ne voulez que les pages du blog, filtrez les données json avec des conditions comme "inclure la valeur `/post/` dans `x`" lorsque vous l'étendez avec `forEach` ou `map`.
 
-Also, for security reasons, the token and Website ID should be managed in .env files.
+De plus, pour des raisons de sécurité, le token et l'identifiant du site web doivent être gérés dans des fichiers .env.
 
 <div class="filename">.env</div>
 
@@ -96,22 +96,22 @@ UMAMI_AUTH=123456789012345678901234
 UMAMI_WEBSITE_ID=abc-def-ghi-jkl-mno-pqr
 ```
 
-## What next after getting json data?
+## Que faire après avoir obtenu des données json ?
 
-To show the popular posts on your website, get the most 5 viewed paths and show the titles and the links regarding to the paths.
+Pour afficher les articles les plus populaires sur votre site, récupérez les 5 chemins les plus consultés et affichez les titres et les liens relatifs à ces chemins.
 
-### With Gatsby.js
+### Avec Gatsby.js
 
-I am good at Gatsby, so I create a schema of popular articles in `gatsby-node.js`; link the paths (obtained from the Umami API) to the article slugs, so that we can retrieve article data from the popular articles schema in GraphQL.
+Je suis bonne en Gatsby, donc je crée un schéma d'articles populaires dans `gatsby-node.js` ; je lie les chemins (obtenus à partir de l'API Umami) aux slugs d'articles, de sorte que nous puissions récupérer les données d'articles à partir du schéma d'articles populaires dans GraphQL.
 
-\*Example of a Gatsby site managing articles in Markdown
+\*Exemple d'un site Gatsby gérant des articles en Markdown
 
 <div class="filename">gatsby-node.js</div>
 
 ```js
 const fetch = require("node-fetch")
 
-// Generating PageViews schema
+// Génération du schéma PageViews
 exports.sourceNodes = async ({
   actions,
   createContentDigest,
@@ -141,7 +141,7 @@ exports.sourceNodes = async ({
     node.x.includes("/post/") &&
       createNode({
         slug: node.x.split("/")[2], // slug
-        count: node.y, // pageview number
+        count: node.y, // nombre de pages vues
         id: createNodeId(`${node.x}`),
         internal: {
           type: "PageViews",
@@ -151,7 +151,7 @@ exports.sourceNodes = async ({
   })
 }
 
-// Linking Markdown data to the PageViews schema
+// Lier les données Markdown au schéma PageViews
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     PageViews: {
@@ -174,14 +174,14 @@ exports.createResolvers = ({ createResolvers }) => {
 }
 ```
 
-By doing this, the PageViews schema is generated and also has a corresponding Markdown data connected by the same slug.
+Ce faisant, le schéma PageViews est généré et a également une donnée Markdown correspondante connectée par le même slug.
 
 ![Gatsby.js GraphQL](../../../images/gatsby-graphql01.png)
 
-With GraphQL's `sort`ing or `limit`ing, you can get "the most 5 viewed posts" so easily.
+Avec le `sort` ou la `limit` de GraphQL, vous pouvez facilement obtenir "les 5 articles les plus consultés".
 
-(This flexibility of GraphQL is one of the reasons I love Gatsby.js!)
+(Cette flexibilité de GraphQL est l'une des raisons pour lesquelles j'aime Gatsby.js !)
 
-### Link
+### Lien
 
 - [API | Umami](https://umami.is/docs/api)

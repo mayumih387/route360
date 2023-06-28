@@ -4,16 +4,16 @@ tags:
   - umami
   - analytics
   - gatsbyjs
-date: 2023-06-27
-lastmod: 2023-06-22
-draft: true
+date: 2023-06-28
+lastmod: 2023-06-28
+draft: false
 ---
 
 [Umami Analytics](https://umami.is/) is a privacy-first, open source analytics. We can host it by ourselves besides its freemium cloud version with limited features.
 
 Last time, I wrote [how to run Umami Analytics + Supabase + Vercel for free](../umami-supabase/).
 
-This time I'd like to show you how to get the popular posts from Umami API and how to output this data to GraphQL.
+This time I'd like to show you how to get the popular posts from Umami API and how to output this data to Gatsby's GraphQL.
 
 I have tested my codes with a self-hosted Umami. I didn't test with Umami Cloud.
 
@@ -43,7 +43,7 @@ Besides the way shown by [Umami official](https://umami.is/docs/websites-api), t
 
 **Go to your Umami page, view the details of your website, and check the URL.**
 
-![UmamiページのURL](../../../images/umami-auth02.en.png)
+![Umami page url](../../../images/umami-auth02.en.png)
 
 Link - [Websites | Umami](https://umami.is/docs/websites-api)
 

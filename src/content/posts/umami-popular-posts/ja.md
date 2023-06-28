@@ -4,16 +4,16 @@ tags:
   - umami
   - analytics
   - gatsbyjs
-date: 2023-06-27
-lastmod: 2023-06-27
-draft: true
+date: 2023-06-28
+lastmod: 2023-06-28
+draft: false
 ---
 
 [Umami Analytics](https://umami.is/)は、プライバシー優先のオープンソースのアクセス解析です。クラウド版が提供されている他、自分でホスティングすればすべての機能を無料で使うことができます。
 
 前回、[UmamiをSupabaseとVercelで無料運用する方法](../umami-supabase/)を紹介しました。
 
-今回は、UmamiのAPIを利用して、人気記事を取得する方法と、Gatsbyで人気記事データをGraphQLで出力させる方法を紹介します。
+今回はUmamiのAPIを利用して、人気記事を取得する方法と、Gatsbyで人気記事データをGraphQLで出力させる方法を紹介します。
 
 私はセルフホスト環境で動作確認をしています。Umamiクラウド版で同じように動くかどうかは試していません。
 
