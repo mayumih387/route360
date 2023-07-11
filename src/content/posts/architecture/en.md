@@ -33,8 +33,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n: {
-    locales: ['en', 'fr', 'ja'],
-    defaultLocale: 'en',
+    locales: ["en", "fr", "ja"],
+    defaultLocale: "en",
   },
   trailingSlash: true,
 }
@@ -50,9 +50,9 @@ No UI Framework is installed. Only css modules.
 
 ## Headless CMS: none (only Markdown)
 
-Though I was making this website with [DatoCMS](https://www.datocms.com/) first, their free plan includes only 300 recodes, which is too small. So I re-made this with local Markdown contents.
+Though I was making this website with [DatoCMS](https://www.datocms.com/) first, their free plan includes only 300 records, which is too small. So I re-made this with local Markdown contents.
 
-If you are planning a website with less than two languages, [Contentful](https://www.contentful.com/) offers a good internationalization option with their free plan (including 25k recodes). As I wanted three languages this time, I didn't choose it.
+If you are planning a website with less than two languages, [Contentful](https://www.contentful.com/) offers a good internationalization option with their free plan (including 25k records). As I wanted three languages this time, I didn't choose it.
 
 As DatoCMS provides all the data with GraphQL, it was not that difficult for me who knows Gatsby.js. Its Real-time Preview is practical too.
 
@@ -64,10 +64,10 @@ I preferred [Cloudflare Pages](https://pages.cloudflare.com/) as a host, but wit
 
 ## Others
 
-* Comment system - [giscus](https://giscus.app/)
-* Webfont - [Fontawesome](https://fontawesome.com/)
-* Syntax highlighter - [Prism.js](https://prismjs.com/)
-* Translation - me😅 with a lot of help by DeepL and dictionaries...
+- Comment system - [giscus](https://giscus.app/)
+- Webfont - [Fontawesome](https://fontawesome.com/)
+- Syntax highlighter - [Prism.js](https://prismjs.com/)
+- Translation - me😅 with a lot of help by DeepL and dictionaries...
 
 ## Conclusion
 

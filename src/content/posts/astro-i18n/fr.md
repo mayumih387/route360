@@ -12,12 +12,12 @@ J'ai transformé un ancien site WordPress multilingue en site Astro.
 
 Ici 👉[Visit Palestine](https://visit-palestine.net/en/)
 
-*Les informations contenues dans ce site ne sont pas les plus récentes, elles sont donc données à titre indicatif.<br />
-**Les publicités seront affichées. Veuillez ne pas ouvrir si vous ne souhaitez pas en voir.
+\*Les informations contenues dans ce site ne sont pas les plus récentes, elles sont donc données à titre indicatif.<br />
+\*\*Les publicités seront affichées. Veuillez ne pas ouvrir si vous ne souhaitez pas en voir.
 
-Astro n'indique pas l'internationalisation du site dans sa documentation, mais ce n'est pas si difficile grâce à son système de routage ; les URL sont générées dès que vous placez des fichiers dans le dossier src. *Pourvu qu'il s'agisse d'un routage par sous-chemin avec des fichiers markdown.
+Astro n'indique pas l'internationalisation du site dans sa documentation, mais ce n'est pas si difficile grâce à son système de routage ; les URL sont générées dès que vous placez des fichiers dans le dossier src. \*Pourvu qu'il s'agisse d'un routage par sous-chemin avec des fichiers markdown.
 
-Comme vous l'avez peut-être déjà remarqué, [Astro official docs]((https://docs.astro.build/en/getting-started/)) est bien internationalisé avec le routage par sous-chemin.
+Comme vous l'avez peut-être déjà remarqué, [Astro official docs](<(https://docs.astro.build/en/getting-started/)>) est bien internationalisé avec le routage par sous-chemin.
 
 D'autre part, comme Astro n'est pas optimisé pour l'internationalisation comme Next.js, il y a du travail à faire.
 
@@ -61,8 +61,8 @@ Dans le cas d'[Astro official documents](https://docs.astro.build/en/getting-sta
 
 ```ts
 export function getLanguageFromURL(pathname: string) {
-  const langCodeMatch = pathname.match(/\/([a-z]{2}-?[a-z]{0,2})\//);
-  return langCodeMatch ? langCodeMatch[1] : 'en';
+  const langCodeMatch = pathname.match(/\/([a-z]{2}-?[a-z]{0,2})\//)
+  return langCodeMatch ? langCodeMatch[1] : "en"
 }
 ```
 
@@ -76,7 +76,7 @@ Je me demande toujours si j'ai besoin d'un sélecteur de langue, mais j'arrive �
 
 Dans la documentation d'Astro, la fonction de changement de langue (sélecteur) est réalisée avec javascript (typescript).
 
-<span class="label warning">Référence</span> [LanguageSelect.tsx | withastro/docs  - GitHub](https://github.com/withastro/docs/blob/main/src/components/Header/LanguageSelect.tsx)
+<span class="label warning">Référence</span> [LanguageSelect.tsx | withastro/docs - GitHub](https://github.com/withastro/docs/blob/main/src/components/Header/LanguageSelect.tsx)
 
 <div class="filename">/src/components/Header/LanguageSelect.tsx</div>
 
@@ -166,7 +166,7 @@ Le routage de 11ty est le même que celui d'Astro.
 
 ## Conclusion
 
-Comme la documentation officielle d'Astro est multilingue et que son dépôt GitHub est public, je m'y suis référé plusieurs fois, heureusement.
+Comme la documentation officielle d'Astro est multilingue et que son dépôt GitHub est public, je m'y suis référée plusieurs fois, heureusement.
 
 L'ajout d'autres langues ne semble pas si difficile, sauf s'il ne s'agit pas d'une langue RTL...
 

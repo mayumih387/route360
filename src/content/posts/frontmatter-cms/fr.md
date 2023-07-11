@@ -11,7 +11,7 @@ draft: false
 
 Lorsque j'ai envisagé de migrer mon projet WordPress vers Jamstack, j'ai essayé de nombreux CMS sans tête comme Contentful, Craft CMS, Strapi ou WordPress comme headless. Cependant, je n'ai pas trouvé celui qui répondait à mes besoins, même après quelques mois.
 
-C'est alors que je suis tombé sur [Front Matter CMS](https://frontmatter.codes/), une extension de VS Code. C'est exactement ce que je voulais. Il est possible de gérer du contenu avec une architecture aussi compliquée.
+C'est alors que je suis tombée sur [Front Matter CMS](https://frontmatter.codes/), une extension de VS Code. C'est exactement ce que je voulais. Il est possible de gérer du contenu avec une architecture aussi compliquée.
 
 Aujourd'hui, j'aimerais donc vous présenter ce CMS sans tête avec gratitude !
 

@@ -18,7 +18,7 @@ J'ai créé un système de commentaires avec Firebase Realtime Database pour un 
 
 De plus, comme vous pouvez ajouter n'importe quel element d'`<input>` que vous voulez avec le système de commentaires utilisant Firebase, ce serait bien pour les sites de commerce électronique qui veulent ajouter une fonction d'évaluation (notation par étoiles) à leurs produits.
 
-*Comme je ne suis pas très habitué à Firebase, tout conseil serait apprécié si j'écris quelque chose d'incorrect🙇‍♀️
+\*Comme je ne suis pas très habituée à Firebase, tout conseil serait apprécié si j'écris quelque chose d'incorrect🙇‍♀️
 
 Environnement :
 
@@ -34,15 +34,15 @@ Procédez après vous être enregistré auprès de Firebase.
 
 Tout d'abord, ajoutez un nouveau projet.
 
-![Ajouter un nouveau projet sur Firebase](../../../images/firebase01.fr.png '&copy; Google Firebase')
+![Ajouter un nouveau projet sur Firebase](../../../images/firebase01.fr.png "© Google Firebase")
 
 Le nom du projet est libre. Je l'ai appelé "comments".
 
-![Ajouter un nouveau projet sur Firebase](../../../images/firebase02.fr.png '&copy; Google Firebase')
+![Ajouter un nouveau projet sur Firebase](../../../images/firebase02.fr.png "© Google Firebase")
 
 Comme je n'utilise pas Google Analytics cette fois-ci, j'ai désactivé Google Analytics ici.
 
-![Ajouter un nouveau projet sur Firebase](../../../images/firebase03.fr.png '&copy; Google Firebase')
+![Ajouter un nouveau projet sur Firebase](../../../images/firebase03.fr.png "© Google Firebase")
 
 Votre nouveau projet sera prêt dix secondes après avoir cliqué sur "Créer un projet".
 
@@ -50,11 +50,11 @@ Votre nouveau projet sera prêt dix secondes après avoir cliqué sur "Créer un
 
 Dans votre projet, créez une base de données.
 
-![Créer une base de données en temps réel sur Firebase](../../../images/firebase04.fr.png '&copy; Google Firebase')
+![Créer une base de données en temps réel sur Firebase](../../../images/firebase04.fr.png "© Google Firebase")
 
 Démarrez en mode verrouillé pour vos règles de sécurité afin que personne ne puisse accéder à votre base de données.
 
-![Règles de sécurité sur Firebase](../../../images/firebase05.fr.png '&copy; Google Firebase')
+![Règles de sécurité sur Firebase](../../../images/firebase05.fr.png "© Google Firebase")
 
 ## Préparation de l'accès à la Realtime Database
 
@@ -70,7 +70,7 @@ Cependant, les règles de sécurité strictes par défaut empêchent tout accès
 
 En haut à gauche de l'icône ⚙️, allez dans "Paramètres du projet" -> "Comptes de service", puis dans l'onglet "Codes secrets de la base de données". Vous y trouverez votre clé secrète.
 
-![Codes secrets de la base de données de la Realtime Database](../../../images/firebase06.fr.png '&copy; Google Firebase')
+![Codes secrets de la base de données de la Realtime Database](../../../images/firebase06.fr.png "© Google Firebase")
 
 Cette clé secrète, ajoutée à la fin de l'URL de la base de données, permet d'accéder à l'API REST.
 
@@ -92,7 +92,7 @@ Le code suivant est l'exemple le plus simple ; j'ai omis les validations de form
 
 De plus, comme j'ai construit ce composant pour un site Gatsby, j'ai ajouté `GATSBY_FIREBASE_TOKEN` comme variable d'environnement.
 
-*Puisque la soumission du formulaire de commentaire fonctionne côté client, nous devons ajouter le préfixe `GATSBY_` pour Gatsby ou `NEXT_` pour les sites Next.js.
+\*Puisque la soumission du formulaire de commentaire fonctionne côté client, nous devons ajouter le préfixe `GATSBY_` pour Gatsby ou `NEXT_` pour les sites Next.js.
 
 <div class="filename">/src/components/commentForm.js</div>
 
@@ -338,7 +338,7 @@ En outre, si un schéma de commentaires est associé à chaque article, les num�
 
 Il existe plusieurs fonctions pour connecter deux schémas, j'ai utilisé [createResolvers](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/#createResolvers) dans ce cas.
 
-*Voici un exemple où le contenu du site est géré en Markdown. Si vous utilisez un CMS headless, remplacez `MarkdownRemark` ou le filtre par ceux qui conviennent.
+\*Voici un exemple où le contenu du site est géré en Markdown. Si vous utilisez un CMS headless, remplacez `MarkdownRemark` ou le filtre par ceux qui conviennent.
 
 <div class="filename">gatsby-node.js</div>
 
@@ -405,7 +405,7 @@ Par exemple, préparez les commentaires actuels comme suit ;
 
 Pour importer vos données json, allez sur la page d'accueil de la base de données et cliquez sur l'icône à trois points.
 
-![Importer un fichier json dans la Realtime Database](../../../images/firebase07.fr.png '&copy; Google Firebase')
+![Importer un fichier json dans la Realtime Database](../../../images/firebase07.fr.png "© Google Firebase")
 
 ## Conlcusion (et autres choses à faire)
 
