@@ -7,7 +7,7 @@ import * as classes from "../styles/author.module.css"
 const Author = ({ currentLang = "en" }) => {
   const desc = {
     en: "Hi! I'm a frontend developer (she/her).",
-    fr: "Bonjour! Je suis une développeuse frontend (elle).",
+    fr: "Bonjour ! Je suis une développeuse frontend (elle).",
     ja: "ウェブサイト制作・フロントエンドの開発をしています。",
   }
 

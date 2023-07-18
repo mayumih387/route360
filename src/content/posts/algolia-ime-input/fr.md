@@ -202,7 +202,7 @@ export default Search
 
 ## Description du code
 
-### composant parent - search.js
+### Composant parent - search.js
 
 À l'intérieur du composant parent, nous contrôlons les états de `query` et `isComposing` et mettons des gestionnaires pour les gérer, puis les envoyer à une composante enfant`search-box.js`.
 
