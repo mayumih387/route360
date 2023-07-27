@@ -1,8 +1,9 @@
 ---
 title: Codeium - Free Real-time AI Code Suggestions for VS Code
-tags: null
-date: 2023-05-13T01:00:00.000Z
-lastmod: 2023-05-13T01:00:00.000Z
+tags:
+  - vscode
+date: 2023-05-13
+lastmod: 2023-05-13
 draft: false
 ---
 

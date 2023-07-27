@@ -1,8 +1,9 @@
 ---
 title: Codeium：VS Codeの無料AIコード補完拡張機能のメリットと使い方
-tags: null
-date: 2023-05-13T01:00:00.000Z
-lastmod: 2023-05-13T01:00:00.000Z
+tags:
+  - vscode
+date: 2023-05-13
+lastmod: 2023-05-13
 draft: false
 ---
 
