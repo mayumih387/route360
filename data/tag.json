@@ -66,5 +66,9 @@
   {
     "title": "Python",
     "slug": "python"
+  },
+  {
+    "title": "VS Code",
+    "slug": "vscode"
   }
 ]
