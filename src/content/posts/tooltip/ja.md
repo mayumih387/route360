@@ -2,28 +2,81 @@
 title: Reactでツールチップのコンポーネントを作る方法
 tags:
   - react
-date: 2022-09-27T06:38:14.024Z
-lastmod: 2022-12-12T03:39:44.029Z
-draft: true
+date: 2023-08-09
+lastmod: 2023-08-09
+draft: false
 ---
 
-React でツールチップを作る方法です。
+Reactでツールチップを作る方法です。
 
-UI コンポーネントやライブラリ等を使う方が多いかもしれませんが、私は変に色々なものをインストールしたくないので、単純な機能であれば自前で作ってしまいたい派です。
+UIコンポーネントやライブラリ等を使う方が多いかもしれませんが、私は変に色々なものをインストールしたくないので、単純な機能であれば自前で作ってしまいたい派です。
 
 - [デモ](https://starlit-lollipop-635291.netlify.app/demo/tooltip-demo)
 - [コード（GitHub）](https://github.com/mayumih387/demo-nextjs/blob/main/pages/demo/tooltip-demo.js)
 
-今回使う React Hook は、`useState()`です。
+今回使うReact Hookは、`useState()`です。
 
-## ツールチップを表示するためにクリックする要素（ボタン）を作る
+## コード（完成形）
 
-ツールチップはコンポーネントとして作るため、コンポーネント用フォルダーに Tooltip.js を作成。
+※CSS（Tooltip.module.css）は記事後半に記載。
 
 <div class="filename">/component/Tooltip.js</div>
 
 ```js
-export default function Tooltip(props) {
+import { useState } from "react"
+import styles from "../components/Tooltip.module.css"
+
+const Tooltip = props => {
+  const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
+
+  const tooltipHandler = () => {
+    setTooltipIsOpen(prevState => !prevState)
+  }
+  const closeTooltipHandler = () => {
+    setTooltipIsOpen(false)
+  }
+
+  return (
+    <>
+      <button
+        className={styles.tooltipButton}
+        onClick={tooltipHandler}
+        onBlur={closeTooltipHandler}
+        type="button"
+      >
+        {props.buttonName}
+      </button>
+      {/* tooltip itself */}
+      {tooltipIsOpen && <div className={styles.tooltip}>{props.children}</div>}
+    </>
+  )
+}
+
+export default Tooltip
+```
+
+<div class="filename">/pages/demo/tooltip-demo.js</div>
+
+```js
+import Tooltip from "../../components/Tooltip"
+
+const TooltipDemo = () => {
+  return <Tooltip buttonName="I am a button!">I am inside Tooltip!</Tooltip>
+}
+
+export default TooltipDemo
+```
+
+以下より説明です。
+
+## ツールチップを表示するためにクリックする要素（ボタン）を作る
+
+ツールチップはコンポーネントとして作るため、コンポーネント用フォルダーにTooltip.jsを作成。
+
+<div class="filename">/component/Tooltip.js</div>
+
+```js
+const Tooltip = props => {
   return (
     <>
       <button type="button">{props.buttonName}</button>
@@ -32,11 +85,13 @@ export default function Tooltip(props) {
     </>
   )
 }
+
+export default Tooltip
 ```
 
 今回はクリック可能な要素が必要となるため、`<button>`を使います。
 
-※`<div>`等はクリック可能要素ではなく、アクセシビリティ（利用のしやすさ）の観点から推奨されません。見た目はあとで CSS でいくらでも変更できるので、大人しく`<button>`を使いましょう。
+※`<div>`等はクリック可能要素ではなく、アクセシビリティ（利用のしやすさ）の観点から推奨されません。見た目はあとでCSSでいくらでも変更できるので、大人しく`<button>`を使いましょう。
 
 ページ毎でツールチップの中身やボタン名は使う場所で自由に変えられるようにするため、`props`でデータを受け取って自由に表示内容が変えられるようにします。
 
@@ -44,18 +99,20 @@ export default function Tooltip(props) {
 
 ## 作ったボタンをフロントエンドに表示させる
 
-今回の[デモ](https://starlit-lollipop-635291.netlify.app/demo/tooltip-demo)は Next.js 上に作っているので、デモページは`/pages/demo/`フォルダー内に作成しています。
+今回の[デモ](https://starlit-lollipop-635291.netlify.app/demo/tooltip-demo)はNext.js上に作っているので、デモページは`/pages/demo/`フォルダー内に作成しています。
 
-Gatsby.js 等の他のライブラリや通常の React アプリの場合は、適宜変更してください。
+Gatsby.js等の他のライブラリや通常のReactアプリの場合は、適宜変更してください。
 
 <div class="filename">/pages/demo/tooltip-demo.js</div>
 
 ```js
 import Tooltip from "../../components/Tooltip"
 
-export default function TooltipDemo() {
+const TooltipDemo = () => {
   return <Tooltip buttonName="I am a button!">I am inside Tooltip!</Tooltip>
 }
+
+export default TooltipDemo
 ```
 
 先ほど作ったツールチップコンポーネントにデータを渡すため、`<Tooltip>`内に`buttonName`プロパティを、ツールチップ内の表示内容として「`I am inside Tooltip!`」を記載しました。
@@ -75,7 +132,7 @@ export default function TooltipDemo() {
 ```js
 import { useState } from "react"
 
-export default function Tooltip(props) {
+const Tooltip = props => {
   const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
 
   return (
@@ -86,65 +143,68 @@ export default function Tooltip(props) {
     </>
   )
 }
+
+export default Tooltip
 ```
 
-Gatsby.js などの場合、「React をインポートせよ」というエラーが出る場合があります。その場合は上記の最初の行を
+Gatsby.jsなどの場合、「Reactをインポートせよ」というエラーが出る場合があります。その場合は上記の最初の行を
 
 ```js
 import React, { useState } from "react"
 ```
 
-として、React をインポートするようにしてください。
+として、Reactをインポートするようにしてください。
 
 試しに`useState`の初期状態を`true`にしたり`false`にしてみたりしてください。ツールチップの表示・非表示が変われば、`useState`の設定は成功です。
 
-## ボタンを押したときにツールチップを表示・非表示させるハンドラ（関数）を作る
+## ボタンを押したときにツールチップを表示・非表示させるハンドラー（関数）を作る
 
-ツールチップコンポーネントのボタンに、クリック時にツールチップを表示させるようにハンドラをつけます。
-
-<div class="filename">/component/Tooltip.js</div>
-
-```js
-import { useState } from 'react'
-
-export default function Tooltip(props) {
-  const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
-
-  const tooltipHandler = () => {
-    setTooltipIsOpen((prevState) => !prevState)
-  }
-
-  return (
-    <>
-      <button
-        onClick={tooltipHandler}
-        type="button"
-      >{props.buttonName}</button>
-      {/* tooltip itself */}
-      {tooltipIsOpen && <div>{props.children}</div>}
-    <>
-  )
-}
-```
-
-ボタンに追加した`onClick`で、ハンドラ`tooltipHandler`が発火するようにします。
-
-その`tooltipHandler`は、`tooltipIsOpen`が`false`の状態ならば`true`に、`true`の状態なら`false`になるような関数です。
-
-ボタンを何度かクリックして確かめてみてください。ツールチップが表示・非表示と繰り返されれば成功です。
-
-## ツールチップ表示中に画面上クリックでツールチップを非表示にするハンドラ（関数）を追加する
-
-ボタン以外の場所をクリックしたり操作した時にも、ツールチップ表示を解除（非表示に）できるといいですよね。
-
-この場合は、ボタン要素に`onBlur`とハンドラを追加して、フォーカスが外れた時にツールチップが消える（`tooltipIsOpen`を`false`にする）ようにします。
+ツールチップコンポーネントのボタンに、クリック時にツールチップを表示させるようにハンドラーをつけます。
 
 <div class="filename">/component/Tooltip.js</div>
 
 ```js
 import { useState } from "react"
 
-export default function Tooltip(props) {
+const Tooltip = props => {
+  const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
+
+  const tooltipHandler = () => {
+    setTooltipIsOpen(prevState => !prevState)
+  }
+
+  return (
+    <>
+      <button type="button" onClick={tooltipHandler}>
+        {props.buttonName}
+      </button>
+      {/* tooltip itself */}
+      {tooltipIsOpen && <div>{props.children}</div>}
+    </>
+  )
+}
+
+export default Tooltip
+```
+
+ボタンに追加した`onClick`で、ハンドラー`tooltipHandler`が発火するようにします。
+
+その`tooltipHandler`は、`tooltipIsOpen`が`false`の状態ならば`true`に、`true`の状態なら`false`になるような関数です。
+
+ボタンを何度かクリックして確かめてみてください。ツールチップが表示・非表示と繰り返されれば成功です。
+
+## ツールチップ表示中に画面上クリックでツールチップを非表示にするハンドラー（関数）を追加する
+
+ボタン以外の場所をクリックしたり操作した時にも、ツールチップ表示を解除（非表示に）できるといいですよね。
+
+この場合は、ボタン要素に`onBlur`とハンドラーを追加して、フォーカスが外れた時にツールチップが消える（`tooltipIsOpen`を`false`にする）ようにします。
+
+<div class="filename">/component/Tooltip.js</div>
+
+```js
+import { useState } from "react"
+
+const Tooltip = props => {
   const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
 
   const tooltipHandler = () => {
@@ -169,19 +229,21 @@ export default function Tooltip(props) {
     </>
   )
 }
+
+export default Tooltip
 ```
 
 単純に`setTooltipIsOpen(false)`とするだけなので、簡単ですね。
 
-## CSS で見栄えを整える
+## CSSで見栄えを整える
 
-今回は CSS モジュールでスタイルを整えます。便宜的に同じ component フォルダーに入れましたが、styles フォルダがあればそちらに入れても良しです。
+今回はCSSモジュールでスタイルを整えます。便宜的に同じcomponentフォルダーに入れましたが、stylesフォルダーがあればそちらに入れても良しです。
 
 以下のスタイリングは最低限の内容の例なので、適宜アレンジしてください。
 
-```css
-/* /component/Tooltip.module.css */
+<div class="filename">/component/Tooltip.module.css</div>
 
+```css
 .tooltipButton {
   position: relative;
 }
@@ -209,65 +271,18 @@ export default function Tooltip(props) {
 }
 ```
 
-上記で作った CSS モジュールを、コンポーネント内で読み込みます。
+上記で作ったCSSモジュールを、コンポーネント内で読み込みます。
 
 <div class="filename">/component/Tooltip.js</div>
 
 ```js
 import styles from "../components/Tooltip.module.css"
 
-export default function Tooltip(props) {
+const Tooltip = props => {
   //...(略)
 }
 ```
 
 これで完成です。
 
-## コードまとめ
-
-※CSS（Tooltip.module.css）は先ほどの内容を参照ください。
-
-<div class="filename">/component/Tooltip.js</div>
-
-```js
-import { useState } from "react"
-import styles from "../components/Tooltip.module.css"
-
-export default function Tooltip(props) {
-  const [tooltipIsOpen, setTooltipIsOpen] = useState(false)
-
-  const tooltipHandler = () => {
-    setTooltipIsOpen(prevState => !prevState)
-  }
-  const closeTooltipHandler = () => {
-    setTooltipIsOpen(false)
-  }
-
-  return (
-    <>
-      <button
-        className={styles.tooltipButton}
-        onClick={tooltipHandler}
-        onBlur={closeTooltipHandler}
-        type="button"
-      >
-        {props.buttonName}
-      </button>
-      {/* tooltip itself */}
-      {tooltipIsOpen && <div className={styles.tooltip}>{props.children}</div>}
-    </>
-  )
-}
-```
-
-<div class="filename">/pages/demo/tooltip-demo.js</div>
-
-```js
-import Tooltip from "../../components/Tooltip"
-
-export default function TooltipDemo() {
-  return <Tooltip buttonName="I am a button!">I am inside Tooltip!</Tooltip>
-}
-```
-
-比較的シンプルなコードで作れるので、React の理解を確かめるにはちょうど良い練習になると思います。
+比較的シンプルなコードで作れるので、Reactの理解を確かめるにはちょうど良い練習になると思います。
