@@ -1,0 +1,79 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.global.activeMode": "minimal",
+  "frontMatter.global.modes": [
+    {
+      "id": "minimal",
+      "features": [
+        "panel.metadata",
+        "panel.globalSettings",
+        "panel.actions",
+        "dashboard.snippets.view",
+        "dashboard.snippets.manage"
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.dateFormat": "YYYY-MM-DD",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "date",
+          "name": "date",
+          "type": "datetime"
+        },
+        {
+          "title": "lastmod",
+          "name": "lastmod",
+          "type": "datetime"
+        },
+        {
+          "title": "draft",
+          "name": "draft",
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "gatsby",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.preview.host": "http://localhost:8000",
+  "frontMatter.content.pageFolders": [
+    {
+      "path": "[[workspace]]/src/content/posts/"
+    }
+  ],
+  "frontMatter.taxonomy.tags": [
+    "algolia",
+    "analytics",
+    "astro",
+    "cms",
+    "deepl",
+    "frontmattercms",
+    "gatsbyjs",
+    "internationalization",
+    "jamstack",
+    "markdown",
+    "meilisearch",
+    "nextjs",
+    "python",
+    "react",
+    "seo",
+    "supabase",
+    "umami",
+    "vscode"
+  ]
+}
