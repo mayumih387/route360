@@ -10,7 +10,7 @@ draft: false
 
 2022年10月11日に、Vercelが新しいOGPイメージ生成のライブラリをリリースしました。
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Vercel OG Image Generation – a new library for generating dynamic social card images.<a href="https://t.co/mwzw9NKEzA">https://t.co/mwzw9NKEzA</a></p>&mdash; Vercel (@vercel) <a href="https://twitter.com/vercel/status/1579561293069316096?ref_src=twsrc%5Etfw">October 10, 2022</a></blockquote>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Vercel OG Image Generation – a new library for generating dynamic social card images.<a href="https://t.co/mwzw9NKEzA">https://t.co/mwzw9NKEzA</a></p>&mdash; Vercel (@vercel) <a href="https://twitter.com/vercel/status/1579561293069316096?ref_src=twsrc%5Etfw">October 10, 2022</a></blockquote>
 
 以前まであった`vercel/og-image`は、リポジトリを別に用意・デプロイをして画像を生成するもので、準備に時間がかかり使えるようになるまでの作業が繁雑でした。
 

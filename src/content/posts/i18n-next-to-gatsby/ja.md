@@ -23,7 +23,7 @@ draft: false
 
 Next.jsは2022年秋にバージョン13となり、非常に大きなアップデートが導入されました。2023年3月にはApp Routerの多言語化にも対応されましたが、バージョンアップへの対応に難儀しました。
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Internationalization, too!<br><br>Even basic i18n support can be handled since the App Router&#39;s improved support for handling layouts means you can create static i18n routes that don&#39;t read the dynamic `Accept-Language` header.<a href="https://t.co/vc5zt9K9hk">https://t.co/vc5zt9K9hk</a></p>&mdash; Lee Robinson (@leeerob) <a href="https://twitter.com/leeerob/status/1640445087024029696?ref_src=twsrc%5Etfw">March 27, 2023</a></blockquote>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Internationalization, too!<br><br>Even basic i18n support can be handled since the App Router&#39;s improved support for handling layouts means you can create static i18n routes that don&#39;t read the dynamic `Accept-Language` header.<a href="https://t.co/vc5zt9K9hk">https://t.co/vc5zt9K9hk</a></p>&mdash; Lee Robinson (@leeerob) <a href="https://twitter.com/leeerob/status/1640445087024029696?ref_src=twsrc%5Etfw">March 27, 2023</a></blockquote>
 
 一言語のみのサイトであればそうでもないはずですが、こと多言語となると、サイト制作の難易度は途端に跳ね上がります。
 

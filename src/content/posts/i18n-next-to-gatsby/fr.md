@@ -23,7 +23,7 @@ Lorsque j'ai commencé ce blog en octobre 2022, je l'ai organisé comme suit ;
 
 Next.js a été mis à jour à la version 13 en octobre 2022 avec d'énormes changements.　Il a commencé à supporter l'i18n avec App Router, mais cela m'a coûté trop de tâches.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Internationalization, too!<br><br>Even basic i18n support can be handled since the App Router&#39;s improved support for handling layouts means you can create static i18n routes that don&#39;t read the dynamic `Accept-Language` header.<a href="https://t.co/vc5zt9K9hk">https://t.co/vc5zt9K9hk</a></p>&mdash; Lee Robinson (@leeerob) <a href="https://twitter.com/leeerob/status/1640445087024029696?ref_src=twsrc%5Etfw">March 27, 2023</a></blockquote>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Internationalization, too!<br><br>Even basic i18n support can be handled since the App Router&#39;s improved support for handling layouts means you can create static i18n routes that don&#39;t read the dynamic `Accept-Language` header.<a href="https://t.co/vc5zt9K9hk">https://t.co/vc5zt9K9hk</a></p>&mdash; Lee Robinson (@leeerob) <a href="https://twitter.com/leeerob/status/1640445087024029696?ref_src=twsrc%5Etfw">March 27, 2023</a></blockquote>
 
 Il sera peut-être plus facile à mettre à jour si je gère ce blog en monolingue. Les sites multilingues demandent toujours trop de travail.
 

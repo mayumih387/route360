@@ -10,7 +10,7 @@ draft: false
 
 On October 11, 2022, Vercel launched a new library of OG image generators.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Vercel OG Image Generation – a new library for generating dynamic social card images.<a href="https://t.co/mwzw9NKEzA">https://t.co/mwzw9NKEzA</a></p>&mdash; Vercel (@vercel) <a href="https://twitter.com/vercel/status/1579561293069316096?ref_src=twsrc%5Etfw">October 10, 2022</a></blockquote>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Vercel OG Image Generation – a new library for generating dynamic social card images.<a href="https://t.co/mwzw9NKEzA">https://t.co/mwzw9NKEzA</a></p>&mdash; Vercel (@vercel) <a href="https://twitter.com/vercel/status/1579561293069316096?ref_src=twsrc%5Etfw">October 10, 2022</a></blockquote>
 
 Their former generator, `vercel/og-image` is still available. But it requires a repository and a deployment apart from the project, which is a bit cumbersome until it works appropriately.
 
