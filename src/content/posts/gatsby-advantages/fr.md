@@ -5,7 +5,7 @@ tags:
   - nextjs
   - react
 date: 2023-08-16
-lastmod: 2023-08-16
+lastmod: 2023-08-22
 draft: false
 ---
 
@@ -81,7 +81,7 @@ Next.js dispose également de [next/image](https://nextjs.org/docs/pages/api-ref
 
 ### Moins énergique après son rachat par Netlify ?
 
-En juin 2023, Netlify a racheté Gatsby. Après cela, de nombreux ingénieurs ont été licenciés de Netlify. [Lennart](https://twitter.com/lekoarts_de) est l'un d'entre eux, bien qu'il ait aidé de nombreux développeurs (dont moi) dans les discussions officielles de Gatsby sur GitHub.
+En février 2023, Netlify a racheté Gatsby. Après cela, de nombreux ingénieurs ont été licenciés de Netlify. [Lennart](https://twitter.com/lekoarts_de) est l'un d'entre eux, bien qu'il ait aidé de nombreux développeurs (dont moi) dans les discussions officielles de Gatsby sur GitHub.
 
 De plus, Gatsby n'a pas publié de nouvelle version depuis 2 mois, la dernière v5.11.0 datant du 15 juin 2023. Je me demande s'il n'y a pas encore une certaine confusion depuis l'acquisition...
 

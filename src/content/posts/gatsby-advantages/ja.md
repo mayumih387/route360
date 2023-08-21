@@ -5,7 +5,7 @@ tags:
   - nextjs
   - react
 date: 2023-08-16
-lastmod: 2023-08-16
+lastmod: 2023-08-22
 draft: false
 ---
 
@@ -83,7 +83,7 @@ Next.jsにも[next/image](https://nextjs.org/docs/pages/api-reference/components
 
 ### Netlifyに買収されてから微妙？
 
-2023年6月、GatsbyはNetlifyに買収されました。その後、多くのエンジニアがNetlifyに解雇されました。GatsbyのGitHubディスカッションで、たくさんの開発者（私も含む）を助けてきた[Lennart](https://twitter.com/lekoarts_de)さんもその一人です。
+2023年2月、GatsbyはNetlifyに買収されました。その後、多くのエンジニアがNetlifyに解雇されました。GatsbyのGitHubディスカッションで、たくさんの開発者（私も含む）を助けてきた[Lennart](https://twitter.com/lekoarts_de)さんもその一人です。
 
 また、Gatsby自体もその2023年6月15日にv5.11.0をリリースしてから、2か月以上新しいバージョンがリリースされていません。買収の混乱が続いているのでしょうか・・・。
 
