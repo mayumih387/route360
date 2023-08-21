@@ -55,25 +55,5 @@
     {
       "path": "[[workspace]]/src/content/posts/"
     }
-  ],
-  "frontMatter.taxonomy.tags": [
-    "algolia",
-    "analytics",
-    "astro",
-    "cms",
-    "deepl",
-    "frontmattercms",
-    "gatsbyjs",
-    "internationalization",
-    "jamstack",
-    "markdown",
-    "meilisearch",
-    "nextjs",
-    "python",
-    "react",
-    "seo",
-    "supabase",
-    "umami",
-    "vscode"
   ]
 }
