@@ -7,7 +7,11 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+const adapter = require("./gatsby-adapter-cloudflare")
+
 module.exports = {
+  adapter: adapter(),
   siteMetadata: {
     title: `Route360`,
     description: `Blog by a frontend developer`,
@@ -106,7 +110,7 @@ module.exports = {
               showCaptions: ["title"],
               markdownCaptions: true,
               linkImagesToOriginal: false,
-              wrapperStyle: fluidResult =>
+              wrapperStyle: (fluidResult) =>
                 fluidResult.presentationWidth < 820
                   ? `max-width: ${fluidResult.presentationWidth / 1.5}px`
                   : `max-width: ${fluidResult.presentationWidth}px`,
@@ -180,7 +184,7 @@ module.exports = {
               }
             `,
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
@@ -220,7 +224,7 @@ module.exports = {
               }
             `,
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
@@ -260,7 +264,7 @@ module.exports = {
               }
             `,
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
@@ -359,7 +363,7 @@ module.exports = {
             ...allMarkdownRemarkJA.nodes,
           ]
 
-          allMarkdownRemark.forEach(post => {
+          allMarkdownRemark.forEach((post) => {
             const { slug, language, type } = post.fields
             pathToDateMap[
               type === "posts"
@@ -370,16 +374,16 @@ module.exports = {
             }
           })
 
-          const pages = allPages.map(page => {
+          const pages = allPages.map((page) => {
             const alternateLangs = allPages
               .filter(
-                alterPage =>
+                (alterPage) =>
                   alterPage.path.replace(/\/.*?\//, "/") ===
                   page.path.replace(/\/.*?\//, "/")
               )
-              .map(alterPage => alterPage.path.match(/^\/([a-z]{2})\//))
-              .filter(match => match)
-              .map(match => match[1])
+              .map((alterPage) => alterPage.path.match(/^\/([a-z]{2})\//))
+              .filter((match) => match)
+              .map((match) => match[1])
 
             return {
               ...page,
@@ -395,7 +399,7 @@ module.exports = {
 
           const xhtmlLinks =
             alternateLangs.length > 1 &&
-            alternateLangs.map(lang => ({
+            alternateLangs.map((lang) => ({
               rel: "alternate",
               hreflang: lang,
               url: `/${lang}${pagepath}`,
