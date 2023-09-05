@@ -1,5 +1,5 @@
 ---
-title: Adding <figcaption> to images in Markdown [Astro 3.0]
+title: Adding <figcaption> to Markdown images [Astro 3.0]
 tags:
   - astro
 date: 2023-09-04
@@ -28,7 +28,7 @@ Environment:
 3. For `<img>`tags, add `<figure>` and `<figcaption>` if the image has a `title` attribute.
 4. Remove `<p>` wrapping `<img>` (optional)
 
-The images in the Markdown files should be encoded as follows:
+The Markdown images should be encoded as follows:
 
 ```md
 ![I am `alt`](assets/example.jpg "I am `title` as caption")
