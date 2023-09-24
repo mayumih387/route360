@@ -49,10 +49,11 @@
     }
   ],
   "frontMatter.framework.id": "gatsby",
-  "frontMatter.content.publicFolder": "static",
+  "frontMatter.content.publicFolder": "[[workspace]]/src/images",
   "frontMatter.preview.host": "http://localhost:8000",
   "frontMatter.content.pageFolders": [
     {
+      "title": "posts",
       "path": "[[workspace]]/src/content/posts/"
     }
   ]
