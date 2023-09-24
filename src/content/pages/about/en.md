@@ -18,22 +18,22 @@ What I'm passionate about besides web, are traveling, languages and watching sum
 - React
 - Python
 
-- Gatsby.js
-- Next.js
+- Gatsby
+- NextJS
 - Astro
 - WordPress
 
 ## Recent works
 
 - https://tshirt-kakaku.com/
-- Gatsby.js + Markdown
+- Gatsby + Markdown
 
 Un portal site about making your original T-shirts (Japanese only).
 
 ---
 
 - https://ccfrancais.net/
-- Gatsby.js + WordPress
+- Gatsby + WordPress
 
 A blog run by a friend of mine (Japanese only). Using WordPress as a headless CMS. It'easy to edit because the editor is Gutenberg. \* However, all Gutenberg/theme functions can't work as you can imagine.
 
@@ -55,6 +55,6 @@ Customizing Gutenberg Editor, or sending a newsletter at the same time as postin
 
 ## This website
 
-- Gatsby.js + Markdown
+- Gatsby + Markdown
 
-I first developed this website with Next.js in September 2022, then rebuilt it with Gatsby.js in May 2023. Hosted by [Cloudflare Pages](https://www.cloudflare.com/products/pages/).
+I first developed this website with NextJS in September 2022, then rebuilt it with Gatsby in May 2023. Hosted by [Cloudflare Pages](https://www.cloudflare.com/products/pages/).

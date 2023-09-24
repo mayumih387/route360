@@ -15,26 +15,26 @@ lastmod: 2023-05-09
 - PHP
 - Python
 
-- Gatsby.js
-- Next.js
+- Gatsby
+- NextJS
 - Astro
 - WordPress
 
 ## 最近制作したサイト
 
 - https://tshirt-kakaku.com/
-- Gatsby.js + Markdown
+- Gatsby + Markdown
 
 オリジナルTシャツ制作情報のポータルサイト。
 
 ---
 
 - https://ccfrancais.net/
-- Gatsby.js + WordPress
+- Gatsby + WordPress
 
 知人が運営するブログ。WordPressをヘッドレスCMSとして利用。編集画面はWordPressなので、ライティングの自由度が比較的高いです（すべてのGutenberg/テーマの機能が使えるわけではありません）。
 
-テーマはWordPressテーマの[Arkhe](https://arkhe-theme.com/)・Swellを、ほぼそのままGatsby.jsに移植しています。※WordPress側でアップデートしても、Gatsby側は当然アップデートされません。
+テーマはWordPressテーマの[Arkhe](https://arkhe-theme.com/)・Swellを、ほぼそのままGatsbyに移植しています。※WordPress側でアップデートしても、Gatsby側は当然アップデートされません。
 
 ---
 
@@ -52,6 +52,6 @@ Gutenbergの編集機能カスタマイズや、投稿と同時にメルマガ�
 
 ## このサイト
 
-- Gatsby.js + Markdown
+- Gatsby + Markdown
 
-2022年9月の開設当初はNext.jsで作成していましたが、2023年5月にGatsby.jsで作り直しました。ホスティングは[Cloudflare Pages](https://www.cloudflare.com/ja-jp/products/pages/)です。
+2022年9月の開設当初はNextJSで作成していましたが、2023年5月にGatsbyで作り直しました。ホスティングは[Cloudflare Pages](https://www.cloudflare.com/ja-jp/products/pages/)です。

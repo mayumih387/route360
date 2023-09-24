@@ -18,26 +18,26 @@ Ceux que je suis passionnée sont de voyager, d'apprendre les langues, et de reg
 - React
 - Python
 
-- Gatsby.js
-- Next.js
+- Gatsby
+- NextJS
 - Astro
 - WordPress
 
 ## Travaux récentes
 
 - https://tshirt-kakaku.com/
-- Gatsby.js + Markdown
+- Gatsby + Markdown
 
 Un site portal par rapport à l'nformations sur la production du T-shirt original (qu'en japonais).
 
 ---
 
 - https://ccfrancais.net/
-- Gatsby.js + WordPress
+- Gatsby + WordPress
 
 Un blog géré par une amie de moi (qu'en japonais). WordPress est adopté comme le SGC sans tête. Comme l'éditeur est celui du WordPress, c'est plus facile à produire les articles (mais, on ne peut pas utiliser toutes les fonctions de Gutenberg/thèmes).
 
-Le thème [Arkhe](https://arkhe-theme.com/), un des thèmes du dépôt WordPress a été presque tout adapté au Gatsby.js. \*Même si le thème est mis à jour dans WordPress, il n'est pas à côté du Gatsby.
+Le thème [Arkhe](https://arkhe-theme.com/), un des thèmes du dépôt WordPress a été presque tout adapté au Gatsby. \*Même si le thème est mis à jour dans WordPress, il n'est pas à côté du Gatsby.
 
 ---
 
@@ -55,6 +55,6 @@ Personnalisation de l'éditeur Gutenberg ou d'envoi de lettre d'information en m
 
 ## Ce site
 
-- Gatsby.js + Markdown
+- Gatsby + Markdown
 
-J'ai d'abord créé ce site web avec Next.js en septembre 2022, puis je l'ai reconstruit avec Gatsby.js en mai 2023. L'hébergement est [Cloudflare Pages](https://www.cloudflare.com/fr-fr/products/pages/).
+J'ai d'abord créé ce site web avec NextJS en septembre 2022, puis je l'ai reconstruit avec Gatsby en mai 2023. L'hébergement est [Cloudflare Pages](https://www.cloudflare.com/fr-fr/products/pages/).
