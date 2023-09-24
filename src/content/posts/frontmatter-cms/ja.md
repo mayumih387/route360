@@ -3,9 +3,10 @@ title: VS Codeで動く拡張機能ヘッドレスCMS、Front Matter CMSを知�
 tags:
   - jamstack
   - markdown
+  - cms
   - frontmattercms
-date: 2023-04-28T15:00:00.000Z
-lastmod: 2023-06-22T03:16:17.902Z
+date: 2023-04-28
+lastmod: 2023-09-24
 draft: false
 ---
 
@@ -19,9 +20,9 @@ draft: false
 
 Front Matter CMSとは、VS Codeの拡張機能で、ローカル・Markdown専用のヘッドレスCMS（コンテンツ・マネジメント・システム）です。ベルギー在住の[@eliostruyf](https://twitter.com/eliostruyf)さんが開発しています。
 
-執筆時点（2023年4月末）でのバージョンは8.4.0です。私が使い始めたのは2022年春頃で、その頃はバージョンは7でした。
+2023年9月末時点でのバージョンは9.2.0です。私が使い始めたのは2022年春頃で、その頃はバージョンは7でした。
 
-GitHubのスター数は約1,200（2023年4月末時点）。もっと人気になってほしい！
+GitHubのスター数は約1,400（2023年9月末時点）。もっと人気になってほしい！
 
 ## Front Matter CMSの特徴
 
@@ -50,7 +51,7 @@ Front Matter CMSも、その「バックエンド」であるコンテンツ管�
 
 - 完全無料
 - 設計自由
-- オフライン = 高速動作
+- オフライン = 高速動作 & セキュア
 
 最大のメリットは、**巷のヘッドレスCMSに頼る必要なく、自分で自由なCMSを設計できる点**です。
 
@@ -193,6 +194,36 @@ Front Matter CMSは、多くの静的サイトジェネレーターに対応し�
 ```
 
 ![Front Matter CMS](../../../images/frontmattercms02.gif)
+
+### 独自スクリプトでオリジナルのコマンドを追加
+
+[Custom actions](https://frontmatter.codes/docs/custom-actions)という機能を使って、独自のスクリプトを動かすコマンドを追加することも可能です。
+
+#### OG画像の自動生成
+
+たとえば、作者のElioさんは[node-html-to-image](https://www.npmjs.com/package/node-html-to-image)を利用したOG画像の自動生成機能を紹介しています。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wvH9Tn5LQ2c?si=RZMdfrr-Qxt-6sPz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+- [[s02e01] Using the Front Matter CMS with Elio Struyf | YouTube](https://www.youtube.com/live/YX4HBXHojOA?si=BmKyunhEJ2SUNsxN&t=2207) ※36:47~
+- [Generate open graph preview image in Code with Front Matter](https://www.eliostruyf.com/generate-open-graph-preview-image-code-front-matter/)
+
+新規の記事を作成する際にタイトルを入力するだけ、または左サイドバーのボタンをクリックしてOG画像を自動生成するプログラムです。
+
+#### APIに接続して住所と緯度経度を取得
+
+私は個人的には、バックグラウンドでAPIに接続して、
+
+- 郵便番号から住所を取得
+- 住所から緯度経度を取得
+
+するカスタムアクションを作って試してみました。
+
+![Front Matter CMS Custom Actions](../../../images/frontmattercms10.gif)
+
+※ボタンは英語で書いていますが、もちろん日本語でも設定できます。
+
+どんなスクリプトでも走らせることができるので、Front Matter CMSの可能性を感じる機能です。
 
 ## Front Matter CMSでできないこと
 

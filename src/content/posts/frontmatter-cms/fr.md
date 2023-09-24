@@ -3,9 +3,10 @@ title: Découvrez Front Matter CMS, une extension CMS sans tête pour VS Code
 tags:
   - jamstack
   - markdown
+  - cms
   - frontmattercms
-date: 2023-04-28T15:00:00.000Z
-lastmod: 2023-06-22T03:16:15.179Z
+date: 2023-04-28
+lastmod: 2023-09-24
 draft: false
 ---
 
@@ -19,9 +20,9 @@ Aujourd'hui, j'aimerais donc vous présenter ce CMS sans tête avec gratitude !
 
 Front Matter CMS est une des extensions de VS Code, un CMS (Content Management System) sans tête pour du contenu markdown en local, développé par [@eliostruyf](https://twitter.com/eliostruyf) en Belgique.
 
-La dernière version est la v8.4.0 à la fin du mois d'avril 2023. C'était la version 7 lorsque j'ai commencé à l'utiliser au printemps 2022.
+La dernière version est la v9.2.0 à la fin du mois de septembre 2023. C'était la version 7 lorsque j'ai commencé à l'utiliser au printemps 2022.
 
-Front Matter CMS remporte 1 200 étoiles (fin avril 2023). J'aimerais qu'il devienne plus populaire !
+Front Matter CMS remporte 1 400 étoiles (fin septembre 2023). J'aimerais qu'il devienne plus populaire !
 
 ## Fonctionnalités de Front Matter CMS
 
@@ -50,7 +51,7 @@ Les avantages de Front Matter CMS par rapport à d'autres systèmes de gestion d
 
 - gratuit
 - conception libre
-- hors ligne = rapide
+- hors ligne = rapide & sécurisé
 
 Le plus grand avantage est que **vous n'avez pas à vous fier à un CMS sans tête freemium** et que vous pouvez construire votre propre CMS.
 
@@ -62,7 +63,7 @@ Et comme Front Matter CMS fonctionne hors ligne, il n'y a pas de retard de rése
 
 ### Désavantages de Front Matter CMS
 
-- Difficile à utiliser pour le personnel non technique
+- Difficile à utiliser pour le utilisateur non technique
 - Pas d'éditeur de texte riche (seulement pour Markdown)
 - VS Code uniquement
 - Anglais uniquement
@@ -71,7 +72,7 @@ Le plus grand inconvénient de Front Matter CMS est qu'il ne peut pas être livr
 
 Pour ajouter/modifier du contenu, vous devez utiliser quelque chose comme GitHub ou construire localement et ensuite télécharger sur le serveur.
 
-Il nécessite également des paramètres PC tels que l'installation de Git, ce qui rend la gestion du contenu plus difficile pour le personnel non technique que pour les CMS sans tête en ligne.
+Il nécessite également des paramètres PC tels que l'installation de Git, ce qui rend la gestion du contenu plus difficile pour le utilisateur non technique que pour les CMS sans tête en ligne.
 
 Et comme Front Matter CMS n'est pas localisé, les menus sont uniquement en anglais (vous pouvez cependant ajouter des titres ou des noms pour vos propres menus dans frontmatter.json).
 
@@ -191,6 +192,31 @@ Avec sa fonction Block Field, nous pouvons ajouter des champs répétiteurs comm
 ```
 
 ![Front Matter CMS](../../../images/frontmattercms02.gif)
+
+### Vos propres Custom Actions
+
+La fonction [Actions personnalisées](https://frontmatter.codes/docs/custom-actions) vous permet d'ajouter des commandes pour exécuter vos scripts originaux.
+
+#### Générer des images OG automatiquement (ou d'un simple clic)
+
+Par exemple, Elio montre comment générer des images OG avec les actions personnalisées en utilisant [node-html-to-image](https://www.npmjs.com/package/node-html-to-image).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wvH9Tn5LQ2c?si=RZMdfrr-Qxt-6sPz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+- [[s02e01] Using the Front Matter CMS with Elio Struyf | YouTube](https://www.youtube.com/live/YX4HBXHojOA?si=BmKyunhEJ2SUNsxN&t=2207) \*36:47~
+- [Generate open graph preview image in Code with Front Matter](https://www.eliostruyf.com/generate-open-graph-preview-image-code-front-matter/)
+
+Il suffit de saisir le titre lors de la création d'un nouvel article, ou de cliquer sur le bouton de commande, et une image OG est automatiquement générée.
+
+#### Obtenir l'adresse à partir du code postal, ou les coordonnées à partir de l'adresse
+
+J'ai personnellement essayé d'ajouter des actions personnalisées qui se connectent à des API et obtiennent l'adresse à partir du code postal, ou la latitude et la longitude à partir de l'adresse.
+
+![Front Matter CMS Custom Actions](../../../images/frontmattercms10.gif)
+
+\*La langue et le texte des boutons sont à votre discrétion.
+
+Comme nous pouvons exécuter n'importe quel script, j'ai l'impression que les possibilités de Front Matter CMS sont très vastes.
 
 ## Que ne pouvons-nous pas faire avec Front Matter CMS ?
 

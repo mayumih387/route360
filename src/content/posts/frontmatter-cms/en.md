@@ -3,9 +3,10 @@ title: Discover Front Matter CMS, a Headless CMS Extension for VS Code
 tags:
   - jamstack
   - markdown
+  - cms
   - frontmattercms
-date: 2023-04-28T15:00:00.000Z
-lastmod: 2023-06-22T03:16:16.790Z
+date: 2023-04-28
+lastmod: 2023-09-24
 draft: false
 ---
 
@@ -19,9 +20,9 @@ So today, I would like to introduce this great headless CMS with gratitude!
 
 Front Matter CMS is one of the VS Code extensions, a headless CMS (Content Management System) for only markdown content on local, developed by [@eliostruyf](https://twitter.com/eliostruyf) in Belgium.
 
-The latest version is v8.4.0 as of the end of April 2023. It was version 7 when I started using it in the spring of 2022.
+The latest version is 9.2.0 as of the end of September 2023. It was version 7 when I started using it in the spring of 2022.
 
-Front Matter CMS wins 1,200 stars (end of April 2023). I wish it would become more popular!
+Front Matter CMS wins 1,400 stars (end of September 2023). I wish it would become more popular!
 
 ## Front Matter CMS Features
 
@@ -50,7 +51,7 @@ The advantages of Front Matter CMS over other (online) headless CMSs are;
 
 - free of charge
 - free designing
-- offline = rapid
+- offline = rapid & secure
 
 The biggest advantage I think is that **you don't have to rely on any freemium headless CMS** and you can build your own CMS.
 
@@ -62,7 +63,7 @@ And because Front Matter CMS works offline, there are no network delays. All fil
 
 ### Disadvantages of Front Matter CMS
 
-- Difficult to use for non-technical staff
+- Difficult to use for non-technical user
 - No rich text editor (only for Markdown)
 - VS Code only
 - English only
@@ -71,7 +72,7 @@ The biggest disadvantages of Front Matter CMS is, it couldn't be deliverables fo
 
 To add/edit content, you need to use something like GitHub or build locally and then upload to the server.
 
-It also requires PC settings such as Git installation, which makes it harder for non-technical staff to manage content than online headless CMSs.
+It also requires PC settings such as Git installation, which makes it harder for non-technical user to manage content than online headless CMSs.
 
 And because Front Matter CMS is not localized, the menus are only in English (you can add any titles or names for your own menus in frontmatter.json, though).
 
@@ -191,6 +192,31 @@ With its Block Field feature, we can add repeater fields like WordPress' Advance
 ```
 
 ![Front Matter CMS](../../../images/frontmattercms02.gif)
+
+### Adding Custom Actions
+
+The [Custom Actions](https://frontmatter.codes/docs/custom-actions) feature allows you to add commands to run your original scripts.
+
+#### Generating OG images automatically (or with a single click)
+
+For example, Elio demonstrates how to generate OG images with the Custom Actions using [node-html-to-image](https://www.npmjs.com/package/node-html-to-image).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wvH9Tn5LQ2c?si=RZMdfrr-Qxt-6sPz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+- [[s02e01] Using the Front Matter CMS with Elio Struyf | YouTube](https://www.youtube.com/live/YX4HBXHojOA?si=BmKyunhEJ2SUNsxN&t=2207) \*36:47~
+- [Generate open graph preview image in Code with Front Matter](https://www.eliostruyf.com/generate-open-graph-preview-image-code-front-matter/)
+
+Just enter the title when creating a new article, or just click the command button, and an OG image is automatically generated.
+
+#### Get address from postal code, or coordinates from address
+
+I personally tried to add custom actions that connect to APIs and get the address from the zip code, or the latitude and longitude from the address.
+
+![Front Matter CMS Custom Actions](../../../images/frontmattercms10.gif)
+
+\*The language/text of the buttons is up to you.
+
+Because we can run any scripts, I feel a wide posibilities of Front Matter CMS.
 
 ## What can't we do with Front Matter CMS?
 
