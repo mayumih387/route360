@@ -66,7 +66,6 @@ Et comme Front Matter CMS fonctionne hors ligne, il n'y a pas de retard de rése
 - Difficile à utiliser pour le utilisateur non technique
 - Pas d'éditeur de texte riche (seulement pour Markdown)
 - VS Code uniquement
-- Anglais uniquement
 
 Le plus grand inconvénient de Front Matter CMS est qu'il ne peut pas être livré à des clients non techniques parce qu'il s'agit d'une extension VS Code.
 
@@ -74,7 +73,7 @@ Pour ajouter/modifier du contenu, vous devez utiliser quelque chose comme GitHub
 
 Il nécessite également des paramètres PC tels que l'installation de Git, ce qui rend la gestion du contenu plus difficile pour le utilisateur non technique que pour les CMS sans tête en ligne.
 
-Et comme Front Matter CMS n'est pas localisé, les menus sont uniquement en anglais (vous pouvez cependant ajouter des titres ou des noms pour vos propres menus dans frontmatter.json).
+~~Et comme Front Matter CMS n'est pas localisé, les menus sont uniquement en anglais (vous pouvez cependant ajouter des titres ou des noms pour vos propres menus dans frontmatter.json).~~ \*L'interface graphique (GUI) est disponible en français à partir de la version 9.2.0!
 
 ## Que pouvons-nous faire avec Front Matter CMS ?
 

@@ -66,7 +66,6 @@ And because Front Matter CMS works offline, there are no network delays. All fil
 - Difficult to use for non-technical user
 - No rich text editor (only for Markdown)
 - VS Code only
-- English only
 
 The biggest disadvantages of Front Matter CMS is, it couldn't be deliverables for non-technical clients because it's a VS Code extension.
 
@@ -74,7 +73,7 @@ To add/edit content, you need to use something like GitHub or build locally and 
 
 It also requires PC settings such as Git installation, which makes it harder for non-technical user to manage content than online headless CMSs.
 
-And because Front Matter CMS is not localized, the menus are only in English (you can add any titles or names for your own menus in frontmatter.json, though).
+~~And because Front Matter CMS is not localized, the menus are only in English (you can add any titles or names for your own menus in frontmatter.json, though).~~ The GUI is now available in some languages since version 9.0.0!
 
 ## What can we do with Front Matter CMS?
 
