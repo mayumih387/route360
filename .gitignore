@@ -67,7 +67,7 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-.yarn
+.yarn/cache
 
 # Settings by me
 .prettierrc
