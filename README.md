@@ -1,6 +1,8 @@
 ## 🚀 Route360
 
-This is a personal blog of @mayumih387, built with Gatsby.js.
+[![built with Codeium](https://codeium.com/badges/main)](https://codeium.com)
+
+This is a personal blog of @mayumih387, built with Gatsby.
 
 This repository is public for study purposes only.
 
