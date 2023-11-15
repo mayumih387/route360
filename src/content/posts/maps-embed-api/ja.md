@@ -2,7 +2,7 @@
 title: ストリートビューの埋め込みコードをGoogle Maps Embed APIに正規表現で一括置換
 tags: null
 date: 2023-11-13
-lastmod: 2023-11-13
+lastmod: 2023-11-15
 draft: false
 ---
 
@@ -18,6 +18,11 @@ draft: false
 - Maps Embed APIが利用可能なAPIキーを生成済
 
 登録やAPIキーの生成がまだの場合は、公式の案内にしたがって進めてください。
+
+【2023/11/14更新】ストリートビューの埋め込みコードをMaps Embed APIコードに書き換えるための自動変換プログラムを公開しました。
+
+- [Street View Maps Embed API converter](https://profound-arithmetic-7fd00d.netlify.app)
+- [GitHubリポジトリ](https://github.com/mayumih387/streetview-converter)
 
 ## Maps Embed APIとは
 
@@ -63,7 +68,11 @@ Maps Embed APIの`streetview`モードで設定可能なパラメーターにつ
 
 Maps Embed APIのコードのパラメーターに変換する際、基本的には数値がそのまま利用できます。ただし`fov`は、そのまま使えません。
 
-`fov`は拡大率と考えて差し支えないと思います。取れる値は10\~100の間（小さいほうがズーム大）です。ざっくりと40を元の数値で割る計算をする必要がありそうです（要検証）。
+`fov`は拡大率と考えて差し支えないと思います。取れる値は10\~100の間（小さいほうがズーム大）です。~~ざっくりと40を元の数値で割る計算をする必要がありそうです（要検証）~~ 検証したところ、元コードの`!5f`の値を、以下のように計算するといい感じになりました。
+
+```js
+const fov = -23.593191040721845 * {`!5fの値`} + 93.45191850432671
+```
 
 今回は文字列を正規表現を使っての一括変換なので計算ができません。そのため`fov`値は省きます。`fov`値も一括置換に含めたい場合は、PythonやJavaScriptのプログラムを使って置換させる必要があります。
 
