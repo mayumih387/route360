@@ -6,5 +6,5 @@ lastmod: 2023-05-09
 
 以下のアカウントからお気軽にお問い合わせください。
 
-- [Twitter](https://twitter.com/route360dev/)
+- [X - Twitter](https://twitter.com/route360dev/)
 - [GitHub](https://github.com/mayumih387/)
