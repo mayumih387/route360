@@ -7687,9 +7687,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^5.12.11":
-  version: 5.12.11
-  resolution: "gatsby@npm:5.12.11"
+"gatsby@npm:^5.12.12":
+  version: 5.12.12
+  resolution: "gatsby@npm:5.12.12"
   dependencies:
     "@babel/code-frame": "npm:^7.18.6"
     "@babel/core": "npm:^7.20.12"
@@ -7866,7 +7866,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 54ce425d801738833d054a9f4b175ad97ee9ec03e18c9ae8583237fb8889d4d34569eb665431027562b0e0a23dffb6fe4368016dff7edffc5b8710bffe914311
+  checksum: efd3f8ebd919a55a10b00d8e0d9b869df851877c820471f427c1cadbc89415cf00ef27e4d2233942f7e40e1e2d3ecad997018a33b20ed4fbcf1346f9243ec463
   languageName: node
   linkType: hard
 
@@ -12740,7 +12740,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "route360@workspace:."
   dependencies:
-    gatsby: "npm:^5.12.11"
+    gatsby: "npm:^5.12.12"
     gatsby-plugin-catch-links: "npm:^5.12.0"
     gatsby-plugin-feed: "npm:^5.12.3"
     gatsby-plugin-image: "npm:^3.12.3"
