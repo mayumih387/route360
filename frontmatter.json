@@ -56,5 +56,7 @@
       "title": "posts",
       "path": "[[workspace]]/src/content/posts/"
     }
-  ]
+  ],
+  "frontMatter.content.autoUpdateDate": true,
+  "frontMatter.content.fmHighlight": false
 }
