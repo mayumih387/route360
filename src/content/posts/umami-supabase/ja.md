@@ -4,8 +4,8 @@ tags:
   - umami
   - analytics
   - supabase
-date: 2022-10-30T01:00:00.000Z
-lastmod: 2023-05-19T13:03:19.253Z
+date: 2022-10-30
+lastmod: 2024-02-09
 draft: false
 ---
 
@@ -17,7 +17,9 @@ Umamiアナリティクスはオープンソースのプログラムなので、
 
 今回は、Supabaseにデータベースを作り、最終的にUmamiアナリティクスを使えるところまで解説します。
 
-動作確認: Umami v2.2.0
+※2024年2月9日：2024年1月26日以降、SupabaseでPGBouncerが非推奨になりデータベースのURLが変更になったため、その部分を更新しました（参考：[Supabaseの記事](https://github.com/orgs/supabase/discussions/17817)）。
+
+動作確認: Umami v2.9.0
 
 ## Umamiアナリティクスの特徴
 
@@ -37,7 +39,7 @@ v2.2.0時点での問題の解消方法は当記事にも掲載しています�
 以下の3つのアカウントが必要です。
 
 - [GitHub](https://github.com/)：Umami本体を保存
-- [Supabase](https://supabase.com/)：データベース。サイト情報やアクセスデータを保存（アカウント開設にはGitHubアカウントが必要）
+- [Supabase](https://supabase.com/)：データベース。サイト情報やアクセスデータを保存（Supabaseアカウント開設にはGitHubアカウントが必要）
 - [Vercel](https://vercel.com/)：ホスティング。GitHubのUmamiとSupabaseのデータを引っ張ってきて、ブラウザ上に表示
 
 尚、Vercelではなく[Netlify](https://www.netlify.com/)などの他のホスティングでも問題ありません。ここではVercelを例に説明します。
@@ -94,7 +96,7 @@ SQL Editorを開き、「New query」で新規のコード入力欄を開きま�
 
 ![SupabaseのTable Editor](../../../images/supabase11.png "Table Editorページ ©Supabase")
 
-## デプロイ時のエラー対策
+## デプロイ時のエラー対策（v2.2.0時点）
 
 このままではVercelでのデプロイ時に以下のようなエラーが出ます。
 
@@ -121,7 +123,7 @@ npx prisma migrate resolve --applied 01_init
 ※環境変数の書き方は以下の通りです。次セクション参照。
 
 ```md
-DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=true
+DATABASE_URL=postgres://[db-user]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres
 ```
 
 ## Vercelにデプロイするための準備
@@ -131,20 +133,21 @@ DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=
 Vercelにデプロイするために、以下の情報を準備します。
 
 ```md
-DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=true
+DATABASE_URL=postgres://[db-user]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres
 HASH_SALT=any-random-string
 ```
 
 - DATABASE_URL：
-  - `[YOUR-PASSWORD]`：Supabaseのプロジェクト作成時に作ったパスワード
-  - `[HOST]`：SupabaseのプロジェクトURL等から確認可
+  - `[db-password]`：Supabaseのプロジェクト作成時に作ったパスワード
+  - `[db-user]`：SupabaseのプロジェクトURL等から確認可
+  - `[aws-region]`：割り当てられているデータベースのリージョン
 - HASH_SALT：任意のランダム文字列（何でも良い）
 
-DATABASE_URLは、Supabaseプロジェクトの **Settings > Database > Connection Pooling** からも確認できます。※パスワード以外
+DATABASE_URLは、Supabaseプロジェクトの **Project Settings > Database > Connection Pooling** からも確認できます。※パスワード以外
 
-![SupabaseのSettings](../../../images/supabase07.png "Settingsページ ©Supabase")
+![SupabaseのSettings](../../../images/supabase12.png "Project Settingsページ ©Supabase")
 
-HOSTに関しては、プロジェクトのURLからも確認可能。
+[db-user]に関しては、プロジェクトのURLからも確認可能。
 
 ![Supabaseのプロジェクトページ](../../../images/supabase08.png "プロジェクトのトップページ ©Supabase")
 

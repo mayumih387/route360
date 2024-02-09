@@ -4,8 +4,8 @@ tags:
   - umami
   - analytics
   - supabase
-date: 2022-10-30T01:00:00.000Z
-lastmod: 2023-05-19T13:04:31.508Z
+date: 2022-10-30
+lastmod: 2024-02-09
 draft: false
 ---
 
@@ -17,9 +17,9 @@ Since Umami is an open source program, it can be run for free if we use some fre
 
 In this article, I'll explain how to make a database on Supabase and then how to install it on your appropriate website.
 
-Working environment:
+*Updated on February 9, 2024: Since January 26, 2024, PGBouncer has been duplicated and the database URL has been changed. I have updated this article accordingly (Reference: [Supabase GitHub](https://github.com/orgs/supabase/discussions/17817))
 
-- Umami v2.2.0
+Working environment: Umami v2.2.9
 
 ## About Umami Analytics
 
@@ -96,7 +96,7 @@ Then open the Table Editor from the left menu, and you'll be able to see the tab
 
 ![Table Editor on Supabase](../../../images/supabase11.png "Table Editor on Supabase ©Supabase")
 
-## How to solve problem at the deployment
+## How to solve problem at the deployment (v2.2.0)
 
 With version 2.2.0, the deployment got failed and the following error on Vercel;
 
@@ -123,28 +123,29 @@ The database on Supabase gets ready then. After following the steps above, move 
 \*2 `DATABASE_URL` environment variable should be like this. Read the next section for more detail.
 
 ```md
-DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=true
+DATABASE_URL=postgres://[db-user]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres
 ```
 
 ## Preparation before the deployment on Vercel
 
-You are almost!
+You are almost there!
 
 Prepare the following information before running the first deployment;
 
 ```md
-DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=true
+DATABASE_URL=postgres://[db-user]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres
 HASH_SALT=any-random-string
 ```
 
 - DATABASE_URL:
-  - `[YOUR-PASSWORD]`: the password entered when the new Supabase project was established
-  - `[HOST]`: you can see the Supabase project URL
+  - `[db-password]`: the password entered when the new Supabase project was established
+  - `[db-user]`: you can see the Supabase project URL
+  - `[aws-region]`: Database's region
 - HASH_SALT: a random string (any string)
 
-The DATABASE_URL is also provided in **Settings > Database > Connection Pooling** (except the password).
+The DATABASE_URL is also provided in **Project Settings > Database > Connection Pooling** (except the password).
 
-![Settings page of Supabase](../../../images/supabase07.png "Setting page ©Supabase")
+![Settings page of Supabase](../../../images/supabase12.png "Setting page ©Supabase")
 
 About HOST, you can see it in the project URL.
 

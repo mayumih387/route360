@@ -4,8 +4,8 @@ tags:
   - umami
   - analytics
   - supabase
-date: 2022-10-30T01:00:00.000Z
-lastmod: 2023-05-19T13:04:35.491Z
+date: 2022-10-30
+lastmod: 2024-02-09
 draft: false
 ---
 
@@ -17,9 +17,9 @@ Puisque Umami est un programme open source, il peut être exécuté gratuitement
 
 Dans ce billet de blog, je vais expliquer comment démarrer une base de données sur Supabase puis installer-le sur votre site web approprié.
 
-Environnement de fonctionnement :
+*Mise à jour le 9 février 2024 : Depuis le 26 janvier 2024, PGBouncer a été dupliqué et l'URL de la base de données a été modifiée. J'ai mis à jour cet article en conséquence (Référence: [Supabase GitHub](https://github.com/orgs/supabase/discussions/17817)).
 
-- Umami v2.2.0
+Environnement de fonctionnement : Umami v2.2.0
 
 ## À propos de Umami Analytics
 
@@ -96,7 +96,7 @@ Ouvrir ensuite l'éditeur de tableaux dans le menu de gauche, vous pourrez voir 
 
 ![Table Editor sur Supabase](../../../images/supabase11.png "Table Editor sur Supabase ©Supabase")
 
-## Comment résoudre les problèmes lors du déploiement
+## Comment résoudre les problèmes lors du déploiement (v2.2.0)
 
 Avec la version 2.2.0, le déploiement a échoué et l'erreur suivante s'est produite sur Vercel ;
 
@@ -123,7 +123,7 @@ La base de données sur Supabase est alors prête. Après avoir suivi les étape
 \*2 `DATABASE_URL` variable d'environnement devrait ressembler à ceci. Lisez la section suivante pour plus de détails.
 
 ```md
-DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=true
+DATABASE_URL=postgres://[db-user]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres
 ```
 
 ## Préparation avant le déploiement sur Vercel
@@ -133,18 +133,19 @@ Vous y êtes presque !
 Préparer les informations suivantes avant d'exécuter le premier déploiement ;
 
 ```md
-DATABASE_URL=postgres://postgres:[YOUR-PASSWORD]@[HOST]:6543/postgres?pgbouncer=true
+DATABASE_URL=postgres://[db-user]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/postgres
 HASH_SALT=any-random-string
 ```
 
 - DATABASE_URL:
-  - `[YOUR-PASSWORD]`: the password entered when the new Supabase project was established
-  - `[HOST]`: you can see the Supabase project URL
-- HASH_SALT: a random string (any string)
+  - `[db-password]`: le mot de passe saisi lors de la création du nouveau projet Supabase
+  - `[db-user]`: vous pouvez voir l'URL du projet Supabase
+  - `[aws-region]`: Région de la base de données
+- HASH_SALT: une chaîne aléatoire (n'importe quelle chaîne)
 
-La DATABASE_URL est également fourni dans **Settings > Database > Connection Pooling** (sauf le mot de passe).
+La DATABASE_URL est également fourni dans **Project Settings > Database > Connection Pooling** (sauf le mot de passe).
 
-![Page des paramètres de Supabase](../../../images/supabase07.png "Page des paramètres ©Supabase")
+![Page des paramètres de Supabase](../../../images/supabase12.png "Page des paramètres ©Supabase")
 
 About HOST, you can see it in the project URL.
 
