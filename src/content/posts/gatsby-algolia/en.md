@@ -138,7 +138,7 @@ Algolia has released several libraries, and [react-instantsearch](https://www.al
 
 Because Algolia's docs contain all their libraries in one place, and different libraries use the same name for components (sometimes working the same, sometimes not), we have to be careful when reading the docs.
 
-When you implant Algolia according to this entry, check if the library name on the right bottom is **React InstantSearch Hooks v6**.
+When you implant Algolia according to this entry, check if the library name on the right bottom is **React InstantSearch v7**.
 
 ![Algolia Docs](../../../images/algolia04.png "&copy;Algolia")
 

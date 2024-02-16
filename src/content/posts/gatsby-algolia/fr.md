@@ -138,7 +138,7 @@ Algolia a publié plusieurs bibliothèques, et [react-instantsearch](https://www
 
 Étant donné que la documentation d'Algolia contient toutes ses bibliothèques en un seul endroit, et que différentes bibliothèques utilisent le même nom pour les composants (qui fonctionnent parfois de la même manière, parfois non), nous devons être attentifs lorsque nous lisons la documentation.
 
-Lorsque vous implantez Algolia selon cette entrée, vérifiez si le nom de la bibliothèque en bas à droite est **React InstantSearch Hooks v6**.
+Lorsque vous implantez Algolia selon cette entrée, vérifiez si le nom de la bibliothèque en bas à droite est **React InstantSearch v7**.
 
 ![Algolia Docs](../../../images/algolia04.png "&copy;Algolia")
 
