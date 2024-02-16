@@ -21,7 +21,7 @@ Bien que j'explique le code avec Algolia, il devrait fonctionner presque de la m
 
 Environnement :
 
-- react-instantsearch-hooks v7.6.0
+- react-instantsearch v7.6.0
 - algoliasearch v4.22.1
 - React v18.2.0
 
