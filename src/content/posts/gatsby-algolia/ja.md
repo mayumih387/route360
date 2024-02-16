@@ -4,7 +4,7 @@ tags:
   - gatsbyjs
   - algolia
 date: 2023-02-21T00:00:00.000Z
-lastmod: 2023-04-19T02:47:18.664Z
+lastmod: 2024-02-16
 draft: false
 ---
 
@@ -16,12 +16,12 @@ Google Custom Searchは導入の敷居は低いですが、せっかくのJamsta
 
 動作環境：
 
-- Node.js v18.16.0
+- Node.js v20.11.0
 - React v18.2.0
-- Gatsby.js v5.9.0
+- Gatsby.js v5.13.3
 - gatsby-plugin-algolia v1.0.3
-- algoliasearch v4.17.0
-- react-instantsearch-hooks-web v6.42.2
+- algoliasearch v4.22.1
+- react-instantsearch v7.6.0
 
 ざっくり4ステップです。
 
@@ -212,21 +212,21 @@ Algoliaのダッシュボードを見ると、インデックスにデータが�
 
 ### ライブラリのインストール
 
-検索結果を表示するために使うライブラリは、[react-instantsearch-hooks-web](https://www.npmjs.com/package/react-instantsearch-hooks-web)です（React v16.8.0以上）。[algoliaseach](https://www.npmjs.com/package/algoliasearch)も必要なので、同時にインストールします。
+検索結果を表示するために使うライブラリは、[react-instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/)です（React v16.8.0以上）。[algoliaseach](https://www.npmjs.com/package/algoliasearch)も必要なので、同時にインストールします。
 
 ```bash
 # npmの場合
-npm install algoliasearch react-instantsearch-hooks-web
+npm install algoliasearch react-instantsearch
 
 # yarnの場合
-yarn add algoliasearch react-instantsearch-hooks-web
+yarn add algoliasearch react-instantsearch
 ```
 
-Algoliaはこれまで複数の同様のライブラリをリリースしており、上記[react-instantsearch-hooks-web](https://www.npmjs.com/package/react-instantsearch-hooks-web)が2023年22月時点の最新型となっています（重要ポイント）。
+Algoliaはこれまで複数の同様のライブラリをリリースしており、上記[react-instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/)が2023年22月時点の最新型となっています（重要ポイント）。
 
 公式ドキュメントではこれまでのすべてのライブラリの情報が収められている上、別々のライブラリでも同じ名前のコンポーネントがあるので（互換性もあったりなかったり）、ドキュメント検索時には注意が必要です。
 
-当エントリーを参考にしてAlgoliaを導入する場合は、ドキュメント検索時に画面右下のライブラリ名が「**React InstantSearch Hooks v6**」になっているかを確認してください。
+当エントリーを参考にしてAlgoliaを導入する場合は、ドキュメント検索時に画面右下のライブラリ名が「**React InstantSearch v7**」になっているかを確認してください。
 
 ![Algoliaのドキュメント](../../../images/algolia04.png "©Algolia")
 
@@ -239,7 +239,7 @@ componentsフォルダーに、algolia.jsというファイルを用意。以下
 ```js
 import React, { useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch } from "react-instantsearch-hooks-web"
+import { InstantSearch } from "react-instantsearch"
 
 const Algolia = () => {
   const searchClient = useMemo(
@@ -278,14 +278,14 @@ GATSBY_ALGOLIA_SEARCH_KEY=[Search-Only API Key]
 
 #### 検索ボックスを作る
 
-検索ボックスは、[SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react-hooks/)というウィジェットを利用。
+検索ボックスは、[SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react/)というウィジェットを利用。
 
 <div class="filename">/src/components/algolia.js</div>
 
 ```js
 import React, { useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox } from "react-instantsearch-hooks-web"
+import { InstantSearch, SearchBox } from "react-instantsearch"
 
 const Algolia = () => {
   const searchClient = useMemo(
@@ -314,14 +314,14 @@ export default Algolia
 
 #### 検索結果表示部分を作る
 
-検索結果表示には、[Hits](https://www.algolia.com/doc/api-reference/widgets/hits/react-hooks/)というウィジェットを利用。
+検索結果表示には、[Hits](https://www.algolia.com/doc/api-reference/widgets/hits/react/)というウィジェットを利用。
 
 <div class="filename">/src/components/algolia.js</div>
 
 ```js
 import React, { useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-hooks-web"
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch"
 
 const Algolia = () => {
   const searchClient = useMemo(

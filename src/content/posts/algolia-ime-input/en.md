@@ -1,39 +1,39 @@
 ---
-title: How to Trigger Search After IME Conversion with React Instantsearch Hooks
+title: How to Trigger Search After IME Conversion with React Instantsearch
 tags:
   - react
   - algolia
   - meilisearch
 date: 2023-07-18
-lastmod: 2023-07-18
+lastmod: 2024-02-16
 draft: false
 ---
 
-This entry is about how to trigger search after IME conversion such as Japanese or Chinese with [React Instantsearch Hooks](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react-hooks/).
+This entry is about how to trigger search after IME conversion such as Japanese or Chinese with [React Instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/).
 
-By default, [React Instantsearch Hooks](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react-hooks/) always shows the results on every letter you type. However, for some Asian languages that need conversions, the results flash every time while typing - which makes the user experience uncomfortable.
+By default, [React Instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) always shows the results on every letter you type. However, for some Asian languages that need conversions, the results flash every time while typing - which makes the user experience uncomfortable.
 
 So I'll explain how to trigger the search right after the conversion.
 
-Algolia provides many types of open source search libraries, but each of them has its own components and widgets, even though the names are the same. In this entry, I use [React Instantsearch Hooks](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react-hooks/).
+Algolia provides many types of open source search libraries, but each of them has its own components and widgets, even though the names are the same. In this entry, I use [React Instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/).
 
 Although I explain the code with Algolia, it should work almost the same with Meilisearch.
 
 Environment:
 
-- react-instantsearch-hooks v6.46.0
-- algoliasearch v4.18.0
+- react-instantsearch v7.6.0
+- algoliasearch v4.22.1
 - React v18.2.0
 
 ## Overview
 
-React Instantsearch Hooks has own `<SearchBox>` widget to show an input element to search.
+React Instantsearch has own `<SearchBox>` widget to show an input element to search.
 
 However, to detect the composition states, we need to use `onCompositionStart` and `onCompositionEnd` events inside `<input>` element. The default `<SearchBox>` widget can't accept them.
 
 So, we use the `useSearchBox()` hook instead of the prepared `<SearchBox>` widget.
 
-- [\<Search Box> | Algolia](https://www.algolia.com/doc/api-reference/widgets/search-box/react-hooks/#hook)
+- [\<Search Box> | Algolia](https://www.algolia.com/doc/api-reference/widgets/search-box/react/#hook)
 - [Element: compositionstart event | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event)
 - [Element: compositionend event | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionend_event)
 
@@ -61,7 +61,7 @@ Here are the code files.
 
 ```js
 import React, { useRef } from "react"
-import { useSearchBox } from "react-instantsearch-hooks-web"
+import { useSearchBox } from "react-instantsearch"
 
 const SearchBox = ({
   onCompositionStart,
@@ -109,7 +109,7 @@ import {
   Highlight,
   useHits,
   useInstantSearch,
-} from "react-instantsearch-hooks-web"
+} from "react-instantsearch"
 
 const Hit = ({ hit }) => {
   return (
@@ -150,7 +150,7 @@ export default SearchResult
 ```js
 import React, { useState, useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch } from "react-instantsearch-hooks-web"
+import { InstantSearch } from "react-instantsearch"
 import SearchBox from "./search-box"
 import SearchResult from "./search-result"
 

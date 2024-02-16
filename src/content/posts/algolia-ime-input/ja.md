@@ -1,39 +1,39 @@
 ---
-title: React Instantsearch Hooksの即時検索で、日本語の変換後に検索を実行させる方法
+title: React Instantsearchの即時検索で、日本語の変換後に検索を実行させる方法
 tags:
   - react
   - algolia
   - meilisearch
 date: 2023-07-18
-lastmod: 2023-07-18
+lastmod: 2024-02-16
 draft: false
 ---
 
-AlgoliaやMeilisearchで使える[React Instantsearch Hooks](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react-hooks/)で、日本語などの文字変換中は検索を実行させずに、変換確定後に検索を実行させる方法です。
+AlgoliaやMeilisearchで使える[React Instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/)で、日本語などの文字変換中は検索を実行させずに、変換確定後に検索を実行させる方法です。
 
-React Instantsearch Hooksなどでは、デフォルトでは入力した内容が即時に検索結果に反映されます。しかし変換が必要な日本語等の言語の場合、変換前の入力中にも検索が実行されてしまうと、意に反した検索結果の表示が代わる代わる出てしまい、ユーザー体験を損ないます。
+React Instantsearchなどでは、デフォルトでは入力した内容が即時に検索結果に反映されます。しかし変換が必要な日本語等の言語の場合、変換前の入力中にも検索が実行されてしまうと、意に反した検索結果の表示が代わる代わる出てしまい、ユーザー体験を損ないます。
 
 そのため、今回は変換確定後にのみ検索を実行させたいと思います。
 
-Algoliaではさまざまなオープンソースの検索用ライブラリを提供していますが、それぞれでウィジェットやコンポーネントが異なります。今回の説明は「[React Instantsearch Hooks](https://www.algolia.com/doc/api-reference/widgets/instantsearch/react-hooks/)」用ですので、ご注意ください。
+Algoliaではさまざまなオープンソースの検索用ライブラリを提供していますが、それぞれでウィジェットやコンポーネントが異なります。今回の説明は「[React Instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/)」用ですので、ご注意ください。
 
 また、今回はAlgoliaを例にして作っていますが、Meilisearchでもほぼ同じように作れるはずです。
 
 動作環境：
 
-- react-instantsearch-hooks v6.46.0
-- algoliasearch v4.18.0
+- react-instantsearch v7.6.0
+- algoliasearch v4.22.1
 - React v18.2.0
 
 ## 変換入力中に検索させない方法の概要
 
-React Instantsearch Hooksには、標準で`<SearchBox>`という検索入力窓のウィジェットが用意されています。
+React Instantsearchには、標準で`<SearchBox>`という検索入力窓のウィジェットが用意されています。
 
 しかし、IMEでの変換中・変換終了を検知させるためには、`<input>`タグに直接`onCompositionStart`と`onCompositionEnd`というイベントを使う必要があります。標準の`<SearchBox>`ウィジェットのままではそれができません。
 
 そのため、標準の`<SearchBox>`ウィジェットを使わず、`useSearchBox()`フックを用いて検索窓を自作します。
 
-- [\<Search Box> | Algolia](https://www.algolia.com/doc/api-reference/widgets/search-box/react-hooks/#hook)
+- [\<Search Box> | Algolia](https://www.algolia.com/doc/api-reference/widgets/search-box/react/#hook)
 - [Element: compositionstart イベント | MDN](https://developer.mozilla.org/ja/docs/Web/API/Element/compositionstart_event)
 - [Element: compositionend イベント | MDN](https://developer.mozilla.org/ja/docs/Web/API/Element/compositionend_event)
 
@@ -61,7 +61,7 @@ src/
 
 ```js
 import React, { useRef } from "react"
-import { useSearchBox } from "react-instantsearch-hooks-web"
+import { useSearchBox } from "react-instantsearch"
 
 const SearchBox = ({
   onCompositionStart,
@@ -109,7 +109,7 @@ import {
   Highlight,
   useHits,
   useInstantSearch,
-} from "react-instantsearch-hooks-web"
+} from "react-instantsearch"
 
 const Hit = ({ hit }) => {
   return (
@@ -150,7 +150,7 @@ export default SearchResult
 ```js
 import React, { useState, useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch } from "react-instantsearch-hooks-web"
+import { InstantSearch } from "react-instantsearch"
 import SearchBox from "./search-box"
 import SearchResult from "./search-result"
 

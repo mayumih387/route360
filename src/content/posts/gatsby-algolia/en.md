@@ -4,7 +4,7 @@ tags:
   - gatsbyjs
   - algolia
 date: 2023-02-21T00:00:00.000Z
-lastmod: 2023-04-19T02:47:16.368Z
+lastmod: 2024-02-16
 draft: false
 ---
 
@@ -16,12 +16,12 @@ I know that Google Custom Search is also handy, but it slows down performance an
 
 Working environment:
 
-- Node.js v18.16.0
+- Node.js v20.11.0
 - React v18.2.0
-- Gatsby.js v5.9.0
+- Gatsby.js v5.13.3
 - gatsby-plugin-algolia v1.0.3
-- algoliasearch v4.17.0
-- react-instantsearch-hooks-web v6.42.2
+- algoliasearch v4.22.1
+- react-instantsearch v7.6.0
 
 ## Step-by-Step Overview
 
@@ -124,17 +124,17 @@ Since generating records only works on `gatsby build`, you don't need to add the
 
 #### Official Algolia libraries for search results
 
-We'll use [react-instantsearch-hooks-web](https://www.npmjs.com/package/react-instantsearch-hooks-web) this time (React v16.8.0>). Also install [algoliaseach](https://www.npmjs.com/package/algoliasearch) together.
+We'll use [react-instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) this time (React v16.8.0>). Also install [algoliaseach](https://www.npmjs.com/package/algoliasearch) together.
 
 ```bash
 # npm
-npm install algoliasearch react-instantsearch-hooks-web
+npm install algoliasearch react-instantsearch
 
 # yarn
-yarn add algoliasearch react-instantsearch-hooks-web
+yarn add algoliasearch react-instantsearch
 ```
 
-Algolia has released several libraries, and [react-instantsearch-hooks-web](https://www.npmjs.com/package/react-instantsearch-hooks-web) is the latest as of Feb 2023 (important).
+Algolia has released several libraries, and [react-instantsearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) is the latest as of Feb 2023 (important).
 
 Because Algolia's docs contain all their libraries in one place, and different libraries use the same name for components (sometimes working the same, sometimes not), we have to be careful when reading the docs.
 
@@ -241,7 +241,7 @@ Create a javascript file (called algolia.js here) in your components folder. The
 ```js
 import React, { useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch } from "react-instantsearch-hooks-web"
+import { InstantSearch } from "react-instantsearch"
 
 const Algolia = () => {
   const searchClient = useMemo(
@@ -281,14 +281,14 @@ GATSBY_ALGOLIA_SEARCH_KEY=[Search-Only API Key]
 
 ### Create a search box
 
-We can use the [SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react-hooks/) widget.
+We can use the [SearchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/react/) widget.
 
 <div class="filename">/src/components/algolia.js</div>
 
 ```js
 import React, { useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox } from "react-instantsearch-hooks-web"
+import { InstantSearch, SearchBox } from "react-instantsearch"
 
 const Algolia = () => {
   const searchClient = useMemo(
@@ -317,14 +317,14 @@ So the Algolia component is ready. You can import this into other components or 
 
 ### Create search results part
 
-To display the search results, we can use the [Hits](https://www.algolia.com/doc/api-reference/widgets/hits/react-hooks/) widget.
+To display the search results, we can use the [Hits](https://www.algolia.com/doc/api-reference/widgets/hits/react/) widget.
 
 <div class="filename">/src/components/algolia.js</div>
 
 ```js
 import React, { useMemo } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-hooks-web"
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch"
 
 const Algolia = () => {
   const searchClient = useMemo(
