@@ -3346,7 +3346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/webpack-asset-relocator-loader@npm:^1.7.3":
+"@vercel/webpack-asset-relocator-loader@npm:1.7.3":
   version: 1.7.3
   resolution: "@vercel/webpack-asset-relocator-loader@npm:1.7.3"
   dependencies:
@@ -7682,9 +7682,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^5.13.4":
-  version: 5.13.4
-  resolution: "gatsby@npm:5.13.4"
+"gatsby@npm:^5.13.5":
+  version: 5.13.5
+  resolution: "gatsby@npm:5.13.5"
   dependencies:
     "@babel/code-frame": "npm:^7.18.6"
     "@babel/core": "npm:^7.20.12"
@@ -7713,7 +7713,7 @@ __metadata:
     "@types/http-proxy": "npm:^1.17.11"
     "@typescript-eslint/eslint-plugin": "npm:^5.60.1"
     "@typescript-eslint/parser": "npm:^5.60.1"
-    "@vercel/webpack-asset-relocator-loader": "npm:^1.7.3"
+    "@vercel/webpack-asset-relocator-loader": "npm:1.7.3"
     acorn-loose: "npm:^8.3.0"
     acorn-walk: "npm:^8.2.0"
     address: "npm:1.2.2"
@@ -7862,7 +7862,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 10/8e12addb95b091a1de77a2a95155db49c4bce4294b55cc7988b36e0587eec3457de2e7d05593a13ec41aa447a41cd8b1f89e2a1d6654940955eceedc4970544e
+  checksum: 10/6fc9677810755e07d5ce36faa45d17f08fccb795c6714890041476edb23401e5fa890628c89cd3cda7cf7898dea0bf4d7c2843104a51b3683a604d9115597e8e
   languageName: node
   linkType: hard
 
@@ -12264,15 +12264,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
+"react-dom@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react-dom@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.0"
+    scheduler: "npm:^0.23.2"
   peerDependencies:
-    react: ^18.2.0
-  checksum: 10/ca5e7762ec8c17a472a3605b6f111895c9f87ac7d43a610ab7024f68cd833d08eda0625ce02ec7178cc1f3c957cf0b9273cdc17aa2cd02da87544331c43b1d21
+    react: ^18.3.1
+  checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
   languageName: node
   linkType: hard
 
@@ -12311,12 +12311,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10/b9214a9bd79e99d08de55f8bef2b7fc8c39630be97c4e29d7be173d14a9a10670b5325e94485f74cd8bff4966ef3c78ee53c79a7b0b9b70cba20aa8973acc694
+  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
   languageName: node
   linkType: hard
 
@@ -12795,7 +12795,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "route360@workspace:."
   dependencies:
-    gatsby: "npm:^5.13.4"
+    gatsby: "npm:^5.13.5"
     gatsby-plugin-catch-links: "npm:^5.13.1"
     gatsby-plugin-feed: "npm:^5.13.1"
     gatsby-plugin-image: "npm:^3.13.1"
@@ -12813,8 +12813,8 @@ __metadata:
     gatsby-transformer-sharp: "npm:^5.13.1"
     prettier: "npm:^3.2.5"
     prismjs: "npm:^1.29.0"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
   languageName: unknown
   linkType: soft
 
@@ -12906,12 +12906,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
+"scheduler@npm:^0.23.2":
+  version: 0.23.2
+  resolution: "scheduler@npm:0.23.2"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10/0c4557aa37bafca44ff21dc0ea7c92e2dbcb298bc62eae92b29a39b029134f02fb23917d6ebc8b1fa536b4184934314c20d8864d156a9f6357f3398aaf7bfda8
+  checksum: 10/e8d68b89d18d5b028223edf090092846868a765a591944760942b77ea1f69b17235f7e956696efbb62c8130ab90af7e0949bfb8eba7896335507317236966bc9
   languageName: node
   linkType: hard
 
