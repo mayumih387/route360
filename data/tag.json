@@ -70,5 +70,9 @@
   {
     "title": "VS Code",
     "slug": "vscode"
+  },
+  {
+    "title": "Linux",
+    "slug": "linux"
   }
 ]
