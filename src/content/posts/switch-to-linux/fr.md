@@ -1,5 +1,5 @@
 ---
-title: Honest Reflections After ６ Months of Complete PC Migration to Linux
+title: Réflexions honnêtes après ６ mois de migration complète du PC vers Linux
 tags:
   - linux
 date: 2024-05-31
