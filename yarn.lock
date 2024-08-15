@@ -7682,9 +7682,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:^5.13.6":
-  version: 5.13.6
-  resolution: "gatsby@npm:5.13.6"
+"gatsby@npm:^5.13.7":
+  version: 5.13.7
+  resolution: "gatsby@npm:5.13.7"
   dependencies:
     "@babel/code-frame": "npm:^7.18.6"
     "@babel/core": "npm:^7.20.12"
@@ -7862,7 +7862,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 10/1d16f2220fa70151c226006ed73f77b245acebd55fe05f310e926281d179105231909be5d5a4a8028c2aae20854941334348b7f6db7b8b96a9f051ac865dd113
+  checksum: 10/d12152be23d168b92814b705b3addbf4f437edfe5ab3b2d279721d83a93a3ce3d838282341948d6b8fb747cd7dcf73e87e0cd40ee70a4c9471155abf21cff04a
   languageName: node
   linkType: hard
 
@@ -11970,12 +11970,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "prettier@npm:3.2.5"
+"prettier@npm:^3.3.3":
+  version: 3.3.3
+  resolution: "prettier@npm:3.3.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10/d509f9da0b70e8cacc561a1911c0d99ec75117faed27b95cc8534cb2349667dee6351b0ca83fa9d5703f14127faa52b798de40f5705f02d843da133fc3aa416a
+  checksum: 10/5beac1f30b5b40162532b8e2f7c3a4eb650910a2695e9c8512a62ffdc09dae93190c29db9107fa7f26d1b6c71aad3628ecb9b5de1ecb0911191099be109434d7
   languageName: node
   linkType: hard
 
@@ -12795,7 +12795,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "route360@workspace:."
   dependencies:
-    gatsby: "npm:^5.13.6"
+    gatsby: "npm:^5.13.7"
     gatsby-plugin-catch-links: "npm:^5.13.1"
     gatsby-plugin-feed: "npm:^5.13.1"
     gatsby-plugin-image: "npm:^3.13.1"
@@ -12811,7 +12811,7 @@ __metadata:
     gatsby-transformer-json: "npm:^5.13.1"
     gatsby-transformer-remark: "npm:^6.13.1"
     gatsby-transformer-sharp: "npm:^5.13.1"
-    prettier: "npm:^3.2.5"
+    prettier: "npm:^3.3.3"
     prismjs: "npm:^1.29.0"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
