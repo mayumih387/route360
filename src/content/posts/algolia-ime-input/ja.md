@@ -5,7 +5,7 @@ tags:
   - algolia
   - meilisearch
 date: 2023-07-18
-lastmod: 2024-02-16
+lastmod: 2024-08-15
 draft: false
 ---
 
@@ -21,9 +21,9 @@ Algoliaではさまざまなオープンソースの検索用ライブラリを�
 
 動作環境：
 
-- react-instantsearch v7.6.0
-- algoliasearch v4.22.1
-- React v18.2.0
+- react-instantsearch v7.12.4
+- algoliasearch v5.0.0
+- React v18.3.1
 
 ## 変換入力中に検索させない方法の概要
 
@@ -149,7 +149,7 @@ export default SearchResult
 
 ```js
 import React, { useState, useMemo } from "react"
-import algoliasearch from "algoliasearch/lite"
+import { algoliasearch } from "algoliasearch"
 import { InstantSearch } from "react-instantsearch"
 import SearchBox from "./search-box"
 import SearchResult from "./search-result"

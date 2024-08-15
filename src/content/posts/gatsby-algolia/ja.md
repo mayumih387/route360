@@ -4,7 +4,7 @@ tags:
   - gatsbyjs
   - algolia
 date: 2023-02-21T00:00:00.000Z
-lastmod: 2024-02-16
+lastmod: 2024-08-15
 draft: false
 ---
 
@@ -16,12 +16,12 @@ Google Custom Searchは導入の敷居は低いですが、せっかくのJamsta
 
 動作環境：
 
-- Node.js v20.11.0
-- React v18.2.0
-- Gatsby.js v5.13.3
+- Node.js v20.14.0
+- React v18.3.1
+- Gatsby.js v5.13.7
 - gatsby-plugin-algolia v1.0.3
-- algoliasearch v4.22.1
-- react-instantsearch v7.6.0
+- algoliasearch v5.0.0
+- react-instantsearch v7.12.4
 
 ざっくり4ステップです。
 
@@ -238,7 +238,7 @@ componentsフォルダーに、algolia.jsというファイルを用意。以下
 
 ```js
 import React, { useMemo } from "react"
-import algoliasearch from "algoliasearch/lite"
+import { algoliasearch } from "algoliasearch"
 import { InstantSearch } from "react-instantsearch"
 
 const Algolia = () => {
@@ -284,7 +284,7 @@ GATSBY_ALGOLIA_SEARCH_KEY=[Search-Only API Key]
 
 ```js
 import React, { useMemo } from "react"
-import algoliasearch from "algoliasearch/lite"
+import { algoliasearch } from "algoliasearch"
 import { InstantSearch, SearchBox } from "react-instantsearch"
 
 const Algolia = () => {
@@ -320,7 +320,7 @@ export default Algolia
 
 ```js
 import React, { useMemo } from "react"
-import algoliasearch from "algoliasearch/lite"
+import { algoliasearch } from "algoliasearch"
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch"
 
 const Algolia = () => {
